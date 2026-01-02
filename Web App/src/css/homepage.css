@@ -2,8 +2,22 @@
     --primary-color: #0A4A3F;
     --secondary-text: #00897B;
     --bg-color: #F3F2EA;
-    --font-main: 'Inter', sans-serif;
-    --header-height: 80px; /* Tăng nhẹ chiều cao header cho thoáng */
+    --card-bg: #E8E6D9;
+    --text-dark: #333;
+    --text-medium: #555;
+    --text-light: #666;
+    --border-color: #C0C0C0;
+    --border-dark: #777;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --header-height: 80px;
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 40px;
+    --transition-base: all 0.2s ease;
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.1);
+    --shadow-lg: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 * {
@@ -20,7 +34,47 @@ body {
 a {
     text-decoration: none;
     color: inherit;
-    transition: all 0.2s ease;
+    transition: var(--transition-base);
+}
+
+/* --- UTILITY CLASSES --- */
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+.hover-opacity:hover {
+    opacity: 0.7;
+}
+
+/* --- BASE BUTTON STYLES --- */
+.btn {
+    padding: 10px 26px;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-base);
+}
+
+.btn-lg {
+    padding: 14px 40px;
+    font-size: 1.5rem;
+}
+
+.btn-full {
+    width: 100%;
 }
 
 /* --- HEADER --- */
@@ -36,7 +90,6 @@ header {
     z-index: 100;
     background-color: var(--bg-color);
     border-bottom: 5px solid #DDD;
-    /* border-bottom: 5px solid #E0E0E0; <-- Tạm ẩn để giống design mới sạch hơn */
 }
 
 .header-left {
@@ -75,13 +128,9 @@ header {
     gap: 20px;
 }
 
-/* Button Styles */
 .btn-text {
-    font-size: 18px;
-    font-weight: 600;
     padding: 10px 20px;
-    border: 1px solid var(--primary-color); /* Thêm border giống ảnh mẫu */
-    border-radius: 6px;
+    border: 1px solid var(--primary-color);
 }
 
 .btn-text:hover {
@@ -89,18 +138,15 @@ header {
 }
 
 .btn-primary {
+    padding: 10px 24px;
     background-color: var(--primary-color);
     color: #fff;
-    padding: 10px 26px;
-    border-radius: 6px; /* Bo góc ít hơn chút cho hiện đại */
-    font-weight: 600;
-    font-size: 18px;
 }
 
-.btn-primary:hover, .cta-button:hover {
+.btn-primary:hover {
     background-color: #0d6354;
     transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-sm);
 }
 
 /* --- MAIN LAYOUT --- */
@@ -112,9 +158,9 @@ main {
 /* --- SECTION 1: HERO (CŨ) --- */
 .hero-section {
     display: flex;
-    height: calc(100vh - var(--header-height)); /* Trừ đi header */
+    height: calc(100vh - var(--header-height));
     min-height: 600px;
-    margin-bottom: 50px; /* Khoảng cách với phần dưới */
+    margin-bottom: 50px;
 }
 
 .content-left {
@@ -152,13 +198,19 @@ main {
 }
 
 .cta-button {
+    padding: 10px 20px;
     display: inline-block;
     background-color: var(--primary-color);
     color: #fff;
-    padding: 14px 40px;
     border-radius: 8px;
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+.cta-button:hover {
+    background-color: #0d6354;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
 .content-right {
@@ -171,16 +223,16 @@ main {
 }
 
 .content-right img {
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     object-fit: cover;
     width: 70%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
 }
 
 .img-main {
     height: 50%;
     z-index: 2;
-    transition: transform 0.3s ease;
 }
 
 .img-main:hover {
@@ -201,7 +253,7 @@ main {
 .features-section {
     margin-top: 50px;
     width: 100%;
-    padding: 0 40px 100px 40px; /* Padding bottom lớn để có chỗ cho footer */
+    padding: 0 40px 100px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,10 +262,10 @@ main {
 .feature-container {
     width: 100%;
     max-width: 1200px;
-    border: 1px solid #C0C0C0; /* Border xám mỏng bao quanh */
-    border-radius: 40px; /* Bo góc lớn như trong ảnh */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-xl);
     padding: 60px;
-    background-color: transparent; /* Giữ màu nền chung */
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -239,7 +291,7 @@ main {
 .sub-text {
     font-size: 1.5rem;
     margin: 0;
-    color: var(--secondary-text); /* Màu xanh nhạt hơn */
+    color: var(--secondary-text);
 }
 
 .underline-thin {
@@ -253,41 +305,42 @@ main {
     width: 100%;
 }
 
-/* Style cho khối "Your Idea" bên trái */
-.idea-card {
+/* Style cho khối "Your Idea" và Image card */
+.idea-card,
+.image-card {
     flex: 1;
-    border: 1px solid #777;
-    border-radius: 12px;
+    border-radius: var(--border-radius-md);
+}
+
+.idea-card {
+    border: 1px solid var(--border-dark);
     padding: 30px;
     display: flex;
     flex-direction: column;
     min-height: 300px;
-    background-color: #F9F8F4; /* Màu nền hơi sáng hơn trong card */
+    background-color: #F9F8F4;
 }
 
 .idea-card h3 {
     font-size: 2rem;
     margin-top: 0;
     margin-bottom: 20px;
-    color: #4A3B32; /* Màu nâu đậm như ảnh */
+    color: #4A3B32;
 }
 
 .input-simulation {
     border: 1px solid #A0A0A0;
     border-radius: 8px;
     padding: 20px;
-    background-color: #F3F2EA;
+    background-color: var(--bg-color);
     font-size: 1.2rem;
-    color: #333;
-    flex-grow: 1; /* Chiếm hết chiều cao còn lại */
+    color: var(--text-dark);
+    flex-grow: 1;
 }
 
-/* Style cho khối Image bên phải */
 .image-card {
-    flex: 1;
-    border-radius: 12px;
     overflow: hidden;
-    position: relative; /* Để đặt các icon trôi nổi */
+    position: relative;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
@@ -299,10 +352,10 @@ main {
 }
 
 .spacer {
-    height: 60px; /* Khoảng cách giữa 2 khối chức năng */
+    height: 60px;
 }
 
-/* Floating Icons mô phỏng editor */
+/* Floating Icons */
 .floating-icon {
     position: absolute;
     width: 36px;
@@ -315,16 +368,15 @@ main {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     cursor: pointer;
     font-size: 14px;
-    color: #333;
+    color: var(--text-dark);
 }
 
-/* Vị trí các icon giả lập */
+/* Vị trí các icon */
 .icon-1 { bottom: 20px; right: 60px; }
 .icon-2 { bottom: 20px; right: 20px; }
 .icon-3 { top: 20px; right: 20px; }
 .icon-4 { bottom: 20px; left: 50%; transform: translateX(-50%); }
 
-/* Button Join Free ở cuối */
 .bottom-cta {
     margin-top: 50px;
     display: flex;
@@ -336,7 +388,7 @@ main {
     padding: 12px 30px;
     font-size: 1.2rem;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: var(--border-radius-sm);
     background-color: transparent;
     color: var(--primary-color);
 }
@@ -348,12 +400,10 @@ main {
 
 /* --- LOGIN PAGE STYLES --- */
 
-/* Wrapper bao quanh để xử lý ảnh nền full màn hình */
 .login-wrapper {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    /* Cậu thay url bên dưới bằng đường dẫn ảnh thành phố thật của cậu nhé */
     background-image: url('../imgs/homepage/livingroom.png'); 
     background-size: cover;
     background-position: center;
@@ -362,14 +412,13 @@ main {
     justify-content: center;
 }
 
-/* Lớp phủ màu xanh đậm lên trên ảnh nền */
 .login-bg-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(10, 74, 63, 0.85); /* Màu primary pha trong suốt */
+    background-color: rgba(10, 74, 63, 0.85);
     z-index: 1;
 }
 
@@ -388,7 +437,7 @@ main {
 /* --- Left Content (Text) --- */
 .login-left-content {
     flex: 1;
-    color: #E6E6E6; /* Màu chữ sáng cho nổi trên nền tối */
+    color: #E6E6E6;
 }
 
 .login-left-content h2 {
@@ -402,7 +451,7 @@ main {
     font-size: 5rem;
     font-weight: 700;
     margin: 0;
-    color: #E8E6D9; /* Màu be sáng */
+    color: var(--card-bg);
     text-transform: uppercase;
     line-height: 1.1;
 }
@@ -415,13 +464,13 @@ main {
 }
 
 .login-card {
-    background-color: #E8E6D9; /* Màu nền be như trong design */
+    background-color: var(--card-bg);
     padding: 50px;
-    border-radius: 20px;
+    border-radius: var(--border-radius-lg);
     width: 100%;
     max-width: 480px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    color: #333;
+    box-shadow: var(--shadow-lg);
+    color: var(--text-dark);
 }
 
 .form-title {
@@ -447,7 +496,7 @@ main {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #AAA;
-    border-radius: 6px;
+    border-radius: var(--border-radius-sm);
     font-size: 1rem;
     background-color: #fff;
     outline: none;
@@ -460,7 +509,7 @@ main {
 .forgot-pass {
     display: block;
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-light);
     text-decoration: underline;
     margin-bottom: 25px;
 }
@@ -468,7 +517,7 @@ main {
 .btn-submit {
     width: 100%;
     padding: 14px;
-    background-color: #00897B; /* Màu xanh lá đậm hơn chút theo design */
+    background-color: var(--secondary-text);
     color: white;
     border: none;
     border-radius: 8px;
@@ -482,13 +531,13 @@ main {
     background-color: #00695C;
 }
 
-/* Divider OR */
+/* Divider */
 .divider {
     display: flex;
     align-items: center;
     text-align: center;
     margin: 25px 0;
-    color: #666;
+    color: var(--text-light);
 }
 
 .divider::before, .divider::after {
@@ -509,7 +558,7 @@ main {
     padding: 12px;
     margin-bottom: 15px;
     background-color: transparent;
-    border: 1px solid #777;
+    border: 1px solid var(--border-dark);
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 500;
@@ -537,7 +586,7 @@ main {
     text-align: center;
     margin-top: 20px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-dark);
     text-decoration: underline;
 }
 
@@ -563,38 +612,35 @@ main {
     }
 }
 
-/* =========================================
-   PRICING PAGE STYLES
-   ========================================= */
+/* --- PRICING PAGE STYLES --- */
 
-/* Căn chỉnh layout chính */
 .pricing-main {
-    padding-top: calc(var(--header-height) + 60px); /* Cách header một đoạn */
+    padding-top: calc(var(--header-height) + 60px);
     padding-bottom: 80px;
     display: flex;
     justify-content: center;
-    background-color: var(--bg-color); /* Màu nền kem */
+    background-color: var(--bg-color);
     min-height: 100vh;
 }
 
 .pricing-container {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Để các card cao bằng nhau */
+    align-items: stretch;
     gap: 30px;
     width: 100%;
     max-width: 1400px;
     padding: 0 20px;
-    flex-wrap: wrap; /* Xuống dòng nếu màn hình nhỏ */
+    flex-wrap: wrap;
 }
 
-/* Style cho từng Card */
+/* Card Styles */
 .pricing-card {
-    flex: 1; /* Chia đều chiều rộng */
+    flex: 1;
     min-width: 320px;
     max-width: 420px;
     background-color: #fff;
-    border: 1px solid #C0C0C0;
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 40px 30px;
     display: flex;
@@ -646,13 +692,13 @@ main {
 }
 
 .plan-desc {
-    color: #5F7D78; /* Màu xanh xám nhẹ cho mô tả */
+    color: #5F7D78;
     font-size: 1rem;
     margin: 0 0 30px 0;
-    min-height: 40px; /* Giữ khoảng cách đều nhau dù text ngắn/dài */
+    min-height: 40px;
 }
 
-/* Buttons trong Pricing */
+/* Pricing Buttons */
 .btn-plan {
     width: 100%;
     padding: 12px 0;
@@ -674,7 +720,7 @@ main {
 }
 
 .btn-plan.disabled {
-    background-color: #85A59E; /* Màu xanh xám nhạt giống nút 'Used' */
+    background-color: #85A59E;
     color: #E0EFEA;
     cursor: default;
 }
@@ -708,12 +754,12 @@ main {
 }
 
 .card-features ul li i {
-    color: #4CAF50; /* Màu xanh lá tươi cho dấu tick */
+    color: #4CAF50;
     margin-top: 3px;
-    flex-shrink: 0; /* Không bị co icon */
+    flex-shrink: 0;
 }
 
-/* Responsive cho Pricing */
+/* Responsive */
 @media (max-width: 900px) {
     .pricing-container {
         flex-direction: column;
