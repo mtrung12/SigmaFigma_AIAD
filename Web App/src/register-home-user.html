@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Homeuser</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/login-style.css">
+</head>
+<body>
+    <div class="bg-container">
+        <div class="bg-overlay"></div>
+    </div>
+
+    <div class="container center-layout">
+        <div class="login-card register-card">
+            <a href="register-choose-role.html" class="back-arrow" title="Back to Choose role">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            
+            <div class="register-header">
+                <h2>Create new account</h2>
+            </div>
+
+            <form class="form-grid">
+                <div class="input-wrapper">
+                    <label>Username:</label>
+                    <input type="text" placeholder="abc123">
+                </div>
+                <div class="input-wrapper">
+                    <label>Date of birth</label>
+                    <input type="text" placeholder="10 | 02 | 2004">
+                </div>
+
+                <div class="input-wrapper full-width">
+                    <label>Email</label>
+                    <input type="email" placeholder="abc@gmail.com">
+                </div>
+
+                <div class="input-wrapper full-width">
+                    <label>Password:</label>
+                    <input type="password">
+                </div>
+
+                <div class="input-wrapper full-width">
+                    <label>Confirm password</label>
+                    <input type="password">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-submit-green" style="width: 250px;">Create account</button>
+                </div>
+
+                <div class="social-section">
+                    <div class="or-divider">OR</div>
+                    
+                    <button type="button" class="social-btn-styled">
+                        <i class="fab fa-google" style="color: #EA4335;"></i> Continue with Google
+                    </button>
+                    <button type="button" class="social-btn-styled">
+                        <i class="fab fa-facebook" style="color: #1877F2;"></i> Continue with Facebook
+                    </button>
+                    
+                    <div style="margin-top: 15px;">
+                        <a href="login.html" class="link-bold">Already have an account</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

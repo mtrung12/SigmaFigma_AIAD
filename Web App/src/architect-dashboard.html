@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD - Architect Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/architect-dashboard.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <a href="homepage.html" class="logo">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>AIAD</span>
+                    <span class="badge-pro">Pro</span>
+                </a>
+
+                <nav class="sidebar-menu">
+                    <a href="#" class="menu-item active">
+                        <i class="fa-solid fa-table-columns"></i> Dashboard
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fa-solid fa-folder"></i> Projects
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fa-solid fa-cube"></i> Assets
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="user-profile">
+                    <div class="avatar-circle">T</div>
+                    <div class="user-info">
+                        <div class="user-name">Tailoduc04</div>
+                        <div class="user-role">Architect</div>
+                    </div>
+                    <a href="#" class="settings-btn"><i class="fa-solid fa-user-gear"></i></a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="main-header">
+                <h2>Project Management</h2>
+                
+                <div class="new-project-wrapper">
+                    <button class="btn-new-project" id="btnNewProject">
+                        <i class="fa-solid fa-plus"></i> New Project
+                    </button>
+
+                    <div class="dropdown-menu" id="projectDropdown">
+                        <a href="#" class="dropdown-item">
+                            <i class="fa-solid fa-pencil"></i>
+                            <span>Build from scratch</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa-solid fa-table-columns"></i>
+                            <span>Start with a template</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Generate from prompt</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card border-green">
+                    <div class="stat-label">TOTAL ACTIVE PROJECTS</div>
+                    <div class="stat-number">24</div>
+                </div>
+                <div class="stat-card border-yellow">
+                    <div class="stat-label">IN PROGRESS</div>
+                    <div class="stat-number">05</div>
+                </div>
+                <div class="stat-card border-gray">
+                    <div class="stat-label">ARCHIVED</div>
+                    <div class="stat-number">52</div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search projects, clients,...">
+                </div>
+                <div class="filter-box">
+                    <div class="sort-dropdown">
+                        <span>Sort By: Last Modified</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <button class="btn-filter"><i class="fa-solid fa-filter"></i></button>
+                </div>
+            </div>
+
+            <div class="projects-table-container">
+                <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th width="40%">PROJECT NAME</th>
+                            <th width="20%">CLIENT</th>
+                            <th width="15%">STATUS</th>
+                            <th width="15%">LAST MODIFIED</th>
+                            <th width="10%" class="text-right">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="project-info">
+                                    <img src="../imgs/homepage/bedroom.png" alt="Project Thumb" class="thumb">
+                                    <div class="info-text">
+                                        <div class="p-name">Modern Villa Bedroom</div>
+                                        <div class="p-id">ID: #AI-2025-01</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Mr. A</td>
+                            <td><span class="status-badge in-progress">In Progress</span></td>
+                            <td>Today, 10:23 AM</td>
+                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="project-info">
+                                    <img src="../imgs/homepage/kitchen.png" alt="Project Thumb" class="thumb">
+                                    <div class="info-text">
+                                        <div class="p-name">Cozy Coffee Shop</div>
+                                        <div class="p-id">ID: #AI-2025-02</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>My Coffee House</td>
+                            <td><span class="status-badge in-progress">In Progress</span></td>
+                            <td>Yesterday</td>
+                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="project-info">
+                                    <img src="../imgs/homepage/livingroom.png" alt="Project Thumb" class="thumb">
+                                    <div class="info-text">
+                                        <div class="p-name">Penthouse Master Bedroom</div>
+                                        <div class="p-id">ID: #AI-2025-03</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Mrs. B</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>Dec 20, 2025</td>
+                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="project-info">
+                                    <img src="../imgs/homepage/editor.png" alt="Project Thumb" class="thumb">
+                                    <div class="info-text">
+                                        <div class="p-name">Tech Startup Office</div>
+                                        <div class="p-id">ID: #AI-2025-04</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Company ABC</td>
+                            <td><span class="status-badge completed">Completed</span></td>
+                            <td>Dec 12, 2025</td>
+                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button class="page-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                <span class="page-info">PAGE: 1</span>
+                <button class="page-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Xử lý bật/tắt dropdown
+        const btnNew = document.getElementById('btnNewProject');
+        const dropdown = document.getElementById('projectDropdown');
+
+        btnNew.addEventListener('click', (e) => {
+            e.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+            dropdown.classList.toggle('show');
+        });
+
+        // Đóng dropdown khi click ra ngoài
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target) && !btnNew.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
