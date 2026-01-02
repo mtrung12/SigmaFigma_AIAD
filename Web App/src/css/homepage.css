@@ -15,7 +15,6 @@ body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
     color: var(--primary-color);
-    /* overflow: hidden;  <-- ĐÃ XÓA DÒNG NÀY ĐỂ CHO PHÉP CUỘN */
 }
 
 a {
@@ -36,6 +35,7 @@ header {
     top: 0;
     z-index: 100;
     background-color: var(--bg-color);
+    border-bottom: 5px solid #DDD;
     /* border-bottom: 5px solid #E0E0E0; <-- Tạm ẩn để giống design mới sạch hơn */
 }
 
@@ -107,7 +107,6 @@ header {
 main {
     padding-top: var(--header-height);
     width: 100%;
-    /* Xóa display: flex cũ vì giờ chúng ta xếp chồng dọc */
 }
 
 /* --- SECTION 1: HERO (CŨ) --- */
@@ -200,7 +199,7 @@ main {
 
 /* --- SECTION 2: FEATURES (MỚI) --- */
 .features-section {
-    margin: 100px;
+    margin-top: 50px;
     width: 100%;
     padding: 0 40px 100px 40px; /* Padding bottom lớn để có chỗ cho footer */
     display: flex;
