@@ -1,5 +1,6 @@
-/* Import Base Styles */
+/* Import Base Styles and Components */
 @import url('base.css');
+@import url('components.css');
 
 /* --- HEADER --- */
 .navbar {

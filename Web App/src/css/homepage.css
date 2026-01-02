@@ -1,80 +1,21 @@
+/* Import Base Styles and Components */
+@import url('base.css');
+@import url('components.css');
+
+/* Homepage Specific Variables */
 :root {
-    --primary-color: #0A4A3F;
     --secondary-text: #00897B;
-    --bg-color: #F3F2EA;
     --card-bg: #E8E6D9;
-    --text-dark: #333;
-    --text-medium: #555;
-    --text-light: #666;
-    --border-color: #C0C0C0;
     --border-dark: #777;
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --header-height: 80px;
-    --border-radius-sm: 6px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 20px;
     --border-radius-xl: 40px;
-    --transition-base: all 0.2s ease;
-    --shadow-sm: 0 4px 6px rgba(0,0,0,0.1);
     --shadow-md: 0 10px 30px rgba(0,0,0,0.1);
     --shadow-lg: 0 20px 40px rgba(0,0,0,0.2);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-main);
-    background-color: var(--bg-color);
-    color: var(--primary-color);
 }
 
 a {
     text-decoration: none;
     color: inherit;
-    transition: var(--transition-base);
-}
-
-/* --- UTILITY CLASSES --- */
-.flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
-.hover-scale:hover {
-    transform: scale(1.02);
-}
-
-.hover-opacity:hover {
-    opacity: 0.7;
-}
-
-/* --- BASE BUTTON STYLES --- */
-.btn {
-    padding: 10px 26px;
-    border-radius: var(--border-radius-sm);
-    font-weight: 600;
-    font-size: 18px;
-    cursor: pointer;
-    border: none;
-    transition: var(--transition-base);
-}
-
-.btn-lg {
-    padding: 14px 40px;
-    font-size: 1.5rem;
-}
-
-.btn-full {
-    width: 100%;
 }
 
 /* --- HEADER --- */
@@ -92,20 +33,13 @@ header {
     border-bottom: 5px solid #DDD;
 }
 
-.header-left {
+.header-left, .header-right {
     display: flex;
     align-items: center;
-    gap: 40px;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    font-size: 28px;
-    color: var(--primary-color);
-}
+.header-left { gap: 40px; }
+.header-right { gap: 20px; }
 
 .nav-links {
     display: flex;
@@ -122,32 +56,17 @@ header {
     opacity: 0.7;
 }
 
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+/* --- HOMEPAGE BUTTON STYLES --- */
+.btn {
+    padding: 10px 26px;
+    font-size: 18px;
 }
 
-.btn-text {
-    padding: 10px 20px;
-    border: 1px solid var(--primary-color);
+.btn-lg {
+    padding: 14px 40px;
+    font-size: 1.5rem;
 }
 
-.btn-text:hover {
-    background-color: rgba(10, 74, 63, 0.05);
-}
-
-.btn-primary {
-    padding: 10px 24px;
-    background-color: var(--primary-color);
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #0d6354;
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
-}
 
 /* --- MAIN LAYOUT --- */
 main {

@@ -1,0 +1,221 @@
+/* ===================================
+   SHARED COMPONENTS - Reusable UI Elements
+   =================================== */
+
+/* --- FORM ELEMENTS --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #4A4A4A;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: var(--font-main);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(10, 74, 63, 0.1);
+}
+
+/* --- CARD COMPONENTS --- */
+.card {
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* --- BUTTON VARIANTS --- */
+.btn-full {
+    width: 100%;
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 18px;
+}
+
+.btn-text {
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-text:hover {
+    background-color: rgba(10, 74, 63, 0.05);
+}
+
+/* --- NAVIGATION BACK ARROW --- */
+.back-arrow {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    color: #ffffff;
+    font-size: 24px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.back-arrow:hover {
+    color: #FFD700;
+    transform: translateX(-5px);
+}
+
+/* --- DIVIDER WITH TEXT --- */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #999;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+    padding: 0 15px;
+    font-weight: 600;
+}
+
+/* --- SOCIAL BUTTONS --- */
+.social-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 10px;
+}
+
+.social-btn:hover {
+    background-color: #f8f8f8;
+    border-color: #999;
+}
+
+/* --- STATUS BADGES --- */
+.status-badge {
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    display: inline-block;
+}
+
+.status-badge.in-progress {
+    background-color: var(--accent-yellow);
+    color: var(--accent-brown);
+}
+
+.status-badge.completed {
+    background-color: var(--accent-green);
+}
+
+.status-badge.pending {
+    background-color: #999;
+}
+
+/* --- HOVER EFFECTS --- */
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.hover-scale {
+    transition: transform 0.2s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.02);
+}
+
+.hover-opacity {
+    transition: opacity 0.2s ease;
+}
+
+.hover-opacity:hover {
+    opacity: 0.7;
+}
+
+/* --- HEADER/NAVBAR (Shared) --- */
+.navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: var(--bg-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.logo:hover {
+    opacity: 0.7;
+}
+
+/* --- FLEX UTILITIES --- */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-gap-sm { gap: var(--spacing-sm); }
+.flex-gap-md { gap: var(--spacing-md); }
+.flex-gap-lg { gap: var(--spacing-lg); }

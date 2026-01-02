@@ -1,10 +1,8 @@
-/* Reset mặc định */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+/* Import Base Styles and Components */
+@import url('base.css');
+@import url('components.css');
+
+/* Login/Auth Page Specific Overrides */
 
 body {
     height: 100vh;
@@ -48,24 +46,6 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-}
-
-/* Back Arrow */
-.back-arrow {
-    position: absolute;
-    top: 50px;
-    left: 70px;
-    color: #ffffff;
-    font-size: 24px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.back-arrow:hover {
-    color: #FFD700;
-    transform: translateX(-5px);
-    gap: 50px;
 }
 
 /* --- LEFT SIDE (TEXT) --- */
@@ -116,44 +96,17 @@ body {
     text-align: left;
 }
 
-/* --- FORM ELEMENTS --- */
-.form-group {
-    margin-bottom: 20px;
-}
+/* --- LOGIN/FORGOT FORM OVERRIDES --- */
 
+/* --- LOGIN/FORGOT FORM OVERRIDES --- */
 .forgot-card .form-group {
     margin-bottom: 30px;
-}
-
-.form-group label {
-    display: block;
-    color: #4A4A4A;
-    margin-bottom: 8px;
-    font-size: 16px;
-}
-
-.instruction-text {
-    color: #555;
-    font-size: 16px;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .forgot-card .form-group input {
     padding: 14px 15px;
     border-color: #999;
     background-color: #fff;
-    transition: border-color 0.3s;
 }
 
 .form-group input:focus {
@@ -164,6 +117,14 @@ body {
 .forgot-card .form-group input:focus {
     box-shadow: none;
 }
+
+.instruction-text {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
 
 .forgot-pass {
     font-size: 14px;
@@ -178,13 +139,12 @@ body {
     text-decoration: underline;
 }
 
-/* --- BUTTONS --- */
+/* --- AUTH-SPECIFIC BUTTONS --- */
 .btn-signin {
     width: 100%;
     padding: 15px;
     background-color: #00796B;
     color: white;
-    border: none;
     border-radius: 8px;
     font-size: 18px;
     font-weight: 600;
@@ -203,20 +163,15 @@ body {
     gap: 15px;
 }
 
-.btn {
+.btn-cancel {
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #ccc;
     padding: 12px 24px;
     border-radius: 6px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
-    border: none;
-}
-
-.btn-cancel {
-    background-color: #fff;
-    color: #555;
-    border: 1px solid #ccc;
 }
 
 .btn-cancel:hover {
@@ -226,6 +181,11 @@ body {
 .btn-search {
     background-color: #00897B;
     color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .btn-search:hover {
@@ -234,45 +194,17 @@ body {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* --- SOCIAL BUTTONS --- */
-.divider {
-    display: flex;
-    align-items: center;
-    margin: 25px 0;
-    color: #333;
-}
-
-.divider::before, .divider::after {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #999;
-}
-
-.divider span {
-    padding: 0 10px;
-    font-size: 14px;
-}
-
+/* --- AUTH-SPECIFIC OVERRIDES --- */
 .social-btn {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
     background-color: transparent;
     border: 1px solid #777;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    cursor: pointer;
-    font-size: 16px;
     color: #333;
-    transition: background-color 0.3s;
 }
 
 .social-btn:hover {
     background-color: rgba(0,0,0,0.05);
 }
+
 
 .create-account {
     text-align: center;
