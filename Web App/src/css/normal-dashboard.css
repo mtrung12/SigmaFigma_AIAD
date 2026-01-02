@@ -1,0 +1,190 @@
+/* Import Base Styles */
+@import url('base.css');
+
+/* --- HEADER --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: var(--bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.user-profile i {
+    font-size: 32px;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* --- CONTAINER --- */
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px 40px 60px 40px;
+}
+
+/* --- HERO BANNER --- */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Khung Prompt nằm giữa banner */
+.prompt-box {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.95);
+    width: 60%;
+    max-width: 800px;
+    padding: 25px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prompt-box textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: var(--font-main);
+    font-size: 18px;
+    color: #333;
+    resize: none;
+    outline: none;
+    height: 60px;
+    line-height: 1.4;
+}
+
+.prompt-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-generate {
+    background-color: #0B4B3F; /* Màu xanh đậm */
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* --- SECTIONS --- */
+.content-section {
+    margin-bottom: 40px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.see-all {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.see-all:hover {
+    text-decoration: underline;
+}
+
+/* --- CAROUSEL (Thanh trượt ngang) --- */
+.card-carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    /* Ẩn scrollbar cho đẹp */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.card-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.idea-card {
+    min-width: 280px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.idea-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 14px;
+    color: #0E4A40;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .prompt-box {
+        width: 90%;
+    }
+    
+    .hero-banner {
+        height: 250px;
+    }
+
+    .idea-card {
+        min-width: 220px;
+    }
+}

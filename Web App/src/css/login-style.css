@@ -24,7 +24,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: url('../../imgs/login/background.jpg');
+    background-image: url('../../imgs/login/background.png');
     background-size: cover;
     background-position: center;
 }
@@ -368,4 +368,284 @@ body {
     .forgot-card .card-title {
         text-align: center;
     }
+}
+
+/* =========================================
+   ROLE SELECTION PAGE STYLES
+   ========================================= */
+
+/* Căn giữa màn hình cho trang chọn role */
+.container.center-layout {
+    justify-content: center;
+    height: 100vh; /* Đảm bảo căn giữa theo chiều dọc */
+}
+
+/* Style riêng cho Card chọn Role */
+.role-card {
+    width: 500px; /* Rộng hơn login card một chút cho thoải mái */
+    text-align: center;
+    padding: 0; /* Reset padding để header full viền */
+    background-color: #EAE8D9; /* Màu nền be như cũ */
+    overflow: hidden; /* Bo góc cho cả header */
+}
+
+.role-header {
+    background-color: rgba(0,0,0,0.03); /* Nền header hơi tối nhẹ */
+    padding: 30px 0 10px 0;
+    width: 100%;
+}
+
+.role-header h2 {
+    color: #000;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: #0A4A3F; /* Màu xanh đậm chủ đạo */
+    opacity: 0.3;
+}
+
+.role-actions {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Base Style cho nút chọn Role */
+.role-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.role-btn i {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.role-btn span {
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase; /* Chữ in hoa cho mạnh mẽ */
+    letter-spacing: 0.5px;
+}
+
+.role-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Màu riêng cho từng nút */
+.architect-btn {
+    background-color: #00897B; /* Màu xanh ngọc (Secondary) */
+    color: white;
+}
+
+.architect-btn:hover {
+    background-color: #00796B;
+}
+
+.homeuser-btn {
+    background-color: #0A4A3F; /* Màu xanh đậm (Primary) */
+    color: white;
+}
+
+.homeuser-btn:hover {
+    background-color: #063830;
+}
+
+/* Footer link */
+.login-redirect {
+    margin-bottom: 30px;
+    font-size: 15px;
+    color: #555;
+}
+
+.login-redirect a {
+    color: #00897B;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.login-redirect a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive cho mobile */
+@media (max-width: 600px) {
+    .role-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .role-btn {
+        padding: 20px;
+    }
+    
+    .role-btn span {
+        font-size: 16px;
+    }
+}
+
+/* =========================================
+   REGISTER FORMS (SHARED STYLES)
+   ========================================= */
+
+/* Card đăng ký rộng hơn card login một chút */
+.register-card {
+    width: 700px;
+    max-width: 95%;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Header có đường kẻ xanh bên dưới */
+.register-header {
+    background-color: transparent;
+    padding: 25px 0 15px 0;
+    text-align: center;
+    border-bottom: 2px solid rgba(10, 74, 63, 0.2); /* Đường kẻ mờ */
+    margin-bottom: 25px;
+}
+
+.register-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+/* Grid Layout cho Form: Giúp chia cột gọn gàng */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Mặc định chia 2 cột đều nhau */
+    gap: 20px; /* Khoảng cách giữa các ô */
+    padding: 0 40px 30px 40px; /* Padding cho nội dung form */
+}
+
+/* Class tiện ích để ô input chiếm hết chiều rộng (span 2 cột) */
+.full-width {
+    grid-column: span 2;
+}
+
+/* Style cho label và input */
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-wrapper label {
+    font-size: 16px;
+    color: #4A4A4A;
+    font-weight: 500;
+}
+
+.input-wrapper input {
+    padding: 12px 15px;
+    border: 1px solid #888;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff;
+    outline: none;
+}
+
+.input-wrapper input:focus {
+    border-color: #0A4A3F;
+    box-shadow: 0 0 0 2px rgba(10, 74, 63, 0.1);
+}
+
+/* Nút Submit màu xanh đậm */
+.btn-submit-green {
+    background-color: #1B7F6B; /* Màu xanh teal đậm như ảnh */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 200px; /* Độ rộng cố định giống ảnh */
+    margin: 0 auto; /* Căn giữa nút */
+}
+
+.btn-submit-green:hover {
+    background-color: #0A4A3F;
+}
+
+.form-actions {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Link footer */
+.link-bold {
+    font-weight: 700;
+    color: #3E2723;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+/* Phần Social Login (Chỉ dùng cho Homeuser) */
+.social-section {
+    grid-column: span 2;
+    margin-top: 0;
+    text-align: center;
+}
+
+.social-btn-styled {
+    width: 100%;
+    max-width: 350px; /* Giới hạn chiều rộng nút social */
+    margin: 8px auto;
+    padding: 10px;
+    border: 1px solid #333;
+    background-color: rgba(255,255,255,0.4);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.social-btn-styled:hover {
+    background-color: rgba(255,255,255,0.8);
+}
+
+.or-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    color: #444;
+}
+
+.or-divider::before, .or-divider::after {
+    content: "";
+    width: 80px;
+    height: 1px;
+    background-color: #666;
 }

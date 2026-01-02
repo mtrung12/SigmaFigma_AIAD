@@ -201,10 +201,11 @@ main {
     padding: 10px 20px;
     display: inline-block;
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--card-bg);
     border-radius: 8px;
     font-size: 1.5rem;
     font-weight: 600;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 
 .cta-button:hover {
