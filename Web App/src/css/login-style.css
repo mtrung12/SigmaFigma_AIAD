@@ -273,6 +273,63 @@ body {
     color: #00796B;
 }
 
+/* --- MULTI-STEP FORM (Forgot Password Flow) --- */
+.step-container {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.step-container.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card-header-styled {
+    border-bottom: 1px solid #00897B;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.card-title-styled {
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.instruction-desc {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.send-again-link {
+    color: #666;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.send-again-link:hover {
+    color: #00897B;
+}
+
+.btn-full {
+    width: 100%;
+}
+
 /* --- RESPONSIVE SCALING --- */
 @media (max-width: 1000px) {
     .container {

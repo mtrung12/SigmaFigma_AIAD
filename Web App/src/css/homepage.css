@@ -562,3 +562,166 @@ main {
         justify-content: center;
     }
 }
+
+/* =========================================
+   PRICING PAGE STYLES
+   ========================================= */
+
+/* Căn chỉnh layout chính */
+.pricing-main {
+    padding-top: calc(var(--header-height) + 60px); /* Cách header một đoạn */
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-color); /* Màu nền kem */
+    min-height: 100vh;
+}
+
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Để các card cao bằng nhau */
+    gap: 30px;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Xuống dòng nếu màn hình nhỏ */
+}
+
+/* Style cho từng Card */
+.pricing-card {
+    flex: 1; /* Chia đều chiều rộng */
+    min-width: 320px;
+    max-width: 420px;
+    background-color: #fff;
+    border: 1px solid #C0C0C0;
+    border-radius: 16px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* Phần trên của Card */
+.card-top {
+    margin-bottom: 30px;
+}
+
+.plan-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+}
+
+.price-box {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.price-box .currency {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.price-box .amount {
+    font-size: 3rem; /* Số tiền to */
+    font-weight: 700;
+    line-height: 1;
+}
+
+.price-box .period {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.plan-desc {
+    color: #5F7D78; /* Màu xanh xám nhẹ cho mô tả */
+    font-size: 1rem;
+    margin: 0 0 30px 0;
+    min-height: 40px; /* Giữ khoảng cách đều nhau dù text ngắn/dài */
+}
+
+/* Buttons trong Pricing */
+.btn-plan {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn-plan.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-plan.primary:hover {
+    background-color: #0d6354;
+}
+
+.btn-plan.disabled {
+    background-color: #85A59E; /* Màu xanh xám nhạt giống nút 'Used' */
+    color: #E0EFEA;
+    cursor: default;
+}
+
+/* Phần Features List */
+.card-features {
+    margin-top: 10px;
+}
+
+.features-title {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.card-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-features ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.card-features ul li i {
+    color: #4CAF50; /* Màu xanh lá tươi cho dấu tick */
+    margin-top: 3px;
+    flex-shrink: 0; /* Không bị co icon */
+}
+
+/* Responsive cho Pricing */
+@media (max-width: 900px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
