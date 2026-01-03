@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Projects</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/my-projects.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div class="container my-projects-page">
+      <header class="projects-header" aria-label="Projects header">
+        <h1 class="projects-title">Design Projects</h1>
+        <button class="edit-link" type="button" data-enter-select>Edit</button>
+        <button class="done-link" type="button" data-exit-select hidden>Done</button>
+      </header>
+
+      <div class="selection-summary" hidden>
+        <h2 class="selection-count" aria-live="polite">0 Item Selected</h2>
+      </div>
+
+      <main>
+        <section class="projects-grid" aria-label="Projects" data-projects-grid>
+          <a
+            class="project-tile new-project"
+            href="create-project.html"
+            aria-label="New Project"
+            data-open-new-project-sheet
+          >
+            <div>
+              <p class="new-title">New Project</p>
+              <p class="new-subtitle">Tap to add</p>
+            </div>
+            <span class="add-btn" aria-hidden="true">
+              <span class="material-symbols-outlined">add</span>
+            </span>
+          </a>
+
+          <a class="project-tile" href="#" aria-label="Living room ver1" data-project-tile>
+            <img
+              src="../../Web App/imgs/dashboard-normal/living-room-scandi.jpg"
+              alt="Living room ver1"
+            />
+            <div class="tile-info">
+              <p class="tile-title">Living room ver1</p>
+              <p class="tile-meta">Status: In Process</p>
+              <p class="tile-meta">Last access: 9:53 Today</p>
+            </div>
+            <span class="select-indicator" aria-hidden="true"></span>
+          </a>
+
+          <a class="project-tile" href="#" aria-label="Living room ver2" data-project-tile>
+            <img
+              src="../../Web App/imgs/dashboard-normal/living-room-modern.jpg"
+              alt="Living room ver2"
+            />
+            <div class="tile-info">
+              <p class="tile-title">Living room ver2</p>
+              <p class="tile-meta">Status: In Process</p>
+              <p class="tile-meta">Last access: 9:50 Yesterday</p>
+            </div>
+            <span class="select-indicator" aria-hidden="true"></span>
+          </a>
+
+          <div class="project-tile placeholder" aria-label="Empty slot"></div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Selection action bar (visible in selection mode) -->
+    <div class="selection-actions" hidden>
+      <button class="action-icon" type="button" data-action="share" aria-label="Share">
+        <span class="material-symbols-outlined" aria-hidden="true">ios_share</span>
+      </button>
+
+      <button class="action-text" type="button" data-action="duplicate">Duplicate</button>
+      <button class="action-text" type="button" data-action="rename">Rename</button>
+      <button class="action-text" type="button" data-action="status">Change Status</button>
+
+      <button class="action-icon" type="button" data-action="delete" aria-label="Delete">
+        <span class="material-symbols-outlined" aria-hidden="true">delete</span>
+      </button>
+    </div>
+
+    <footer>
+      <nav class="bottom-nav" aria-label="Bottom navigation">
+        <a href="create-project.html" class="fab" aria-label="Create project">
+          <span class="material-symbols-outlined">add</span>
+        </a>
+        <div class="nav-section left">
+          <a href="dashboard.html" class="nav-item">
+            <span class="material-symbols-outlined">home</span>
+            <p>Dashboard</p>
+          </a>
+          <a href="my-projects.html" class="nav-item active">
+            <span class="material-symbols-outlined">construction</span>
+            <p>My Projects</p>
+          </a>
+          <a href="my_profile.html" class="nav-item">
+            <span class="material-symbols-outlined">person</span>
+            <p>Profile</p>
+          </a>
+        </div>
+      </nav>
+    </footer>
+
+    <!-- Bottom sheet: Start new project -->
+    <div class="new-project-sheet-backdrop" hidden></div>
+    <section
+      class="new-project-sheet"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="newProjectSheetTitle"
+      hidden
+    >
+      <header class="new-project-sheet__header">
+        <button class="new-project-sheet__close" type="button" aria-label="Close">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+        <h2 id="newProjectSheetTitle">Start new project</h2>
+        <span class="new-project-sheet__header-spacer" aria-hidden="true"></span>
+      </header>
+
+      <div class="new-project-sheet__content">
+        <a class="new-project-sheet__option" href="choose-template.html">
+          <span class="new-project-sheet__icon" aria-hidden="true">
+            <span class="material-symbols-outlined">grid_view</span>
+          </span>
+          <span class="new-project-sheet__text">
+            <span class="new-project-sheet__title">Start with a template</span>
+            <span class="new-project-sheet__subtitle">
+              Start from a professionally designed template. Make it your own.
+            </span>
+          </span>
+        </a>
+
+        <button class="new-project-sheet__option" type="button">
+          <span class="new-project-sheet__icon" aria-hidden="true">
+            <span class="material-symbols-outlined">auto_awesome</span>
+          </span>
+          <span class="new-project-sheet__text">
+            <span class="new-project-sheet__title">Generate from prompt</span>
+            <span class="new-project-sheet__subtitle">
+              Tell us your idea, and we'll turn it into a ready-to-use design.
+            </span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        const sheet = document.querySelector(".new-project-sheet");
+        const backdrop = document.querySelector(".new-project-sheet-backdrop");
+        const closeBtn = document.querySelector(".new-project-sheet__close");
+        const openers = document.querySelectorAll("[data-open-new-project-sheet]");
+        const fab = document.querySelector(".bottom-nav .fab");
+
+        const enterSelectBtn = document.querySelector("[data-enter-select]");
+        const exitSelectBtn = document.querySelector("[data-exit-select]");
+        const selectionSummary = document.querySelector(".selection-summary");
+        const selectionCountEl = document.querySelector(".selection-count");
+        const selectionActions = document.querySelector(".selection-actions");
+        const footer = document.querySelector("footer");
+        const projectsGrid = document.querySelector("[data-projects-grid]");
+
+        if (!sheet || !backdrop || !closeBtn || openers.length === 0) return;
+
+        let lastActiveElement = null;
+        let isOpen = false;
+
+        const openSheet = (triggerEl) => {
+          if (isOpen) return;
+          isOpen = true;
+          lastActiveElement = triggerEl || document.activeElement;
+
+          backdrop.hidden = false;
+          sheet.hidden = false;
+          document.body.classList.add("new-project-sheet--lock");
+
+          requestAnimationFrame(() => {
+            backdrop.classList.add("is-open");
+            sheet.classList.add("is-open");
+            closeBtn.focus();
+          });
+        };
+
+        const closeSheet = () => {
+          if (!isOpen) return;
+          isOpen = false;
+          backdrop.classList.remove("is-open");
+          sheet.classList.remove("is-open");
+          document.body.classList.remove("new-project-sheet--lock");
+
+          const finish = () => {
+            backdrop.hidden = true;
+            sheet.hidden = true;
+            sheet.removeEventListener("transitionend", finish);
+            if (lastActiveElement && typeof lastActiveElement.focus === "function") {
+              lastActiveElement.focus();
+            }
+          };
+
+          sheet.addEventListener("transitionend", finish);
+        };
+
+        openers.forEach((el) => {
+          el.addEventListener("click", (e) => {
+            e.preventDefault();
+            openSheet(el);
+          });
+        });
+
+        if (fab) {
+          fab.addEventListener("click", (e) => {
+            e.preventDefault();
+            openSheet(fab);
+          });
+        }
+
+        closeBtn.addEventListener("click", closeSheet);
+        backdrop.addEventListener("click", closeSheet);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeSheet();
+        });
+
+        // Selection mode
+        if (!enterSelectBtn || !exitSelectBtn || !selectionSummary || !selectionCountEl || !selectionActions || !projectsGrid) {
+          return;
+        }
+
+        let isSelectionMode = false;
+
+        const getProjectTiles = () =>
+          Array.from(projectsGrid.querySelectorAll("[data-project-tile]"));
+
+        const getSelectedTiles = () => getProjectTiles().filter((t) => t.classList.contains("is-selected"));
+
+        const updateSelectionUI = () => {
+          const selectedCount = getSelectedTiles().length;
+          selectionCountEl.textContent = selectedCount + " Item Selected";
+
+          const disableActions = selectedCount === 0;
+          selectionActions
+            .querySelectorAll("button")
+            .forEach((b) => (b.disabled = disableActions));
+        };
+
+        const enterSelectionMode = () => {
+          if (isSelectionMode) return;
+          isSelectionMode = true;
+          document.body.classList.add("selection-mode");
+          enterSelectBtn.hidden = true;
+          exitSelectBtn.hidden = false;
+          selectionSummary.hidden = false;
+          selectionActions.hidden = false;
+          if (footer) footer.hidden = true;
+
+          getProjectTiles().forEach((tile) => tile.classList.remove("is-selected"));
+          updateSelectionUI();
+        };
+
+        const exitSelectionMode = () => {
+          if (!isSelectionMode) return;
+          isSelectionMode = false;
+          document.body.classList.remove("selection-mode");
+          enterSelectBtn.hidden = false;
+          exitSelectBtn.hidden = true;
+          selectionSummary.hidden = true;
+          selectionActions.hidden = true;
+          if (footer) footer.hidden = false;
+
+          getProjectTiles().forEach((tile) => tile.classList.remove("is-selected"));
+          updateSelectionUI();
+        };
+
+        enterSelectBtn.addEventListener("click", enterSelectionMode);
+        exitSelectBtn.addEventListener("click", exitSelectionMode);
+
+        projectsGrid.addEventListener("click", (e) => {
+          const tile = e.target.closest("[data-project-tile]");
+          if (!tile) return;
+
+          if (isSelectionMode) {
+            e.preventDefault();
+            tile.classList.toggle("is-selected");
+            updateSelectionUI();
+          }
+        });
+
+        selectionActions.addEventListener("click", async (e) => {
+          const btn = e.target.closest("[data-action]");
+          if (!btn) return;
+
+          const action = btn.getAttribute("data-action");
+          const selected = getSelectedTiles();
+          if (selected.length === 0) return;
+
+          if (action === "share") {
+            const names = selected
+              .map((t) => t.querySelector(".tile-title")?.textContent?.trim())
+              .filter(Boolean);
+
+            const text = names.length ? "Projects: " + names.join(", ") : "Selected projects";
+
+            try {
+              if (navigator.share) {
+                await navigator.share({ title: "My Projects", text });
+              } else if (navigator.clipboard) {
+                await navigator.clipboard.writeText(text);
+                alert("Copied to clipboard");
+              } else {
+                alert(text);
+              }
+            } catch (_) {
+              // Ignore user-cancel
+            }
+            return;
+          }
+
+          if (action === "duplicate") {
+            selected.forEach((tile) => {
+              const clone = tile.cloneNode(true);
+              clone.classList.remove("is-selected");
+              const titleEl = clone.querySelector(".tile-title");
+              const oldTitle = titleEl?.textContent?.trim() || "Project";
+              if (titleEl) titleEl.textContent = oldTitle + " copy";
+              clone.setAttribute("aria-label", oldTitle + " copy");
+              tile.insertAdjacentElement("afterend", clone);
+            });
+            updateSelectionUI();
+            return;
+          }
+
+          if (action === "rename") {
+            if (selected.length !== 1) {
+              alert("Select exactly 1 project to rename.");
+              return;
+            }
+            const tile = selected[0];
+            const titleEl = tile.querySelector(".tile-title");
+            const currentName = titleEl?.textContent?.trim() || "";
+            const nextName = prompt("Rename project", currentName);
+            if (!nextName) return;
+            if (titleEl) titleEl.textContent = nextName;
+            tile.setAttribute("aria-label", nextName);
+            updateSelectionUI();
+            return;
+          }
+
+          if (action === "status") {
+            selected.forEach((tile) => {
+              const statusEl = Array.from(tile.querySelectorAll(".tile-meta")).find((p) =>
+                (p.textContent || "").trim().toLowerCase().startsWith("status:")
+              );
+              if (!statusEl) return;
+              const text = (statusEl.textContent || "").trim();
+              const isDone = text.toLowerCase().includes("done");
+              statusEl.textContent = isDone ? "Status: In Process" : "Status: Done";
+            });
+            return;
+          }
+
+          if (action === "delete") {
+            const ok = confirm("Delete " + selected.length + " project(s)?");
+            if (!ok) return;
+            selected.forEach((tile) => tile.remove());
+            updateSelectionUI();
+            return;
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

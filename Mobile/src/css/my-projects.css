@@ -1,0 +1,371 @@
+/* My Projects page styling.
+   Colors must come from dashboard.css variables. */
+
+.my-projects-page {
+  padding-top: 1.25rem;
+}
+
+.projects-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.projects-header h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.edit-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 400;
+  background: transparent;
+  border: 0;
+  padding: 0.25rem 0;
+  font-family: var(--font-family);
+}
+
+.done-link {
+  color: var(--primary-color);
+  font-size: 0.8rem;
+  font-weight: 400;
+  background: transparent;
+  border: 0;
+  padding: 0.25rem 0;
+  font-family: var(--font-family);
+}
+
+.selection-summary {
+  margin: 0 0 0.75rem;
+}
+
+.selection-count {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.project-tile {
+  border: 1px solid var(--card-border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: var(--background-color);
+  position: relative;
+}
+
+/* Selection indicator */
+
+.select-indicator {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid #87e3a4;
+  background: rgba(255, 255, 255, 0.85);
+  display: none;
+  box-sizing: border-box;
+}
+
+body.selection-mode .select-indicator {
+  display: block;
+}
+
+body.selection-mode .project-tile.is-selected .select-indicator {
+  background: #87e3a4;
+}
+
+body.selection-mode .project-tile.is-selected .select-indicator::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 3px;
+  border-left: 2px solid var(--background-color);
+  border-bottom: 2px solid var(--background-color);
+  transform: translate(-50%, -60%) rotate(-45deg);
+}
+
+/* Bottom selection actions */
+
+.selection-actions {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: 440px;
+  margin: 0 auto;
+  background: var(--background-color);
+  border-top: 1px solid var(--card-border-color);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  height: 64px;
+  box-sizing: border-box;
+  z-index: 25;
+}
+
+.selection-actions[hidden] {
+  display: none !important;
+}
+
+.selection-summary[hidden],
+.done-link[hidden] {
+  display: none !important;
+}
+
+.selection-actions button {
+  border: 0;
+  background: transparent;
+  font-family: var(--font-family);
+  color: var(--primary-color);
+}
+
+.selection-actions button:disabled {
+  opacity: 0.45;
+}
+
+.action-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.action-text {
+  font-size: 0.65rem;
+  line-height: 1.1;
+  padding: 0.35rem 0.25rem;
+  white-space: nowrap;
+}
+
+body.selection-mode .container {
+  padding-bottom: 6rem;
+}
+
+.project-tile img {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  display: block;
+}
+
+.tile-info {
+  padding: 0.5rem 0.6rem 0.65rem;
+}
+
+.tile-title {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tile-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  line-height: 1.2;
+}
+
+.new-project {
+  position: relative;
+  padding: 0.85rem 0.75rem;
+  min-height: 130px;
+  background: var(--primary-color);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.new-title {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.new-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.6rem;
+  opacity: 0.9;
+}
+
+.add-btn {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-btn .material-symbols-outlined {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.placeholder {
+  min-height: 130px;
+  background: var(--card-border-color);
+}
+
+/* Start new project bottom sheet */
+
+body.new-project-sheet--lock {
+  overflow: hidden;
+}
+
+.new-project-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 180ms ease;
+  z-index: 15;
+}
+
+.new-project-sheet-backdrop.is-open {
+  opacity: 1;
+}
+
+.new-project-sheet {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) translateY(100%);
+  width: min(440px, 100vw);
+  background: var(--background-color);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-top: 1px solid var(--card-border-color);
+  z-index: 20;
+  transition: transform 220ms ease;
+}
+
+.new-project-sheet.is-open {
+  transform: translateX(-50%) translateY(0);
+}
+
+.new-project-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--card-border-color);
+}
+
+.new-project-sheet__header h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.new-project-sheet__close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0.25rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-project-sheet__close .material-symbols-outlined {
+  font-size: 22px;
+  color: var(--text-primary);
+}
+
+.new-project-sheet__header-spacer {
+  width: 36px;
+  height: 36px;
+}
+
+.new-project-sheet__content {
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.new-project-sheet__option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 0.85rem;
+  border: 1px solid var(--card-border-color);
+  border-radius: 14px;
+  background: var(--background-color);
+  text-align: left;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  cursor: pointer;
+}
+
+.new-project-sheet__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--primary-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+}
+
+.new-project-sheet__icon .material-symbols-outlined {
+  font-size: 22px;
+  color: var(--background-color);
+}
+
+.new-project-sheet__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.new-project-sheet__title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.new-project-sheet__subtitle {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1.25;
+}

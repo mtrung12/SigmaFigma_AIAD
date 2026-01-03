@@ -1,0 +1,119 @@
+/* Profile page styling.
+   Colors must come from dashboard.css variables. */
+
+.profile-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.section-header h2 {
+  margin: 0;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.icon-btn .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.profile-card {
+  border: 1px solid var(--card-border-color);
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.avatar {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 0.75rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 88, 75, 0.12);
+}
+
+.avatar .material-symbols-outlined {
+  font-size: 44px;
+  color: var(--primary-color);
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.profile-email {
+  margin: 0.25rem 0 0.9rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.primary-pill {
+  display: inline-block;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: white;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.list-section {
+  margin-top: 1.25rem;
+}
+
+.list-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  padding: 0.45rem 0;
+}
+
+.list-item .material-symbols-outlined {
+  font-size: 20px;
+  color: var(--text-primary);
+}
+
+.logout-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.25rem;
+}
+
+.logout-btn {
+  width: min(260px, 75%);
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 0.75rem;
+}
