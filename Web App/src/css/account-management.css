@@ -1,0 +1,312 @@
+@import url('base.css');
+
+/* Reset body layout */
+body {
+    margin: 0;
+    padding: 0;
+    /* Toàn bộ body nền màu Be để đồng nhất */
+    background-color: var(--bg-color); 
+    overflow-x: hidden;
+}
+
+.am-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- LEFT SIDEBAR (Giữ nguyên màu Be) --- */
+.am-sidebar {
+    width: 320px;
+    background-color: var(--bg-color); 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.back-btn {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    transition: transform 0.2s;
+    display: inline-block;
+    width: fit-content;
+}
+
+.back-btn:hover {
+    transform: translateX(-5px);
+}
+
+.sidebar-header h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1.1;
+    margin-bottom: 50px;
+}
+
+.am-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-item {
+    font-size: 18px;
+    font-weight: 600;
+    color: #889996;
+    text-decoration: none;
+    text-transform: lowercase;
+    transition: color 0.2s;
+}
+
+.nav-item:hover {
+    color: var(--secondary-color);
+}
+
+.nav-item.active {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* --- RIGHT CONTENT AREA --- */
+.am-content {
+    margin-left: 320px;
+    flex: 1;
+    padding: 60px 80px;
+    /* QUAN TRỌNG: Nền nội dung bây giờ là màu Be (giống Sidebar) */
+    background-color: var(--bg-color); 
+}
+
+/* Section Wrapper */
+.am-section {
+    margin-bottom: 40px;
+    /* Xóa border bottom cũ vì bây giờ dùng Card */
+}
+
+/* --- NEW CARD DESIGN (Khối xanh) --- */
+.am-card {
+    display: flex;
+    border-radius: 20px; /* Bo góc tròn lớn như ảnh */
+    overflow: hidden; /* Để background con không bị tràn ra ngoài góc bo */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    min-height: 350px;
+}
+
+/* CỘT TRÁI: Màu xanh ĐẬM hơn */
+.card-left {
+    flex: 0 0 35%; /* Chiếm khoảng 35% chiều rộng */
+    background-color: #063830; /* Màu xanh đen đậm (Darker Green) */
+    padding: 50px 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-left h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.section-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.section-desc a {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+/* CỘT PHẢI: Màu xanh Primary (Sáng hơn cột trái 1 chút) */
+.card-right {
+    flex: 1;
+    background-color: var(--primary-color); /* #0A4A3F */
+    padding: 50px 60px;
+    color: white;
+}
+
+.card-right.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* --- FORM ELEMENTS --- */
+.am-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-box {
+    background-color: #E6E2D3; /* Nền Beige cho Input */
+    border-radius: 6px;
+    padding: 8px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60px;
+    transition: box-shadow 0.2s;
+}
+
+.input-box label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #5D6B69;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    letter-spacing: 0.5px;
+}
+
+.input-box input {
+    background: transparent;
+    border: none;
+    font-family: var(--font-main);
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 500;
+    outline: none;
+    width: 100%;
+    padding: 0;
+}
+
+.dob-display {
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.dob-display .sep {
+    color: #8CA09C;
+    margin: 0 8px;
+    font-weight: 300;
+}
+
+.sub-title {
+    font-size: 20px;
+    margin: 30px 0 15px 0;
+    font-weight: 600;
+    color: white;
+}
+
+.mb-large { margin-bottom: 10px; }
+
+/* --- BUTTONS --- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-save {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-save:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Social Buttons */
+.social-connect-btn {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s;
+}
+
+.social-connect-btn.facebook { background-color: #1877F2; }
+.social-connect-btn.google { background-color: white; color: #333; }
+.social-connect-btn.google img { width: 20px; height: 20px; }
+
+/* Billing Grid */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.plan-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.plan-box { flex: 1; }
+.plan-value { font-size: 18px; font-weight: 700; color: var(--primary-color); }
+
+.btn-upgrade {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    height: 60px;
+    padding: 0 30px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn-upgrade:hover { background-color: rgba(255,255,255,0.1); }
+
+/* Logout Button */
+.btn-logout-all {
+    width: 100%;
+    background-color: #E6E2D3;
+    color: var(--primary-color);
+    border: none;
+    padding: 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.btn-logout-all:hover { background-color: white; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1200px) {
+    .am-card { flex-direction: column; }
+    .card-left { padding: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .card-right { padding: 40px; }
+    .am-content { padding: 40px; }
+}
+
+@media (max-width: 768px) {
+    .am-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+    .am-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+}

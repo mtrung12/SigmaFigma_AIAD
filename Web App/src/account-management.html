@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD - Account Management</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="css/account-management.css">
+</head>
+<body>
+
+    <div class="am-container">
+        <aside class="am-sidebar">
+            <a href="homepage.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+
+            <div class="sidebar-header">
+                <h1>Account<br>Management</h1>
+            </div>
+
+            <nav class="am-nav">
+                <a href="#personal-info" class="nav-item active">personal information</a>
+                <a href="#account-signin" class="nav-item">account sign-in</a>
+                <a href="#connected-accounts" class="nav-item">connected accounts</a>
+                <a href="#billing-info" class="nav-item">billing information</a>
+                <a href="#login-management" class="nav-item">login management</a>
+            </nav>
+        </aside>
+
+        <main class="am-content">
+            
+            <section id="personal-info" class="am-section">
+                <div class="am-card">
+                    <div class="card-left">
+                        <h2>Personal Information</h2>
+                        <p class="section-desc">This information is private and will not be shared with other players. Read the <a href="#">AI/AD privacy notice</a> anytime!</p>
+                    </div>
+                    <div class="card-right">
+                        <form class="am-form">
+                            <div class="input-box">
+                                <label>FIRST NAME</label>
+                                <input type="text" value="Tommy">
+                            </div>
+                            <div class="input-box">
+                                <label>LAST NAME</label>
+                                <input type="text" value="Shelby">
+                            </div>
+                            <div class="input-box">
+                                <label>DATE OF BIRTH</label>
+                                <div class="dob-display">
+                                    <span>25</span> <span class="sep">|</span> 
+                                    <span>September</span> <span class="sep">|</span> 
+                                    <span>1980</span>
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <label>COUNTRY</label>
+                                <input type="text" value="England">
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-save">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="account-signin" class="am-section">
+                <div class="am-card">
+                    <div class="card-left">
+                        <h2>Account Sign-In</h2>
+                        <p class="section-desc">We recommend that you periodically update your password to help prevent unauthorized access to your account.</p>
+                    </div>
+                    <div class="card-right">
+                        <div class="input-box mb-large">
+                            <label>EMAIL</label>
+                            <input type="email" value="tommy1980@gmail.com" readonly>
+                        </div>
+
+                        <h3 class="sub-title">Change password</h3>
+                        <form class="am-form">
+                            <div class="input-box">
+                                <input type="password" placeholder="Current password">
+                            </div>
+                            <div class="input-box">
+                                <input type="password" placeholder="New password">
+                            </div>
+                            <div class="input-box">
+                                <input type="password" placeholder="Confirm new password">
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-save">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="connected-accounts" class="am-section">
+                <div class="am-card">
+                    <div class="card-left">
+                        <h2>Connected Accounts</h2>
+                        <p class="section-desc">Accounts you connect can access some of the data you share with Riot Games.</p>
+                    </div>
+                    <div class="card-right center-content">
+                        <button class="social-connect-btn facebook">
+                            <i class="fab fa-facebook-f"></i> Facebook
+                        </button>
+                        <button class="social-connect-btn google">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="G"> Google
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="billing-info" class="am-section">
+                <div class="am-card">
+                    <div class="card-left">
+                        <h2>Billing Information</h2>
+                        <p class="section-desc">Accounts you connect can access some of the data you share with Riot Games.</p>
+                    </div>
+                    <div class="card-right">
+                        <form class="am-form">
+                            <div class="input-box">
+                                <label>CARD NUMBER</label>
+                                <input type="text" placeholder="•••• •••• •••• ••••">
+                            </div>
+                            <div class="grid-2-col">
+                                <div class="input-box">
+                                    <label>EXPIRE DATE (MM/YY)</label>
+                                    <input type="text" placeholder="MM/YY">
+                                </div>
+                                <div class="input-box">
+                                    <label>CARD VERIFICATION CODE</label>
+                                    <input type="text" placeholder="CVC">
+                                </div>
+                            </div>
+                            <div class="input-box">
+                                <label>BILLING ADDRESS</label>
+                                <input type="text" placeholder="Enter billing address">
+                            </div>
+                            <div class="plan-row">
+                                <div class="input-box plan-box">
+                                    <label>CURRENT PLAN</label>
+                                    <div class="plan-value">FREE</div>
+                                </div>
+                                <button type="button" class="btn-upgrade">UPGRADE</button>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-save">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <section id="login-management" class="am-section">
+                <div class="am-card">
+                    <div class="card-left">
+                        <h2>Login Management</h2>
+                        <p class="section-desc">Worried that your account or password has been compromised? You can forcibly log out from all Riot apps, sites, and games.</p>
+                    </div>
+                    <div class="card-right center-content">
+                        <button class="btn-logout-all">LOG OUT EVERYWHERE</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lấy tất cả các link ở sidebar và các section nội dung
+            const navLinks = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.am-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
