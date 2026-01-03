@@ -54,9 +54,9 @@ body {
 
 /* 3. The Login Card Styles */
 .login-card {
-    background-color: #e3e1d3; /* Pale beige */
+    background-color: #dbdbcd;
     border-radius: 12px;
-    border: 1px solid #333;
+    border: 2px solid #1f3f37;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
@@ -73,7 +73,9 @@ body {
 }
 
 .login-form {
-    padding: 20px 30px 30px 30px;
+    margin: 0 auto;
+    width: 80%;
+    padding: 20px 0px 30px 0px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -86,10 +88,14 @@ body {
     gap: 5px;
 }
 
+.input-group label {
+    font-size: 16px;
+}
+
 .input-group input {
     padding: 10px;
     border-radius: 6px;
-    border: 1px solid #999;
+    border: 1.5px solid #333;
 }
 
 .btn-primary {
@@ -101,7 +107,6 @@ body {
     font-weight: bold;
     font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: 0 4px 0 #2a5549;
 }
 
 /* Social Buttons */
