@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIAD Editor</title>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/editor.css">
 </head>
 <body>
-
+    <!-- Header -->
     <header class="editor-header">
-        <a href="#" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+        <a href="javascript:history.back()" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="header-center">
             <span class="project-name">project 1</span>
             <i class="fa-solid fa-pen edit-icon"></i>
         </div>
         <div class="header-right">
-            <button class="btn btn-editor-outline">Export</button>
-            <button class="btn btn-editor-primary">Save</button>
+            <button class="btn btn-editor-outline" id="btn-export">Export</button>
+            <button class="btn btn-editor-primary" onclick="window.location.href='architect-dashboard.html'">Save</button>
         </div>
     </header>
 
+    <!-- Main Editor Layout -->
     <div class="editor-body">
-        
+        <!-- Sidebar Tools -->
         <aside class="editor-sidebar">
             <div class="tool-item active"><i class="fa-solid fa-magnifying-glass"></i></div>
             <div class="tool-item"><i class="fa-solid fa-house"></i></div>
@@ -34,8 +34,8 @@
             <div class="tool-item user-tool"><i class="fa-solid fa-user-group"></i></div>
         </aside>
 
+        <!-- Side Panel -->
         <div class="side-panel" id="sidePanel">
-    
             <div class="panel-header">
                 <h3 id="panelTitle">Build</h3>
                 <button class="close-panel" onclick="closePanel()"><i class="fa-solid fa-xmark"></i></button>
@@ -46,133 +46,291 @@
                 <input type="text" placeholder="Search">
             </div>
 
+            <!-- Search Panel Content -->
             <div class="panel-content" id="panel-search">
-                <div class="tag-section">
-                    <h4>Recent</h4>
-                    <div class="tags-cloud">
-                        <span class="tag">Couch</span>
-                        <span class="tag">Wood door</span>
+        
+                <div id="search-suggestions">
+                    <div class="tag-section">
+                        <h4>Recent</h4>
+                        <div class="tags-cloud">
+                            <span class="tag">Couch</span>
+                            <span class="tag specific-tag-wood">Wood door</span> 
+                        </div>
+                    </div>
+                    <div class="tag-section">
+                        <h4>Suggestions</h4>
+                        <div class="tags-cloud">
+                            <span class="tag specific-tag-wood">Wood door</span>
+                            <span class="tag">Window</span>
+                            <span class="tag">Corner textile sofa</span>
+                            <span class="tag">Flower plant</span>
+                            <span class="tag">Office chair</span>
+                        </div>
                     </div>
                 </div>
-                <div class="tag-section">
-                    <h4>Suggestions</h4>
-                    <div class="tags-cloud">
-                        <span class="tag">Wood door</span>
-                        <span class="tag">Window</span>
-                        <span class="tag">Corner textile sofa</span>
-                        <span class="tag">Flower plant</span>
-                        <span class="tag">Office chair</span>
+
+                <div id="search-results" class="hidden">
+                    <p class="result-count">Found 100 items</p>
+                    <div class="grid-2-col">
+                        <div class="item-card item-selectable" id="target-door-item">
+                            <img src="../imgs/editor/searchFlow/1.png" alt="Wood Door">
+                        </div>
+                        <div class="item-card"><img src="../imgs/editor/searchFlow/2.png" alt="Door"></div>
+                        <div class="item-card"><img src="../imgs/editor/searchFlow/3.png" alt="Door"></div>
+                        <div class="item-card"><img src="../imgs/editor/searchFlow/4.png" alt="Door"></div>
+                        <div class="item-card"><img src="../imgs/editor/searchFlow/5.png" alt="Door"></div>
+                        <div class="item-card"><img src="../imgs/editor/searchFlow/6.png" alt="Door"></div>
                     </div>
                 </div>
             </div>
 
+            <!-- Build Panel Content -->
             <div class="panel-content hidden" id="panel-build">
-                <h4>Create room</h4>
-                <div class="grid-2-col">
-                    <div class="item-card">
-                        <img src="../imgs/editor/build/room-box.png" alt="Rooms">
-                        <span>Rooms</span>
+        
+                <div id="build-categories">
+                    <h4>Create room</h4>
+                    <div class="grid-2-col">
+                        <div class="item-card" id="btn-open-rooms">
+                            <img src="../imgs/editor/buildFlow/11.png" alt="Rooms">
+                            <span>Rooms</span>
+                        </div>
+                        <div class="item-card">
+                            <img src="../imgs/editor/buildFlow/12.png" alt="Draw walls">
+                            <span>Draw walls</span>
+                        </div>
+                        <div class="item-card">
+                            <img src="../imgs/editor/buildFlow/13.png" alt="Smart wizard">
+                            <span>Smart wizard</span>
+                        </div>
+                        <div class="item-card">
+                            <img src="../imgs/editor/buildFlow/14.png" alt="Forms">
+                            <span>Forms</span>
+                        </div>
                     </div>
-                    <div class="item-card">
-                        <img src="../imgs/editor/build/wall-tool.png" alt="Draw walls">
-                        <span>Draw walls</span>
-                    </div>
-                    <div class="item-card">
-                        <img src="../imgs/editor/build/wizard.png" alt="Smart wizard">
-                        <span>Smart wizard</span>
-                    </div>
-                    <div class="item-card">
-                        <img src="../imgs/editor/build/forms.png" alt="Forms">
-                        <span>Forms</span>
+                    
+                    <h4>Construction</h4>
+                    <div class="grid-2-col">
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/buildFlow/15.png" alt="Doors">
+                            <span>Doors</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/buildFlow/16.png" alt="Window">
+                            <span>Window</span>
+                        </div>
                     </div>
                 </div>
-                
-                <h4>Construction</h4>
-                <div class="grid-2-col">
-                    <div class="item-card large-img">
-                        <img src="../imgs/editor/build/door-thumb.png" alt="Doors">
-                        <span>Doors</span>
+
+                <div id="build-room-shapes" class="hidden">
+                    <div class="panel-sub-header" onclick="backToBuildCategories()">
+                        <i class="fa-solid fa-chevron-left"></i> Back
                     </div>
-                    <div class="item-card large-img">
-                        <img src="../imgs/editor/build/window-thumb.png" alt="Window">
-                        <span>Window</span>
+
+                    <div class="grid-2-col">
+                        <div class="item-card item-selectable large-img" id="target-room-shape">
+                            <img src="../imgs/editor/buildFlow/14.png" alt="Square Room">
+                        </div>
+                        <div class="item-card large-img"><img src="../imgs/editor/buildFlow/12.png" alt="L Shape"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/buildFlow/13.png" alt="U Shape"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/buildFlow/11.png" alt="T Shape"></div>
                     </div>
                 </div>
+
             </div>
 
+            <!-- Furnish Panel Content -->
             <div class="panel-content hidden" id="panel-furnish">
-                <h4>Furniture</h4>
-                <div class="list-items">
-                    <div class="list-row">
-                        <img src="../imgs/editor/icons/armchair.png" alt="icon">
-                        <span>Armchairs</span>
-                    </div>
-                    <div class="list-row">
-                        <img src="../imgs/editor/icons/sofa.png" alt="icon">
-                        <span>Sofas</span>
-                    </div>
-                    <div class="list-row">
-                        <img src="../imgs/editor/icons/bed.png" alt="icon">
-                        <span>Beds</span>
-                    </div>
-                    <div class="list-row">
-                        <img src="../imgs/editor/icons/storage.png" alt="icon">
-                        <span>Storages</span>
-                    </div>
-                    <div class="list-row">
-                        <img src="../imgs/editor/icons/kitchen.png" alt="icon">
-                        <span>Kitchen</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="panel-content hidden" id="panel-outdoor">
-                <div class="grid-2-col">
-                    <div class="item-card large-img">
-                        <img src="../imgs/editor/outdoor/lawn.png" alt="Paths">
-                        <span>Paths and lawns</span>
-                    </div>
-                    <div class="item-card large-img">
-                        <img src="../imgs/editor/outdoor/patio.png" alt="Patio">
-                        <span>Patio furniture</span>
-                    </div>
-                    <div class="item-card large-img">
-                        <img src="../imgs/editor/outdoor/tree.png" alt="Trees">
-                        <span>Tree and plants</span>
-                    </div>
-                    <div class="item-card large-img">
-                        <img src="../imgs/editor/outdoor/pool.png" alt="Pool">
-                        <span>Pool</span>
+                <div id="furnish-categories">
+                    <h4>Furniture</h4>
+                    <div class="list-items">
+                        <div class="list-row" id="btn-open-armchairs">
+                            <img src="../imgs/editor/furnitureFlow/1.png" alt="icon">
+                            <span>Armchairs</span>
+                        </div>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/2.png" alt="icon">
+                            <span>Sofas</span>
+                        </div>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/3.png" alt="icon">
+                            <span>Beds</span>
+                        </div>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/4.png" alt="icon">
+                            <span>Storages</span>
+                        </div>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/5.png" alt="icon">
+                            <span>Kitchen</span>
+                        </div>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/6.png" alt="icon">
+                            <span>Bathroom</span>
+                        </div>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/7.png" alt="icon">
+                            <span>Tables</span>
+                        </div>
+
+                        <h4>Electrical appliances</h4>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/8.png" alt="icon">
+                            <span>Lighting</span>
+                        </div>
+                        <div class="list-row">
+                            <img src="../imgs/editor/furnitureFlow/9.png" alt="icon">
+                            <span>Sockets, switches</span>
+                        </div>
                     </div>
                 </div>
+
+                <div id="furnish-items-list" class="hidden">
+                    <div class="panel-header-small">
+                        <h3 style="margin:0">Armchairs</h3>
+                        <button class="close-panel" onclick="backToFurnishCategories()"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    
+                    <div class="panel-search" style="margin-top: 10px;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+
+                    <div class="grid-2-col">
+                        <div class="item-card item-selectable large-img" id="target-armchair">
+                            <img src="../imgs/editor/furnitureFlow/11.png" alt="Black Armchair">
+                        </div>
+                        <div class="item-card large-img"><img src="../imgs/editor/furnitureFlow/12.png" alt="Chair"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/furnitureFlow/13.png" alt="Chair"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/furnitureFlow/14.png" alt="Chair"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/furnitureFlow/15.png" alt="Chair"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/furnitureFlow/16.png" alt="Chair"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/furnitureFlow/17.png" alt="Chair"></div>
+                    </div>
+                </div>
+
+            </div>
+!-- Outdoor Panel Content -->
+            <
+            <div class="panel-content hidden" id="panel-outdoor">
+        
+                <div id="outdoor-categories">
+                    <div class="grid-2-col">
+                        <div class="item-card large-img" id="btn-open-paths">
+                            <img src="../imgs/editor/outdoorFlow/1.png" alt="Paths">
+                            <span>Paths and lawns</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/outdoorFlow/2.png" alt="Patio">
+                            <span>Patio furniture</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/outdoorFlow/3.png" alt="Trees">
+                            <span>Tree and plants</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/outdoorFlow/4.png" alt="Pool">
+                            <span>Pool</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/outdoorFlow/5.png" alt="Garage">
+                            <span>Garage</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/outdoorFlow/6.png" alt="Lighting">
+                            <span>Lighting</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/outdoorFlow/7.png" alt="Fencing">
+                            <span>Outdoor Cooking</span>
+                        </div>
+                        <div class="item-card large-img">
+                            <img src="../imgs/editor/outdoorFlow/8.png" alt="Outdoor decor">
+                            <span>Outdoor decor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="outdoor-items-list" class="hidden">
+                    <div class="panel-header-small">
+                        <h3 style="margin:0">Paths and lawns</h3>
+                        <button class="close-panel" onclick="backToOutdoorCategories()"><i class="fa-solid fa-chevron-left"></i></button>
+                    </div>
+                    
+                    <div class="panel-search" style="margin-top: 10px;">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+
+                    <div class="grid-2-col">
+                        <div class="item-card item-selectable large-img" id="target-grass">
+                            <img src="../imgs/editor/outdoorFlow/11.png" alt="Grass">
+                        </div>
+                        <div class="item-card large-img"><img src="../imgs/editor/outdoorFlow/12.png" alt="Grass"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/outdoorFlow/13.png" alt="Grass"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/outdoorFlow/14.png" alt="Grass"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/outdoorFlow/15.png" alt="Grass"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/outdoorFlow/16.png" alt="Grass"></div>
+                        <div class="item-card large-img"><img src="../imgs/editor/outdoorFlow/17.png" alt="Grass"></div>
+                    </div>
+                </div>
+
             </div>
             
+            <!-- My Items Panel Content -->
             <div class="panel-content hidden" id="panel-user">
+                <h4 style="margin-bottom: 15px;">My items</h4>
                 <div class="grid-2-col">
-                    <div class="item-card no-label">
-                        <img src="../imgs/editor/user/grass-texture.png" alt="Grass">
+                    <div class="item-card no-label item-selectable" id="btn-my-grass">
+                        <img src="../imgs/editor/outdoorFlow/11.png" alt="Grass">
                     </div>
-                    <div class="item-card no-label">
-                        <img src="../imgs/editor/user/empty-room.png" alt="Room">
+                    <div class="item-card no-label item-selectable" id="btn-my-room">
+                        <img src="../imgs/editor/buildFlow/11.png" alt="Room">
                     </div>
-                    <div class="item-card no-label">
-                        <img src="../imgs/editor/user/wood-door.png" alt="Door">
+                    <div class="item-card no-label item-selectable" id="btn-my-door">
+                        <img src="../imgs/editor/searchFlow/1.png" alt="Door">
+                    </div>
+                    <div class="item-card no-label item-selectable" id="btn-my-armchair">
+                        <img src="../imgs/editor/furnitureFlow/11.png" alt="Armchair">
                     </div>
                 </div>
             </div>
-
         </div>
 
+        <!-- Canvas -->
         <main class="editor-canvas" id="mainCanvas">
             <div class="grid-floor"></div>
+
+            <!-- Canvas objects using new class system with CSS variables for easy positioning -->
+            <div id="placed-object-2d" class="canvas-object wood-filter hidden" style="--obj-size: 80px; --obj-x: 57.2%;">
+                <img srcObjects -->
+            <div id="placed-object-2d" class="canvas-object wood-filter hidden" style="--obj-size: 80px; --obj-x: 57.2%;">
+                <img src="../imgs/editor/searchFlow/door-object.png" alt="Door">
+            </div>
+
+            <div id="placed-room" class="canvas-room hidden" style="--obj-size: 250px;">
+                <span class="room-label">Room 24.5 m²</span>
+            </div>
+
+            <div id="placed-armchair" class="canvas-object z-high hidden" style="--obj-size: 100px; --obj-y: 40%;">
+                <img src="../imgs/editor/furnitureFlow/21.png" alt="Armchair">
+            </div>
+
+            <div id="placed-grass" class="canvas-object z-low hidden" style="--obj-size: 350px;">
+                <img src="../imgs/editor/outdoorFlow/21.png" alt="Grass">
+            </div>
             
+            <div id="view-3d-room" class="canvas-3d-room hidden">
+                <img src="../imgs/editor/3droom.png" alt="3D Room">
+            </div>
+            
+            <!-- View Switcher -->
             <div class="view-switcher">
                 <button class="view-btn active" onclick="switchView('2d')" id="btn2D">2D</button>
                 <button class="view-btn" onclick="switchView('3d')" id="btn3D">3D</button>
             </div>
 
-            <div class="sigma-ai-container">
-                
+            <!-- AI Assistant -->                
                 <div class="chat-window" id="sigmaChat">
                     <div class="chat-header">
                         <div class="ai-info">
@@ -219,12 +377,57 @@
                     </div>
                 </div>
 
+                <button class="clear-canvas-btn" onclick="clearAllCanvasObjects()" title="Clear all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
                 <div class="sigma-fab" onclick="toggleChat()">
                     <img src="../imgs/editor/SigmaLogo.png" alt="Sigma AI">
                 </div>
             </div>
         </main>
+    </div>
 
+    <!-- Export Modal -->
+    <div class="modal-overlay hidden" id="exportModal">
+        <div class="modal-box">
+            
+            <div class="modal-header">
+                <h3>Export Design</h3>
+                <button class="close-modal" id="closeExport"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="export-preview">
+                    <img src="../imgs/editor/3droom.png" alt="Room Render Preview">
+                </div>
+
+                <div class="export-settings">
+                    <h4>File Settings</h4>
+                    
+                    <div class="form-group">
+                        <label>Filename</label>
+                        <input type="text" value="new_design">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Format</label>
+                        <div class="custom-select-wrapper">
+                            <select>
+                                <option value="dwg">dwg file</option>
+                                <option value="dxf">dxf file</option>
+                                <option value="pdf">pdf file</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-modal-cancel" id="cancelExport">Cancel</button>
+                <button class="btn-modal-save">Save</button>
+            </div>
+        </div>
     </div>
 
     <script src="js/editor.js"></script>

@@ -57,7 +57,7 @@
                     </button>
 
                     <div class="dropdown-menu" id="projectDropdown">
-                        <a href="#" class="dropdown-item" data-action="scratch">
+                        <a href="editor.html" class="dropdown-item" data-action="scratch">
                             <i class="fa-solid fa-pencil"></i>
                             <div class="dropdown-item-content">
                                 <span class="item-title">Build from scratch</span>
@@ -164,7 +164,7 @@
                             <td>Mr. A</td>
                             <td><span class="status-badge in-progress">In Progress</span></td>
                             <td>Today, 10:23 AM</td>
-                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                            <td class="text-right"><a href="editor.html"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></a></td>
                         </tr>
 
                         <tr>
@@ -180,7 +180,7 @@
                             <td>My Coffee House</td>
                             <td><span class="status-badge in-progress">In Progress</span></td>
                             <td>Yesterday</td>
-                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                            <td class="text-right"><a href="editor.html"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></a></td>
                         </tr>
 
                         <tr>
@@ -196,7 +196,7 @@
                             <td>Mrs. B</td>
                             <td><span class="status-badge completed">Completed</span></td>
                             <td>Dec 20, 2025</td>
-                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                            <td class="text-right"><a href="editor.html"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></a></td>
                         </tr>
 
                         <tr>
@@ -212,7 +212,7 @@
                             <td>Company ABC</td>
                             <td><span class="status-badge completed">Completed</span></td>
                             <td>Dec 12, 2025</td>
-                            <td class="text-right"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></td>
+                            <td class="text-right"><a href="editor.html"><button class="btn-icon"><i class="fa-regular fa-pen-to-square"></i></button></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -449,8 +449,8 @@
             item.addEventListener('click', (e) => {
                 const action = item.getAttribute('data-action');
                 
-                // If template option, allow navigation
-                if (action === 'template') {
+                // Allow navigation for template and scratch options
+                if (action === 'template' || action === 'scratch') {
                     return; // Let the link navigate naturally
                 }
                 
@@ -462,9 +462,6 @@
                 // Handle actions
                 if (action === 'ai') {
                     // Open project modal for AI generation
-                    openStartProjectModal('shape');
-                } else if (action === 'scratch') {
-                    // Open project modal for building from scratch
                     openStartProjectModal('shape');
                 } else {
                     console.log('Creating new project:', action);
