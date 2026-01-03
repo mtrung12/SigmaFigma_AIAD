@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/normal-dashboard.css">
+    <link rel="stylesheet" href="css/project-modal.css">
 </head>
 <body>
 
@@ -124,7 +125,7 @@
                     <span>Start with a template</span>
                 </button>
                 
-                <button class="option-btn">
+                <button class="option-btn" id="btnGenerateFromPrompt">
                     <i class="fa-solid fa-wand-magic-sparkles"></i>
                     <span>Generate from prompt</span>
                 </button>
@@ -132,11 +133,217 @@
         </div>
     </div>
 
+    <div class="project-modal-overlay" id="startProjectModal">
+        <div class="project-modal-container">
+            <div class="pm-header">
+                <div>
+                    <h2>Start New Project</h2>
+                    <p>Provide room details and let AI inspire you</p>
+                </div>
+                <button class="pm-close-btn" id="closeProjectModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="pm-body">
+                
+                <div class="pm-left">
+                    <div class="pm-toggle-wrapper">
+                        <button class="pm-toggle-btn active" data-tab="shape">Define Shape & Size</button>
+                        <button class="pm-toggle-btn" data-tab="upload">Upload Floor Plan</button>
+                    </div>
+
+                    <div id="tab-shape-content" class="tab-content">
+                        <div class="pm-section-title">
+                            <i class="fa-solid fa-shapes"></i> Room Shape
+                        </div>
+                        <div class="shape-grid">
+                            <div class="shape-item selected"><img src="../imgs/prompt-newpage/1.png" alt="Rectangle"></div>
+                            <div class="shape-item"><img src="../imgs/prompt-newpage/2.png" alt="L-Shape"></div>
+                            <div class="shape-item"><img src="../imgs/prompt-newpage/3.png" alt="U-Shape"></div>
+                            <div class="shape-item"><img src="../imgs/prompt-newpage/4.png" alt="Custom"></div>
+                        </div>
+
+                        <div class="pm-section-title" style="margin-top: 25px;">
+                            <i class="fa-solid fa-ruler-combined"></i> Room Dimension
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Length</label>
+                                <div class="input-with-unit">
+                                    <input type="number" placeholder="0.0">
+                                    <span>m</span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label>Width</label>
+                                <div class="input-with-unit">
+                                    <input type="number" placeholder="0.0">
+                                    <span>m</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Height (optional)</label>
+                            <div class="input-with-unit">
+                                <input type="number" placeholder="0.0">
+                                <span>m</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-upload-content" class="tab-content" style="display: none;">
+                        <div class="pm-section-title">
+                            <i class="fa-regular fa-map"></i> Floor plan (optional)
+                        </div>
+                        <div class="upload-zone">
+                            <div class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                            <div class="upload-text">Drag & drop floor plan here</div>
+                            <div class="upload-sub">Supports JPG, PNG (Max 10MB)</div>
+                            <button class="btn-browse">Browse Files</button>
+                        </div>
+                    </div>
+
+                    <div class="pm-section-title" style="margin-top: 25px;">
+                        <i class="fa-solid fa-camera"></i> Current room photos
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div class="photo-upload-box">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Upload</span>
+                        </div>
+                        <div style="font-size: 13px; color: #666; max-width: 200px;">
+                            Upload a few photos of your room so our AI can get to know your space better.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="pm-right">
+                    
+                    <div class="pm-section-title">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> AI Prompt
+                    </div>
+                    <textarea class="ai-prompt-box" placeholder="Describe your dream design... e.g. A cozy living room with Japandi style, large windows, and plenty of plants."></textarea>
+
+                    <div class="pm-section-title">
+                        <i class="fa-solid fa-palette"></i> Design Style (optional)
+                    </div>
+                    
+                    <div class="style-grid">
+                        <div class="style-card selected">
+                            <div class="style-img">
+                                <img src="../imgs/dashboard-normal/living-room-modern.jpg" alt="Modern">
+                            </div>
+                            <div class="style-name">Modern</div>
+                        </div>
+                        
+                        <div class="style-card">
+                            <div class="style-img">
+                                <img src="../imgs/dashboard-normal/living-room-minimalism.jpg" alt="Minimalist">
+                            </div>
+                            <div class="style-name">Minimalist</div>
+                        </div>
+
+                        <div class="style-card">
+                            <div class="style-img">
+                                <img src="../imgs/dashboard-normal/living-room-scandi.jpg" alt="Scandinavian">
+                            </div>
+                            <div class="style-name">Scandinavian</div>
+                        </div>
+
+                        <div class="style-card">
+                            <div class="style-img">
+                                <img src="../imgs/homepage/bedroom.png" alt="Japanese">
+                            </div>
+                            <div class="style-name">Japanese</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="pm-footer">
+                <button class="btn-draft">Save draft</button>
+                <button class="btn-generate-ai">Generate Design <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logic cho Start Project Modal
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('startProjectModal');
+            const closeModal = document.getElementById('closeProjectModal');
+            const toggleBtns = document.querySelectorAll('.pm-toggle-btn');
+            const tabShape = document.getElementById('tab-shape-content');
+            const tabUpload = document.getElementById('tab-upload-content');
+
+            // Hàm mở Modal (Gọi hàm này từ các nút ở trang chính)
+            window.openStartProjectModal = function(defaultTab = 'shape') {
+                modal.classList.add('active');
+                // Trigger click vào tab tương ứng
+                const targetBtn = document.querySelector(`.pm-toggle-btn[data-tab="${defaultTab}"]`);
+                if(targetBtn) targetBtn.click();
+            }
+
+            // Đóng modal
+            if(closeModal) {
+                closeModal.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+            }
+            
+            // Đóng khi click ra ngoài
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // Xử lý chuyển Tab (Shape vs Upload)
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all
+                    toggleBtns.forEach(b => b.classList.remove('active'));
+                    // Add active to clicked
+                    btn.classList.add('active');
+
+                    const tab = btn.getAttribute('data-tab');
+                    if (tab === 'shape') {
+                        tabShape.style.display = 'block';
+                        tabUpload.style.display = 'none';
+                    } else {
+                        tabShape.style.display = 'none';
+                        tabUpload.style.display = 'block';
+                    }
+                });
+            });
+
+            // Xử lý chọn Shape (Visual effect)
+            const shapes = document.querySelectorAll('.shape-item');
+            shapes.forEach(shape => {
+                shape.addEventListener('click', () => {
+                    shapes.forEach(s => s.classList.remove('selected'));
+                    shape.classList.add('selected');
+                });
+            });
+
+            // Xử lý chọn Style (Visual effect)
+            const styles = document.querySelectorAll('.style-card');
+            styles.forEach(style => {
+                style.addEventListener('click', () => {
+                    styles.forEach(s => s.classList.remove('selected'));
+                    style.classList.add('selected');
+                });
+            });
+        });
+    </script>
+
     <script>
         // Handle create new button
         const btnCreateNew = document.getElementById('btnCreateNewDashboard');
         const modal = document.getElementById('createModal');
         const btnClose = document.getElementById('btnCloseModal');
+        const btnGenerateFromPrompt = document.getElementById('btnGenerateFromPrompt');
 
         if (btnCreateNew) {
             btnCreateNew.addEventListener('click', () => {
@@ -147,6 +354,13 @@
         if (btnClose) {
             btnClose.addEventListener('click', () => {
                 modal.classList.remove('active');
+            });
+        }
+
+        if (btnGenerateFromPrompt) {
+            btnGenerateFromPrompt.addEventListener('click', () => {
+                modal.classList.remove('active');
+                openStartProjectModal('shape');
             });
         }
 

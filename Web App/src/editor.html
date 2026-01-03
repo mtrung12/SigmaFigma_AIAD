@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD Editor - Project 1</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/editor.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="editor-header flex-between">
+        <div class="header-left flex-center">
+            <a href="#" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+            <div class="project-info flex-center">
+                <span class="project-name">project 1</span>
+                <i class="fas fa-pen edit-icon"></i>
+            </div>
+        </div>
+
+        <div class="header-right flex-gap-sm">
+            <button class="btn btn-secondary-light">Export</button>
+            <button class="btn btn-primary-light">Save</button>
+        </div>
+    </header>
+
+    <div class="editor-container">
+        
+        <aside class="tools-sidebar flex-column flex-center hover-lift">
+            <div class="tool-item active"><i class="fas fa-search"></i></div>
+            <div class="tool-item"><i class="fas fa-home"></i></div>
+            <div class="tool-item"><i class="fas fa-couch"></i></div>
+            <div class="tool-item"><i class="fas fa-tree"></i></div>
+            <div class="tool-item"><i class="fas fa-user"></i></div>
+        </aside>
+
+        <main class="canvas-area">
+            <div class="grid-background"></div>
+        </main>
+
+        <div class="view-toggle">
+            <button class="toggle-btn active">2D</button>
+            <button class="toggle-btn">3D</button>
+        </div>
+
+        <div class="ai-trigger hover-scale">
+            <img src="assets/sigma-logo.png" alt="Sigma AI" class="sigma-logo-img">
+        </div>
+
+    </div>
+
+</body>
+</html>
