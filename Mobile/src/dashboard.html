@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="profile">
+          <img src="../imgs/profile-pic.png" alt="Profile" class="profile-pic" />
+          <div class="profile-info">
+            <p class="hello">Hello Sarah 👋</p>
+            <p class="my-space">My space</p>
+          </div>
+        </div>
+        <div class="actions">
+          <span class="material-symbols-outlined">diamond</span>
+          <span class="material-symbols-outlined">notifications</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="project-overview">
+          <h2>Project Overview</h2>
+          <div class="overview-cards">
+            <div class="card">
+              <span class="material-symbols-outlined card-icon">folder</span>
+              <p class="card-number">12</p>
+              <p class="card-label">Active Projects</p>
+            </div>
+            <div class="card">
+              <span class="material-symbols-outlined card-icon">schedule</span>
+              <p class="card-number">32h</p>
+              <p class="card-label">Hours Logged This Week</p>
+            </div>
+            <div class="card">
+              <span class="material-symbols-outlined card-icon">
+                task_alt
+              </span>
+              <p class="card-number">08</p>
+              <p class="card-label">Tasks Complete</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="jump-back-in">
+          <h2>Jump back in</h2>
+          <div class="recent-projects">
+            <div class="project-card">
+              <img
+                src="../../Web App/imgs/dashboard-normal/living-room-scandi.jpg"
+                alt="Living room ver1"
+              />
+              <p>Living room ver1</p>
+            </div>
+            <div class="project-card">
+              <img
+                src="../../Web App/imgs/dashboard-normal/living-room-modern.jpg"
+                alt="Living room ver2"
+              />
+              <p>Living room ver2</p>
+            </div>
+            <div class="project-card draft">
+              <div class="draft-box"></div>
+              <p>Draft Test</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="trending-ideas">
+          <h2>Trending Ideas</h2>
+          <div class="ideas-grid">
+            <div class="idea-card">
+              <img
+                src="../../Web App/imgs/dashboard-normal/living-room-japandi.jpg"
+                alt="Modern Living Room"
+              />
+              <p>Modern Living Room</p>
+            </div>
+            <div class="idea-card">
+              <img
+                src="../../Web App/imgs/dashboard-normal/bright-boho-office.jpg"
+                alt="Cozy Bedroom"
+              />
+              <p>Cozy Bedroom</p>
+            </div>
+            <div class="idea-card">
+              <img
+                src="../../Web App/imgs/dashboard-normal/kitchen-scandi.jpg"
+                alt="Japandi room"
+              />
+              <p>Japandi Room</p>
+            </div>
+            <div class="idea-card">
+              <img
+                src="../../Web App/imgs/dashboard-normal/office-minimalism.jpg"
+                alt="Minimalism Room"
+              />
+              <p>Minimalism Room</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    
+    <footer>
+      <nav class="bottom-nav">
+        <a href="create-project.html" class="fab">
+          <span class="material-symbols-outlined">add</span>
+        </a>
+        <div class="nav-section left">
+          <a href="dashboard.html" class="nav-item active">
+            <span class="material-symbols-outlined">home</span>
+            <p>Dashboard</p>
+          </a>
+          <a href="my-projects.html" class="nav-item">
+            <span class="material-symbols-outlined">construction</span>
+            <p>My Projects</p>
+          </a>
+          <a href="profile.html" class="nav-item">
+            <span class="material-symbols-outlined">person</span>
+            <p>Profile</p>
+          </a>
+        </div>
+      </nav>
+    </footer>
+  </body>
+</html>
