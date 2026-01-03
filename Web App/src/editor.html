@@ -34,6 +34,135 @@
             <div class="tool-item user-tool"><i class="fa-solid fa-user-group"></i></div>
         </aside>
 
+        <div class="side-panel" id="sidePanel">
+    
+            <div class="panel-header">
+                <h3 id="panelTitle">Build</h3>
+                <button class="close-panel" onclick="closePanel()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="panel-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search">
+            </div>
+
+            <div class="panel-content" id="panel-search">
+                <div class="tag-section">
+                    <h4>Recent</h4>
+                    <div class="tags-cloud">
+                        <span class="tag">Couch</span>
+                        <span class="tag">Wood door</span>
+                    </div>
+                </div>
+                <div class="tag-section">
+                    <h4>Suggestions</h4>
+                    <div class="tags-cloud">
+                        <span class="tag">Wood door</span>
+                        <span class="tag">Window</span>
+                        <span class="tag">Corner textile sofa</span>
+                        <span class="tag">Flower plant</span>
+                        <span class="tag">Office chair</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-content hidden" id="panel-build">
+                <h4>Create room</h4>
+                <div class="grid-2-col">
+                    <div class="item-card">
+                        <img src="../imgs/editor/build/room-box.png" alt="Rooms">
+                        <span>Rooms</span>
+                    </div>
+                    <div class="item-card">
+                        <img src="../imgs/editor/build/wall-tool.png" alt="Draw walls">
+                        <span>Draw walls</span>
+                    </div>
+                    <div class="item-card">
+                        <img src="../imgs/editor/build/wizard.png" alt="Smart wizard">
+                        <span>Smart wizard</span>
+                    </div>
+                    <div class="item-card">
+                        <img src="../imgs/editor/build/forms.png" alt="Forms">
+                        <span>Forms</span>
+                    </div>
+                </div>
+                
+                <h4>Construction</h4>
+                <div class="grid-2-col">
+                    <div class="item-card large-img">
+                        <img src="../imgs/editor/build/door-thumb.png" alt="Doors">
+                        <span>Doors</span>
+                    </div>
+                    <div class="item-card large-img">
+                        <img src="../imgs/editor/build/window-thumb.png" alt="Window">
+                        <span>Window</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-content hidden" id="panel-furnish">
+                <h4>Furniture</h4>
+                <div class="list-items">
+                    <div class="list-row">
+                        <img src="../imgs/editor/icons/armchair.png" alt="icon">
+                        <span>Armchairs</span>
+                    </div>
+                    <div class="list-row">
+                        <img src="../imgs/editor/icons/sofa.png" alt="icon">
+                        <span>Sofas</span>
+                    </div>
+                    <div class="list-row">
+                        <img src="../imgs/editor/icons/bed.png" alt="icon">
+                        <span>Beds</span>
+                    </div>
+                    <div class="list-row">
+                        <img src="../imgs/editor/icons/storage.png" alt="icon">
+                        <span>Storages</span>
+                    </div>
+                    <div class="list-row">
+                        <img src="../imgs/editor/icons/kitchen.png" alt="icon">
+                        <span>Kitchen</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-content hidden" id="panel-outdoor">
+                <div class="grid-2-col">
+                    <div class="item-card large-img">
+                        <img src="../imgs/editor/outdoor/lawn.png" alt="Paths">
+                        <span>Paths and lawns</span>
+                    </div>
+                    <div class="item-card large-img">
+                        <img src="../imgs/editor/outdoor/patio.png" alt="Patio">
+                        <span>Patio furniture</span>
+                    </div>
+                    <div class="item-card large-img">
+                        <img src="../imgs/editor/outdoor/tree.png" alt="Trees">
+                        <span>Tree and plants</span>
+                    </div>
+                    <div class="item-card large-img">
+                        <img src="../imgs/editor/outdoor/pool.png" alt="Pool">
+                        <span>Pool</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-content hidden" id="panel-user">
+                <div class="grid-2-col">
+                    <div class="item-card no-label">
+                        <img src="../imgs/editor/user/grass-texture.png" alt="Grass">
+                    </div>
+                    <div class="item-card no-label">
+                        <img src="../imgs/editor/user/empty-room.png" alt="Room">
+                    </div>
+                    <div class="item-card no-label">
+                        <img src="../imgs/editor/user/wood-door.png" alt="Door">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <main class="editor-canvas" id="mainCanvas">
             <div class="grid-floor"></div>
             
