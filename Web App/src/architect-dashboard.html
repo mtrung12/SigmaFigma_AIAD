@@ -63,7 +63,7 @@
                                 <span class="item-desc">Start with a blank canvas</span>
                             </div>
                         </a>
-                        <a href="#" class="dropdown-item" data-action="template">
+                        <a href="create-template.html" class="dropdown-item" data-action="template">
                             <i class="fa-solid fa-table-columns"></i>
                             <div class="dropdown-item-content">
                                 <span class="item-title">Start with a template</span>
@@ -99,14 +99,42 @@
             <div class="action-bar">
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" placeholder="Search projects, clients,...">
+                    <input type="text" id="searchInput" placeholder="Search projects, clients,...">
                 </div>
                 <div class="filter-box">
-                    <div class="sort-dropdown">
-                        <span>Sort By: Last Modified</span>
+                    <div class="sort-dropdown" id="statusDropdown">
+                        <span id="statusLabel">Status: All</span>
                         <i class="fa-solid fa-chevron-down"></i>
+                        <div class="filter-dropdown-menu" id="statusMenu">
+                            <a href="#" class="filter-dropdown-item" data-status="all">
+                                <i class="fa-solid fa-check" style="opacity: 1;"></i> All
+                            </a>
+                            <a href="#" class="filter-dropdown-item" data-status="in-progress">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> In Progress
+                            </a>
+                            <a href="#" class="filter-dropdown-item" data-status="completed">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Completed
+                            </a>
+                        </div>
                     </div>
-                    <button class="btn-filter"><i class="fa-solid fa-filter"></i></button>
+                    <div class="sort-dropdown" id="sortDropdown">
+                        <span id="sortLabel">Sort By: Last Modified</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="filter-dropdown-menu" id="sortMenu">
+                            <a href="#" class="filter-dropdown-item" data-sort="modified">
+                                <i class="fa-solid fa-check" style="opacity: 1;"></i> Last Modified
+                            </a>
+                            <a href="#" class="filter-dropdown-item" data-sort="name">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Project Name
+                            </a>
+                            <a href="#" class="filter-dropdown-item" data-sort="client">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Client
+                            </a>
+                            <a href="#" class="filter-dropdown-item" data-sort="status">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Status
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -206,28 +234,190 @@
         btnNew.addEventListener('click', (e) => {
             e.stopPropagation();
             projectDropdown.classList.toggle('show');
+            document.getElementById('statusMenu').classList.remove('show');
+            document.getElementById('sortMenu').classList.remove('show');
         });
 
         // Handle dropdown item clicks
         document.querySelectorAll('#projectDropdown .dropdown-item').forEach(item => {
             item.addEventListener('click', (e) => {
-                e.preventDefault();
                 const action = item.getAttribute('data-action');
+                
+                // If template option, allow navigation
+                if (action === 'template') {
+                    return; // Let the link navigate naturally
+                }
+                
+                e.preventDefault();
                 
                 // Close dropdown
                 projectDropdown.classList.remove('show');
                 
-                // Handle action
+                // Handle other actions
                 const actionText = item.querySelector('.item-title').textContent;
                 console.log('Creating new project:', action);
                 alert(`Opening: ${actionText}`);
             });
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', () => {
+        // Filter and Sort functionality
+        const statusDropdown = document.getElementById('statusDropdown');
+        const statusMenu = document.getElementById('statusMenu');
+        const statusLabel = document.getElementById('statusLabel');
+        
+        const sortDropdown = document.getElementById('sortDropdown');
+        const sortMenu = document.getElementById('sortMenu');
+        const sortLabel = document.getElementById('sortLabel');
+        
+        const searchInput = document.getElementById('searchInput');
+        const tableBody = document.querySelector('.projects-table tbody');
+
+        let currentStatus = 'all';
+        let currentSort = 'modified';
+
+        // Toggle status dropdown
+        statusDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            statusMenu.classList.toggle('show');
+            sortMenu.classList.remove('show');
             projectDropdown.classList.remove('show');
         });
+
+        // Toggle sort dropdown
+        sortDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sortMenu.classList.toggle('show');
+            statusMenu.classList.remove('show');
+            projectDropdown.classList.remove('show');
+        });
+
+        // Handle status selection
+        document.querySelectorAll('#statusMenu .filter-dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const status = item.getAttribute('data-status');
+                currentStatus = status;
+                
+                // Update label
+                const statusText = item.textContent.trim();
+                statusLabel.textContent = `Status: ${statusText}`;
+                
+                // Update checkmarks
+                document.querySelectorAll('#statusMenu .filter-dropdown-item i').forEach(icon => {
+                    icon.style.opacity = '0';
+                });
+                item.querySelector('i').style.opacity = '1';
+                
+                // Close dropdown
+                statusMenu.classList.remove('show');
+                
+                // Apply filter
+                filterAndSortProjects();
+            });
+        });
+
+        // Handle sort selection
+        document.querySelectorAll('#sortMenu .filter-dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const sort = item.getAttribute('data-sort');
+                currentSort = sort;
+                
+                // Update label
+                const sortText = item.textContent.trim();
+                sortLabel.textContent = `Sort By: ${sortText}`;
+                
+                // Update checkmarks
+                document.querySelectorAll('#sortMenu .filter-dropdown-item i').forEach(icon => {
+                    icon.style.opacity = '0';
+                });
+                item.querySelector('i').style.opacity = '1';
+                
+                // Close dropdown
+                sortMenu.classList.remove('show');
+                
+                // Apply sorting
+                filterAndSortProjects();
+            });
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            filterAndSortProjects();
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', () => {
+            projectDropdown.classList.remove('show');
+            statusMenu.classList.remove('show');
+            sortMenu.classList.remove('show');
+        });
+
+        // Filter and sort projects
+        function filterAndSortProjects() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const rows = Array.from(tableBody.querySelectorAll('tr'));
+            
+            // Filter rows
+            rows.forEach(row => {
+                const projectName = row.querySelector('.p-name').textContent.toLowerCase();
+                const projectId = row.querySelector('.p-id').textContent.toLowerCase();
+                const client = row.cells[1].textContent.toLowerCase();
+                const badge = row.querySelector('.status-badge');
+                const rowStatus = badge.classList.contains('in-progress') ? 'in-progress' : 'completed';
+                
+                // Check search match
+                const matchesSearch = projectName.includes(searchTerm) || 
+                                     projectId.includes(searchTerm) || 
+                                     client.includes(searchTerm);
+                
+                // Check status match
+                const matchesStatus = currentStatus === 'all' || rowStatus === currentStatus;
+                
+                // Show/hide row
+                if (matchesSearch && matchesStatus) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            // Sort visible rows
+            const visibleRows = rows.filter(row => row.style.display !== 'none');
+            
+            visibleRows.sort((a, b) => {
+                let aValue, bValue;
+                
+                switch(currentSort) {
+                    case 'name':
+                        aValue = a.querySelector('.p-name').textContent;
+                        bValue = b.querySelector('.p-name').textContent;
+                        return aValue.localeCompare(bValue);
+                    
+                    case 'client':
+                        aValue = a.cells[1].textContent;
+                        bValue = b.cells[1].textContent;
+                        return aValue.localeCompare(bValue);
+                    
+                    case 'status':
+                        aValue = a.querySelector('.status-badge').textContent;
+                        bValue = b.querySelector('.status-badge').textContent;
+                        return aValue.localeCompare(bValue);
+                    
+                    case 'modified':
+                    default:
+                        // Keep original order for 'last modified'
+                        return 0;
+                }
+            });
+            
+            // Reorder rows in table
+            visibleRows.forEach(row => tableBody.appendChild(row));
+        }
     </script>
 </body>
 </html>

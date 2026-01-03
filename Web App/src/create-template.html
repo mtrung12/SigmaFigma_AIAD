@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD - Choose Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/create-template.css">
+</head>
+<body>
+
+    <header class="template-header">
+        <a href="javascript:history.back()" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> My projects
+        </a>
+        <div class="header-title">Choose a template</div>
+        <div style="width: 100px;"></div> </header>
+
+    <main class="template-container">
+        
+        <nav class="category-tabs">
+            <button class="tab-btn active" data-target="bedroom">Bedroom</button>
+            <button class="tab-btn" data-target="livingroom">Living room</button>
+            <button class="tab-btn" data-target="kitchen">Kitchen</button>
+            <button class="tab-btn" data-target="office">Office</button>
+            <button class="tab-btn" data-target="bathroom">Bathroom</button>
+        </nav>
+
+        <div class="search-wrapper-lg">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search templates..." id="templateSearch">
+        </div>
+
+        <div class="template-grid" id="templateGrid">
+            
+            <!-- BATHROOM TEMPLATES -->
+            <div class="template-card" data-category="bathroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bathroom/japandi1.jpg" alt="Japandi 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japandi 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bathroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bathroom/japandi2.jpeg" alt="Japandi 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japandi 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bathroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bathroom/japandi3.jpg" alt="Japandi 3">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japandi 3</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bathroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bathroom/mini1.jpg" alt="Mini 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bathroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bathroom/mini2.jpg" alt="Mini 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bathroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bathroom/modern1.jpg" alt="Modern 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bathroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bathroom/modern2.jpg" alt="Modern 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+
+            <!-- BEDROOM TEMPLATES -->
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/classic1.jpg" alt="Classic 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Classic 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/classic2.jpg" alt="Classic 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Classic 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/japan1.png" alt="Japan 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japan 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/japan2.png" alt="Japan 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japan 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/mini1.jpg" alt="Mini 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/mini2.jpg" alt="Mini 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/modern1.jpg" alt="Modern 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/modern2.jpg" alt="Modern 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/scandinavian1.jpg" alt="Scandinavian 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandinavian 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="bedroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/bedroom/scandinavian2.jpg" alt="Scandinavian 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandinavian 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+
+            <!-- KITCHEN TEMPLATES -->
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/classic1.jpg" alt="Classic 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Classic 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/classic2.jpg" alt="Classic 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Classic 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/japandi1.jpg" alt="Japandi 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japandi 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/mini1.jpg" alt="Mini 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/mini2.jpg" alt="Mini 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/modern1.jpg" alt="Modern 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/modern2.jpg" alt="Modern 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/modern3.jpg" alt="Modern 3">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 3</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/scandi1.jpg" alt="Scandi 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandi 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="kitchen">
+                <div class="t-image">
+                    <img src="../imgs/templates/kitchen/scandi2.jpg" alt="Scandi 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandi 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+
+            <!-- LIVING ROOM TEMPLATES -->
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/japandi1.jpg" alt="Japandi 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japandi 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/japanese1.jpg" alt="Japanese 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Japanese 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/midcentury1.jpg" alt="Midcentury 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Midcentury 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/mini1.jpg" alt="Mini 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/mini2.jpg" alt="Mini 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/modern1.jpg" alt="Modern 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/modern2.jpg" alt="Modern 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/scandi.jpg" alt="Scandi">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandi</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/scandi2.jpg" alt="Scandi 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandi 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="livingroom">
+                <div class="t-image">
+                    <img src="../imgs/templates/livingroom/scandi3.jpg" alt="Scandi 3">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandi 3</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+
+            <!-- OFFICE TEMPLATES -->
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/brightboho.jpg" alt="Bright Boho">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Bright Boho</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/brightboho2.jpeg" alt="Bright Boho 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Bright Boho 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/mini2.jpeg" alt="Mini 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Mini 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/minimalism3.jpg" alt="Minimalism 3">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Minimalism 3</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/minimalism4.jpeg" alt="Minimalism 4">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Minimalism 4</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/modern1.jpg" alt="Modern 1">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 1</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/modern2.jpg" alt="Modern 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/modern3.jpg" alt="Modern 3">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Modern 3</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/scandi.jpeg" alt="Scandi">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandi</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+            <div class="template-card" data-category="office">
+                <div class="t-image">
+                    <img src="../imgs/templates/office/scandi2.jpeg" alt="Scandi 2">
+                </div>
+                <div class="t-body">
+                    <h3 class="t-name">Scandi 2</h3>
+                    <button class="btn-use-template">Use template</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        // Logic chuyển tab
+        const tabs = document.querySelectorAll('.tab-btn');
+        const cards = document.querySelectorAll('.template-card');
+
+        // Hàm lọc items
+        function filterItems(category) {
+            cards.forEach(card => {
+                const itemCat = card.getAttribute('data-category');
+                if (category === 'all' || itemCat === category) {
+                    card.style.display = 'flex';
+                    // Thêm animation nhẹ khi hiện
+                    card.style.animation = 'fadeIn 0.3s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Mặc định hiển thị bedroom khi vào trang
+        filterItems('bedroom');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // 1. Xóa active cũ, thêm active mới
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // 2. Lấy category cần lọc
+                const target = tab.getAttribute('data-target');
+                
+                // 3. Lọc card
+                filterItems(target);
+            });
+        });
+
+        // Xử lý nút Use template (Giả lập)
+        document.querySelectorAll('.btn-use-template').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Logic thực tế sẽ điều hướng sang trang Editor
+                alert('Loading template into Editor...');
+                window.location.href = 'architect-dashboard.html'; // Hoặc trang Editor nếu có
+            });
+        });
+    </script>
+
+</body>
+</html>

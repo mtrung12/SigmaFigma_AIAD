@@ -89,12 +89,19 @@
             </div>
 
             <div class="card-carousel">
+                <div class="idea-card create-new-card" id="btnCreateNewDashboard">
+                    <div class="create-content">
+                        <i class="fa-solid fa-plus"></i>
+                        <span>Create New</span>
+                    </div>
+                </div>
+                
                 <div class="idea-card">
                     <div class="card-img">
                         <img src="../imgs/dashboard-normal/living-room-scandi.jpg" alt="My Room 1">
                     </div>
-                    </div>
-                 <div class="idea-card">
+                </div>
+                <div class="idea-card">
                     <div class="card-img">
                         <img src="../imgs/dashboard-normal/bright-boho-office.jpg" alt="Bright Boho office">
                     </div>
@@ -104,22 +111,53 @@
 
     </main>
 
+    <div class="modal-overlay" id="createModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create project options</h3>
+                <button class="close-modal" id="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="modal-options">
+                <button class="option-btn" onclick="window.location.href='create-template.html'">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <span>Start with a template</span>
+                </button>
+                
+                <button class="option-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Generate from prompt</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Xử lý bật/tắt dropdown
-        const btnNew = document.getElementById('btnNewProject');
-        const dropdown = document.getElementById('projectDropdown');
+        // Handle create new button
+        const btnCreateNew = document.getElementById('btnCreateNewDashboard');
+        const modal = document.getElementById('createModal');
+        const btnClose = document.getElementById('btnCloseModal');
 
-        btnNew.addEventListener('click', (e) => {
-            e.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
-            dropdown.classList.toggle('show');
-        });
+        if (btnCreateNew) {
+            btnCreateNew.addEventListener('click', () => {
+                modal.classList.add('active');
+            });
+        }
 
-        // Đóng dropdown khi click ra ngoài
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target) && !btnNew.contains(e.target)) {
-                dropdown.classList.remove('show');
-            }
-        });
+        if (btnClose) {
+            btnClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        }
+
+        // Close modal when clicking outside
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>

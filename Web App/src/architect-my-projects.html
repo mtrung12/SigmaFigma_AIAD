@@ -64,7 +64,7 @@
                                 <span class="item-desc">Start with a blank canvas</span>
                             </div>
                         </a>
-                        <a href="#" class="dropdown-item" data-action="template">
+                        <a href="create-template.html" class="dropdown-item" data-action="template">
                             <i class="fa-solid fa-table-columns"></i>
                             <div class="dropdown-item-content">
                                 <span class="item-title">Start with a template</span>
@@ -256,15 +256,20 @@
         // Handle dropdown item clicks
         document.querySelectorAll('#projectDropdown .dropdown-item').forEach(item => {
             item.addEventListener('click', (e) => {
-                e.preventDefault();
                 const action = item.getAttribute('data-action');
+                
+                // If template option, allow navigation
+                if (action === 'template') {
+                    return; // Let the link navigate naturally
+                }
+                
+                e.preventDefault();
                 
                 // Close dropdown
                 projectDropdown.classList.remove('show');
                 
-                // Handle action (you can redirect or show a modal here)
+                // Handle other actions
                 console.log('Creating new project:', action);
-                // For now, just alert - replace with actual navigation/modal
                 const actionText = item.querySelector('.item-title').textContent;
                 alert(`Opening: ${actionText}`);
             });
