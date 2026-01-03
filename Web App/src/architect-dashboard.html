@@ -24,7 +24,7 @@
                     <a href="#" class="menu-item active">
                         <i class="fa-solid fa-table-columns"></i> Dashboard
                     </a>
-                    <a href="#" class="menu-item">
+                    <a href="architect-my-projects.html" class="menu-item">
                         <i class="fa-solid fa-folder"></i> Projects
                     </a>
                     <a href="#" class="menu-item">
@@ -56,17 +56,26 @@
                     </button>
 
                     <div class="dropdown-menu" id="projectDropdown">
-                        <a href="#" class="dropdown-item">
+                        <a href="#" class="dropdown-item" data-action="scratch">
                             <i class="fa-solid fa-pencil"></i>
-                            <span>Build from scratch</span>
+                            <div class="dropdown-item-content">
+                                <span class="item-title">Build from scratch</span>
+                                <span class="item-desc">Start with a blank canvas</span>
+                            </div>
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <a href="#" class="dropdown-item" data-action="template">
                             <i class="fa-solid fa-table-columns"></i>
-                            <span>Start with a template</span>
+                            <div class="dropdown-item-content">
+                                <span class="item-title">Start with a template</span>
+                                <span class="item-desc">Choose from pre-made designs</span>
+                            </div>
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <a href="#" class="dropdown-item" data-action="ai">
                             <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            <span>Generate from prompt</span>
+                            <div class="dropdown-item-content">
+                                <span class="item-title">Generate from prompt</span>
+                                <span class="item-desc">Let AI create your design</span>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -190,20 +199,34 @@
     </div>
 
     <script>
-        // Xử lý bật/tắt dropdown
+        // New Project Dropdown
         const btnNew = document.getElementById('btnNewProject');
-        const dropdown = document.getElementById('projectDropdown');
+        const projectDropdown = document.getElementById('projectDropdown');
 
         btnNew.addEventListener('click', (e) => {
-            e.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
-            dropdown.classList.toggle('show');
+            e.stopPropagation();
+            projectDropdown.classList.toggle('show');
         });
 
-        // Đóng dropdown khi click ra ngoài
-        document.addEventListener('click', (e) => {
-            if (!dropdown.contains(e.target) && !btnNew.contains(e.target)) {
-                dropdown.classList.remove('show');
-            }
+        // Handle dropdown item clicks
+        document.querySelectorAll('#projectDropdown .dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = item.getAttribute('data-action');
+                
+                // Close dropdown
+                projectDropdown.classList.remove('show');
+                
+                // Handle action
+                const actionText = item.querySelector('.item-title').textContent;
+                console.log('Creating new project:', action);
+                alert(`Opening: ${actionText}`);
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            projectDropdown.classList.remove('show');
         });
     </script>
 </body>

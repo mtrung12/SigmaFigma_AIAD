@@ -85,7 +85,7 @@
         <section class="content-section">
             <div class="section-header">
                 <h2>My project</h2>
-                <a href="#" class="see-all">See all</a>
+                <a href="normal-my-projects.html" class="see-all">See all</a>
             </div>
 
             <div class="card-carousel">
@@ -103,5 +103,23 @@
         </section>
 
     </main>
+
+    <script>
+        // Xử lý bật/tắt dropdown
+        const btnNew = document.getElementById('btnNewProject');
+        const dropdown = document.getElementById('projectDropdown');
+
+        btnNew.addEventListener('click', (e) => {
+            e.stopPropagation(); // Ngăn chặn sự kiện click lan ra ngoài
+            dropdown.classList.toggle('show');
+        });
+
+        // Đóng dropdown khi click ra ngoài
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target) && !btnNew.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>

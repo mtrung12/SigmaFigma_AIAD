@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD - Architect Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/architect-dashboard.css">
+    <link rel="stylesheet" href="css/architect-my-projects.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <a href="homepage.html" class="logo">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>AIAD</span>
+                    <span class="badge-pro">Pro</span>
+                </a>
+
+                <nav class="sidebar-menu">
+                    <a href="architect-dashboard.html" class="menu-item">
+                        <i class="fa-solid fa-table-columns"></i> Dashboard
+                    </a>
+                    <a href="#" class="menu-item active">
+                        <i class="fa-solid fa-folder"></i> Projects
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fa-solid fa-cube"></i> Assets
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="user-profile">
+                    <div class="avatar-circle">T</div>
+                    <div class="user-info">
+                        <div class="user-name">Tailoduc04</div>
+                        <div class="user-role">Architect</div>
+                    </div>
+                    <a href="#" class="settings-btn"><i class="fa-solid fa-user-gear"></i></a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="main-header">
+                <h2>My Projects</h2>
+                <div class="new-project-wrapper">
+                    <button class="btn-new-project" id="btnNewProject">
+                        <i class="fa-solid fa-plus"></i> New Project
+                    </button>
+                    <div class="dropdown-menu" id="projectDropdown">
+                        <a href="#" class="dropdown-item" data-action="scratch">
+                            <i class="fa-solid fa-pencil"></i>
+                            <div class="dropdown-item-content">
+                                <span class="item-title">Build from scratch</span>
+                                <span class="item-desc">Start with a blank canvas</span>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item" data-action="template">
+                            <i class="fa-solid fa-table-columns"></i>
+                            <div class="dropdown-item-content">
+                                <span class="item-title">Start with a template</span>
+                                <span class="item-desc">Choose from pre-made designs</span>
+                            </div>
+                        </a>
+                        <a href="#" class="dropdown-item" data-action="ai">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <div class="dropdown-item-content">
+                                <span class="item-title">Generate from prompt</span>
+                                <span class="item-desc">Let AI create your design</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <div class="search-box" style="width: 100%; max-width: 500px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search projects, clients, tags...">
+                </div>
+                <div class="filter-box">
+                    <div class="sort-dropdown" id="statusDropdown">
+                        <span id="statusLabel">Status: All</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="dropdown-menu" id="statusMenu">
+                            <a href="#" class="dropdown-item" data-status="all">
+                                <i class="fa-solid fa-check" style="opacity: 1;"></i> All
+                            </a>
+                            <a href="#" class="dropdown-item" data-status="in-progress">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> In Progress
+                            </a>
+                            <a href="#" class="dropdown-item" data-status="completed">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Completed
+                            </a>
+                            <a href="#" class="dropdown-item" data-status="archived">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Archived
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sort-dropdown" id="sortDropdown">
+                        <span id="sortLabel">Sort By: Last Modified</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                        <div class="dropdown-menu" id="sortMenu">
+                            <a href="#" class="dropdown-item" data-sort="modified">
+                                <i class="fa-solid fa-check" style="opacity: 1;"></i> Last Modified
+                            </a>
+                            <a href="#" class="dropdown-item" data-sort="name">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Name
+                            </a>
+                            <a href="#" class="dropdown-item" data-sort="client">
+                                <i class="fa-solid fa-check" style="opacity: 0;"></i> Client
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arch-project-grid">
+
+                <div class="arch-card">
+                    <div class="card-image">
+                        <img src="../imgs/homepage/livingroom.png" alt="Project">
+                        <span class="status-badge in-progress card-badge">In Progress</span>
+                        <button class="more-options"><i class="fa-solid fa-ellipsis"></i></button>
+                        <div class="card-dropdown-menu">
+                            <a href="#" class="card-dropdown-item mark-status">
+                                <i class="fa-solid fa-check-circle"></i> Mark as Complete
+                            </a>
+                            <a href="#" class="card-dropdown-item move-archive">
+                                <i class="fa-solid fa-box-archive"></i> Move to Archived
+                            </a>
+                            <a href="#" class="card-dropdown-item delete-project">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="ac-title">Modern Villa Living Room</h3>
+                        <div class="ac-client"><i class="fa-regular fa-user"></i> Mr. Anderson</div>
+                        <div class="ac-meta">
+                            <span><i class="fa-regular fa-clock"></i> 2h ago</span>
+                            <span>ID: #AI-2025-01</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-card">
+                    <div class="card-image">
+                        <img src="../imgs/homepage/kitchen.png" alt="Project">
+                        <span class="status-badge completed card-badge">Completed</span>
+                        <button class="more-options"><i class="fa-solid fa-ellipsis"></i></button>
+                        <div class="card-dropdown-menu">
+                            <a href="#" class="card-dropdown-item mark-status">
+                                <i class="fa-solid fa-clock"></i> Mark as In Progress
+                            </a>
+                            <a href="#" class="card-dropdown-item move-archive">
+                                <i class="fa-solid fa-box-archive"></i> Move to Archived
+                            </a>
+                            <a href="#" class="card-dropdown-item delete-project">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="ac-title">Cozy Coffee Shop</h3>
+                        <div class="ac-client"><i class="fa-regular fa-building"></i> My Coffee House</div>
+                        <div class="ac-meta">
+                            <span><i class="fa-regular fa-clock"></i> Yesterday</span>
+                            <span>ID: #AI-2025-02</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-card">
+                    <div class="card-image">
+                        <img src="../imgs/homepage/bedroom.png" alt="Project">
+                        <span class="status-badge in-progress card-badge">In Progress</span>
+                        <button class="more-options"><i class="fa-solid fa-ellipsis"></i></button>
+                        <div class="card-dropdown-menu">
+                            <a href="#" class="card-dropdown-item mark-status">
+                                <i class="fa-solid fa-check-circle"></i> Mark as Complete
+                            </a>
+                            <a href="#" class="card-dropdown-item move-archive">
+                                <i class="fa-solid fa-box-archive"></i> Move to Archived
+                            </a>
+                            <a href="#" class="card-dropdown-item delete-project">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="ac-title">Penthouse Master Bed</h3>
+                        <div class="ac-client"><i class="fa-regular fa-user"></i> Mrs. Sarah</div>
+                        <div class="ac-meta">
+                            <span><i class="fa-regular fa-clock"></i> Dec 20</span>
+                            <span>ID: #AI-2025-03</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-card">
+                    <div class="card-image">
+                        <img src="../imgs/homepage/editor.png" alt="Project">
+                        <span class="status-badge completed card-badge">Completed</span>
+                        <button class="more-options"><i class="fa-solid fa-ellipsis"></i></button>
+                        <div class="card-dropdown-menu">
+                            <a href="#" class="card-dropdown-item mark-status">
+                                <i class="fa-solid fa-clock"></i> Mark as In Progress
+                            </a>
+                            <a href="#" class="card-dropdown-item move-archive">
+                                <i class="fa-solid fa-box-archive"></i> Move to Archived
+                            </a>
+                            <a href="#" class="card-dropdown-item delete-project">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="ac-title">Tech Startup Office</h3>
+                        <div class="ac-client"><i class="fa-regular fa-building"></i> TechCorp Inc.</div>
+                        <div class="ac-meta">
+                            <span><i class="fa-regular fa-clock"></i> Dec 12</span>
+                            <span>ID: #AI-2025-04</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // New Project Dropdown
+        const btnNew = document.getElementById('btnNewProject');
+        const projectDropdown = document.getElementById('projectDropdown');
+
+        btnNew.addEventListener('click', (e) => {
+            e.stopPropagation();
+            projectDropdown.classList.toggle('show');
+            // Close other dropdowns
+            document.querySelectorAll('.card-dropdown-menu').forEach(d => d.classList.remove('show'));
+            document.getElementById('statusMenu').classList.remove('show');
+            document.getElementById('sortMenu').classList.remove('show');
+        });
+
+        // Handle dropdown item clicks
+        document.querySelectorAll('#projectDropdown .dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const action = item.getAttribute('data-action');
+                
+                // Close dropdown
+                projectDropdown.classList.remove('show');
+                
+                // Handle action (you can redirect or show a modal here)
+                console.log('Creating new project:', action);
+                // For now, just alert - replace with actual navigation/modal
+                const actionText = item.querySelector('.item-title').textContent;
+                alert(`Opening: ${actionText}`);
+            });
+        });
+
+        // Card dropdown functionality
+        document.querySelectorAll('.more-options').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                e.preventDefault();
+                
+                const dropdown = button.nextElementSibling;
+                const allDropdowns = document.querySelectorAll('.card-dropdown-menu');
+                
+                // Close all other dropdowns
+                allDropdowns.forEach(d => {
+                    if (d !== dropdown) d.classList.remove('show');
+                });
+                
+                // Toggle current dropdown
+                dropdown.classList.toggle('show');
+            });
+        });
+
+        // Handle card actions
+        document.querySelectorAll('.card-dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const card = item.closest('.arch-card');
+                const badge = card.querySelector('.status-badge');
+                const dropdown = item.closest('.card-dropdown-menu');
+                
+                if (item.classList.contains('delete-project')) {
+                    if (confirm('Are you sure you want to delete this project?')) {
+                        card.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => card.remove(), 300);
+                    }
+                } else if (item.classList.contains('mark-status')) {
+                    // Toggle between completed and in-progress
+                    if (badge.classList.contains('in-progress')) {
+                        badge.classList.remove('in-progress');
+                        badge.classList.add('completed');
+                        badge.textContent = 'Completed';
+                        item.innerHTML = '<i class="fa-solid fa-clock"></i> Mark as In Progress';
+                    } else {
+                        badge.classList.remove('completed');
+                        badge.classList.add('in-progress');
+                        badge.textContent = 'In Progress';
+                        item.innerHTML = '<i class="fa-solid fa-check-circle"></i> Mark as Complete';
+                    }
+                } else if (item.classList.contains('move-archive')) {
+                    badge.classList.remove('in-progress', 'completed');
+                    badge.classList.add('archived');
+                    badge.textContent = 'Archived';
+                    badge.style.backgroundColor = '#757575';
+                    item.innerHTML = '<i class="fa-solid fa-box-open"></i> Restore';
+                    item.classList.remove('move-archive');
+                    item.classList.add('restore-project');
+                }
+                
+                dropdown.classList.remove('show');
+                filterProjects();
+            });
+        });
+
+        // Close card dropdowns when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.card-dropdown-menu').forEach(dropdown => {
+                dropdown.classList.remove('show');
+            });
+            projectDropdown.classList.remove('show');
+        });
+
+        // Filter dropdown functionality
+        const statusDropdown = document.getElementById('statusDropdown');
+        const statusMenu = document.getElementById('statusMenu');
+        const statusLabel = document.getElementById('statusLabel');
+        
+        const sortDropdown = document.getElementById('sortDropdown');
+        const sortMenu = document.getElementById('sortMenu');
+        const sortLabel = document.getElementById('sortLabel');
+
+        let currentStatus = 'all';
+        let currentSort = 'modified';
+
+        // Toggle status dropdown
+        statusDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            statusMenu.classList.toggle('show');
+            sortMenu.classList.remove('show');
+        });
+
+        // Toggle sort dropdown
+        sortDropdown.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sortMenu.classList.toggle('show');
+            statusMenu.classList.remove('show');
+        });
+
+        // Handle status selection
+        document.querySelectorAll('#statusMenu .dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const status = item.getAttribute('data-status');
+                currentStatus = status;
+                
+                // Update label
+                const statusText = item.textContent.trim();
+                statusLabel.textContent = `Status: ${statusText}`;
+                
+                // Update checkmarks
+                document.querySelectorAll('#statusMenu .dropdown-item i').forEach(icon => {
+                    icon.style.opacity = '0';
+                });
+                item.querySelector('i').style.opacity = '1';
+                
+                // Close dropdown
+                statusMenu.classList.remove('show');
+                
+                // Apply filter
+                filterProjects();
+            });
+        });
+
+        // Handle sort selection
+        document.querySelectorAll('#sortMenu .dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const sort = item.getAttribute('data-sort');
+                currentSort = sort;
+                
+                // Update label
+                const sortText = item.textContent.trim();
+                sortLabel.textContent = `Sort By: ${sortText}`;
+                
+                // Update checkmarks
+                document.querySelectorAll('#sortMenu .dropdown-item i').forEach(icon => {
+                    icon.style.opacity = '0';
+                });
+                item.querySelector('i').style.opacity = '1';
+                
+                // Close dropdown
+                sortMenu.classList.remove('show');
+                
+                // Apply sorting
+                filterProjects();
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', () => {
+            statusMenu.classList.remove('show');
+            sortMenu.classList.remove('show');
+        });
+
+        // Filter projects based on status
+        function filterProjects() {
+            const projectCards = document.querySelectorAll('.arch-card:not(.create-card)');
+            
+            projectCards.forEach(card => {
+                const badge = card.querySelector('.status-badge');
+                if (!badge) {
+                    card.style.display = 'flex';
+                    return;
+                }
+                
+                const cardStatus = badge.classList.contains('in-progress') ? 'in-progress' : 
+                                 badge.classList.contains('completed') ? 'completed' : 
+                                 badge.classList.contains('archived') ? 'archived' : '';
+                
+                if (currentStatus === 'all' || cardStatus === currentStatus) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

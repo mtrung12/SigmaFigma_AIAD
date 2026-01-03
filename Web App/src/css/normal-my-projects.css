@@ -1,0 +1,227 @@
+@import url('base.css');
+
+/* --- LAYOUT CHUNG --- */
+.container {
+    max-width: 1400px;
+    margin: 80px auto 40px auto; /* Margin top 80px để tránh navbar fixed */
+    padding: 0 40px;
+}
+
+/* --- HEADER & SEARCH --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F0F2EB; /* Màu nền nhẹ cho header bar giống ảnh */
+    padding: 15px 20px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 2px solid #E0E0E0;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.home-icon {
+    font-size: 24px;
+    color: var(--primary-color);
+    transition: transform 0.2s;
+}
+
+.home-icon:hover {
+    transform: scale(1.1);
+}
+
+.search-wrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 20px 14px 50px;
+    border-radius: 30px; /* Bo tròn như ảnh */
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    font-size: 16px;
+    outline: none;
+    font-family: var(--font-main);
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    font-size: 18px;
+}
+
+/* --- GRID SYSTEM --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- PROJECT CARDS --- */
+.project-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-thumb {
+    height: 180px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.p-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.p-meta {
+    font-size: 13px;
+    color: var(--text-gray);
+}
+
+/* --- CREATE NEW CARD (SPECIAL) --- */
+.create-new-card {
+    background-color: transparent; /* Nền trong suốt */
+    border: 2px dashed var(--secondary-color); /* Viền nét đứt màu xanh */
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px; /* Chiều cao tối thiểu để bằng các card khác */
+}
+
+.create-new-card:hover {
+    background-color: rgba(0, 137, 123, 0.05);
+    transform: none; /* Không nẩy lên như card thường */
+}
+
+.create-content {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+.create-content i {
+    font-size: 40px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.create-content span {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* --- MODAL POPUP --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: none; /* Ẩn mặc định */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    color: #aaa;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-main);
+}
+
+.option-btn:hover {
+    background-color: #f5f5f5;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

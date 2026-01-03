@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD - My Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/normal-my-projects.css">
+</head>
+<body>
+
+    <header class="navbar-fixed" style="padding: 15px 40px; background: var(--bg-color); display: flex; justify-content: space-between; align-items: center;">
+        <a href="normal-dashboard.html" class="logo">AIAD</a>
+        <div class="user-profile">
+            <i class="fa-solid fa-circle-user" style="font-size: 32px; color: var(--primary-color); cursor: pointer;"></i>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="page-header">
+            <h1 class="page-title">My Projects</h1>
+            <a href="normal-dashboard.html" class="home-icon" title="Back to Dashboard">
+                <i class="fa-solid fa-house"></i>
+            </a>
+        </div>
+
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" placeholder="Search project" class="search-input">
+        </div>
+
+        <div class="project-grid">
+            
+            <div class="project-card create-new-card" id="btnCreateNew">
+                <div class="create-content">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Create New</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-thumb">
+                    <img src="../imgs/homepage/livingroom.png" alt="Living Room">
+                </div>
+                <div class="card-info">
+                    <h3 class="p-title">Modern Villa Living Room</h3>
+                    <p class="p-meta">Edited 2 hours ago</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-thumb">
+                    <img src="../imgs/homepage/kitchen.png" alt="Coffee Shop">
+                </div>
+                <div class="card-info">
+                    <h3 class="p-title">Cozy Coffee Shop</h3>
+                    <p class="p-meta">Edited yesterday</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-thumb">
+                    <img src="../imgs/homepage/bedroom.png" alt="Bedroom">
+                </div>
+                <div class="card-info">
+                    <h3 class="p-title">Scandi Bedroom</h3>
+                    <p class="p-meta">Edited 3 days ago</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="card-thumb">
+                    <img src="../imgs/homepage/editor.png" alt="Office">
+                </div>
+                <div class="card-info">
+                    <h3 class="p-title">Minimalist Office</h3>
+                    <p class="p-meta">Edited 1 week ago</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="createModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create project options</h3>
+                <button class="close-modal" id="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="modal-options">
+                <button class="option-btn">
+                    <i class="fa-solid fa-table-columns"></i>
+                    <span>Start with a template</span>
+                </button>
+                
+                <button class="option-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Generate from prompt</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Xử lý bật tắt Modal
+        const btnCreate = document.getElementById('btnCreateNew');
+        const modal = document.getElementById('createModal');
+        const btnClose = document.getElementById('btnCloseModal');
+
+        btnCreate.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        btnClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Đóng modal khi click ra ngoài vùng trắng
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

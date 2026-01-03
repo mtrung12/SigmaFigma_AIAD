@@ -1,0 +1,386 @@
+/* --- GRID LAYOUT --- */
+.arch-project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* --- CARD BASE STYLE --- */
+.arch-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.arch-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border-color: #E0E0E0;
+}
+
+/* --- CREATE NEW CARD (Special) --- */
+.create-card {
+    border: 2px dashed #A3C2BD; /* Màu xanh nhạt của Architect theme */
+    background-color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px; /* Đảm bảo chiều cao tương đương các card khác */
+}
+
+.create-card:hover {
+    background-color: rgba(10, 74, 63, 0.05); /* Hover xanh nhạt */
+    border-color: var(--primary-color);
+    transform: none; /* Không nẩy lên */
+}
+
+.create-inner {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(10, 74, 63, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin: 0 auto 15px auto;
+    transition: background 0.3s;
+}
+
+.create-card:hover .icon-circle {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.create-text {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* --- NORMAL PROJECT CARD --- */
+.card-image {
+    height: 180px;
+    position: relative;
+    overflow: visible;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.arch-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* Badge đè lên ảnh */
+.card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Nút 3 chấm option */
+.more-options {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.arch-card:hover .more-options {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.more-options:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Card dropdown menu */
+.card-dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 12px;
+    min-width: 200px;
+    background-color: white;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    z-index: 50;
+}
+
+.card-dropdown-menu.show {
+    display: flex;
+    animation: fadeInDown 0.2s ease;
+}
+
+.card-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.card-dropdown-item:hover {
+    background-color: #F5F5F5;
+}
+
+.card-dropdown-item.delete-project {
+    color: #d32f2f;
+}
+
+.card-dropdown-item.delete-project:hover {
+    background-color: #ffebee;
+}
+
+.card-dropdown-item i {
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+}
+
+.archived {
+    background-color: #757575;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+/* --- NEW PROJECT DROPDOWN OVERRIDES --- */
+.main-header .new-project-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.main-header .dropdown-menu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 300px;
+    background-color: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.main-header .dropdown-menu.show {
+    display: flex;
+    animation: fadeInDown 0.25s ease;
+}
+
+.main-header .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--text-dark);
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.main-header .dropdown-item:hover {
+    background-color: rgba(10, 74, 63, 0.05);
+    transform: translateX(4px);
+}
+
+.main-header .dropdown-item i {
+    font-size: 18px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(10, 74, 63, 0.1);
+    border-radius: 6px;
+    color: var(--primary-color);
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.main-header .dropdown-item:hover i {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.dropdown-item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.item-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.item-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+/* Card Body */
+.card-body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ac-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.ac-client {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ac-meta {
+    margin-top: auto; /* Đẩy xuống đáy */
+    padding-top: 12px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #999;
+}
+
+.ac-meta i {
+    margin-right: 4px;
+}
+
+/* --- DROPDOWN STYLES --- */
+.sort-dropdown {
+    position: relative;
+}
+
+.sort-dropdown .dropdown-menu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    min-width: 200px;
+    background-color: white;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    z-index: 100;
+}
+
+.sort-dropdown .dropdown-menu.show {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+.sort-dropdown .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.sort-dropdown .dropdown-item:hover {
+    background-color: #F5F5F5;
+}
+
+.sort-dropdown .dropdown-item i {
+    font-size: 14px;
+    width: 16px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
