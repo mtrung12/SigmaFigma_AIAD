@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Profiles</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/dashboard.css" />
+		<link rel="stylesheet" href="css/my_profile.css" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+	</head>
+	<body>
+		<div class="container profile-page">
+			<main>
+				<section class="profile-section">
+					<div class="section-header">
+						<h2>Profile</h2>
+						<a class="icon-btn" href="edit_profile.html" aria-label="Edit profile">
+							<span class="material-symbols-outlined">edit</span>
+						</a>
+					</div>
+
+					<div class="profile-card" role="region" aria-label="Profile card">
+						<div class="avatar" aria-hidden="true">
+							<span class="material-symbols-outlined">person</span>
+						</div>
+						<p class="profile-name">Quynh Trinh</p>
+						<p class="profile-email">trinh.quinh12@gmail.com</p>
+						<a class="primary-pill" href="#">Explore Premium</a>
+					</div>
+				</section>
+
+				<section class="list-section">
+					<h2>Purchases</h2>
+					<a class="list-item" href="#">
+						<span class="material-symbols-outlined">diamond</span>
+						<span class="label">Premium</span>
+					</a>
+					<a class="list-item" href="#">
+						<span class="material-symbols-outlined">sell</span>
+						<span class="label">Giftcode</span>
+					</a>
+				</section>
+
+				<section class="list-section">
+					<h2>Help</h2>
+					<a class="list-item" href="#">
+						<span class="material-symbols-outlined">mail</span>
+						<span class="label">Report</span>
+					</a>
+					<a class="list-item" href="#">
+						<span class="material-symbols-outlined">info</span>
+						<span class="label">About</span>
+					</a>
+				</section>
+
+				<div class="logout-wrap">
+					<button class="logout-btn" type="button">Log out</button>
+				</div>
+			</main>
+		</div>
+
+		<footer>
+			<nav class="bottom-nav" aria-label="Bottom navigation">
+				<a href="create-project.html" class="fab" aria-label="Create project">
+					<span class="material-symbols-outlined">add</span>
+				</a>
+				<div class="nav-section left">
+					<a href="dashboard.html" class="nav-item">
+						<span class="material-symbols-outlined">home</span>
+						<p>Dashboard</p>
+					</a>
+					<a href="my-projects.html" class="nav-item">
+						<span class="material-symbols-outlined">construction</span>
+						<p>My Projects</p>
+					</a>
+					<a href="my_profile.html" class="nav-item active">
+						<span class="material-symbols-outlined">person</span>
+						<p>Profile</p>
+					</a>
+				</div>
+			</nav>
+		</footer>
+	</body>
+</html>
