@@ -7,11 +7,91 @@ body {
     /* Toàn bộ body nền màu Be để đồng nhất */
     background-color: var(--bg-color); 
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ========== HEADER ========== */
+.editor-header {
+    height: 60px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: white;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.editor-header .back-btn {
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    transition: transform 0.2s;
+    margin-bottom: 0;
+}
+.editor-header .back-btn:hover { 
+    transform: translateX(-3px); 
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #E0E0E0;
+}
+
+.project-name {
+    color: #E0E0E0;
+}
+
+.header-right { 
+    display: flex; 
+    gap: 10px; 
+}
+
+/* Header Buttons */
+.btn-editor-outline,
+.btn-editor-primary {
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-editor-outline {
+    background: transparent;
+    border: 1px solid #A3C2BD;
+    color: #A3C2BD;
+    font-weight: 500;
+}
+.btn-editor-outline:hover { 
+    border-color: white; 
+    color: white; 
+}
+
+.btn-editor-primary {
+    background-color: #E0E0E0;
+    color: var(--primary-color);
+    border: none;
+    font-weight: 600;
+}
+.btn-editor-primary:hover { 
+    background-color: white; 
 }
 
 .am-container {
     display: flex;
-    min-height: 100vh;
+    flex: 1;
 }
 
 /* --- LEFT SIDEBAR (Giữ nguyên màu Be) --- */
@@ -22,23 +102,10 @@ body {
     display: flex;
     flex-direction: column;
     position: fixed;
-    height: 100vh;
+    height: calc(100vh - 60px);
     left: 0;
-    top: 0;
+    top: 60px;
     z-index: 10;
-}
-
-.back-btn {
-    font-size: 24px;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    transition: transform 0.2s;
-    display: inline-block;
-    width: fit-content;
-}
-
-.back-btn:hover {
-    transform: translateX(-5px);
 }
 
 .sidebar-header h1 {
@@ -76,6 +143,7 @@ body {
 /* --- RIGHT CONTENT AREA --- */
 .am-content {
     margin-left: 320px;
+    margin-top: 60px;
     flex: 1;
     padding: 60px 80px;
     /* QUAN TRỌNG: Nền nội dung bây giờ là màu Be (giống Sidebar) */

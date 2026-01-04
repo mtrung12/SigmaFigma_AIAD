@@ -219,3 +219,100 @@
 .flex-gap-sm { gap: var(--spacing-sm); }
 .flex-gap-md { gap: var(--spacing-md); }
 .flex-gap-lg { gap: var(--spacing-lg); }
+
+/* --- USER PROFILE DROPDOWN (Menu thả xuống) --- */
+.user-menu-dropdown {
+    position: absolute;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 10px;
+    width: 220px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    display: none; /* Ẩn mặc định */
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.user-menu-dropdown.show {
+    display: flex;
+    animation: fadeIn 0.2s ease;
+}
+
+.user-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: white;
+    cursor: pointer;
+}
+
+.user-menu-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.user-menu-item i {
+    font-size: 18px;
+}
+
+/* --- LOGOUT MODAL (Thông báo xác nhận) --- */
+.logout-modal-content {
+    text-align: center;
+    padding: 40px 30px !important; /* Override padding mặc định */
+    max-width: 450px !important;
+}
+
+.logout-title {
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.logout-desc {
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+.logout-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-modal-action {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-cancel-logout {
+    background-color: #E0E0E0; /* Màu xám nhạt */
+    color: #333;
+}
+
+.btn-confirm-logout {
+    background-color: var(--primary-color); /* Màu xanh đậm */
+    color: white;
+}
+
+.btn-modal-action:hover {
+    opacity: 0.9;
+}

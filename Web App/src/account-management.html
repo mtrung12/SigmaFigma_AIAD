@@ -12,12 +12,18 @@
 </head>
 <body>
 
+    <!-- Header -->
+    <header class="editor-header">
+        <a href="javascript:history.back()" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-center">
+            <span class="project-name">Account Management</span>
+        </div>
+        <div class="header-right">
+        </div>
+    </header>
+
     <div class="am-container">
         <aside class="am-sidebar">
-            <a href="homepage.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-
             <div class="sidebar-header">
                 <h1>Account<br>Management</h1>
             </div>
@@ -182,9 +188,15 @@
 
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault();
                     navLinks.forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
+                    
+                    // Smooth scroll to section
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
                 });
             });
         });

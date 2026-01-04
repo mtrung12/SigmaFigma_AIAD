@@ -15,9 +15,35 @@
     <header class="navbar">
         <a href="homepage.html" class="logo">AIAD</a>
         <div class="user-profile">
-            <i class="fa-solid fa-circle-user"></i>
+            <i class="fa-solid fa-circle-user" id="userProfileIcon"></i>
+            
+            <!-- Profile Dropdown -->
+            <div class="profile-dropdown" id="profileDropdown">
+                <button class="dropdown-btn" onclick="window.location.href='account-management.html'">
+                    <i class="fa-solid fa-address-card"></i>
+                    <span>My Profile</span>
+                </button>
+                <button class="dropdown-btn" id="logoutBtn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
         </div>
     </header>
+    
+    <!-- Logout Confirmation Modal -->
+    <div class="logout-modal-overlay" id="logoutModal">
+        <div class="logout-modal">
+            <div class="logout-modal-top">
+                <div class="logout-title">Are you sure?</div>
+                <p class="logout-text">This will log you out everywhere<br>you are signed in.</p>
+            </div>
+            <div class="logout-modal-bottom">
+                <button class="btn-cancel" id="cancelLogout">Cancel</button>
+                <button class="btn-confirm" id="confirmLogout">Confirm</button>
+            </div>
+        </div>
+    </div>
 
     <main class="container">
         
@@ -339,6 +365,61 @@
     </script>
 
     <script>
+        // Profile dropdown and logout functionality
+        const userProfileIcon = document.getElementById('userProfileIcon');
+        const profileDropdown = document.getElementById('profileDropdown');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const logoutModal = document.getElementById('logoutModal');
+        const cancelLogout = document.getElementById('cancelLogout');
+        const confirmLogout = document.getElementById('confirmLogout');
+
+        // Toggle profile dropdown
+        if (userProfileIcon) {
+            userProfileIcon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdown.classList.toggle('active');
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.user-profile')) {
+                profileDropdown.classList.remove('active');
+            }
+        });
+
+        // Show logout confirmation
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                profileDropdown.classList.remove('active');
+                logoutModal.classList.add('active');
+            });
+        }
+
+        // Cancel logout
+        if (cancelLogout) {
+            cancelLogout.addEventListener('click', () => {
+                logoutModal.classList.remove('active');
+            });
+        }
+
+        // Confirm logout
+        if (confirmLogout) {
+            confirmLogout.addEventListener('click', () => {
+                // Add logout logic here
+                window.location.href = 'login.html';
+            });
+        }
+
+        // Close modal when clicking outside
+        if (logoutModal) {
+            logoutModal.addEventListener('click', (e) => {
+                if (e.target === logoutModal) {
+                    logoutModal.classList.remove('active');
+                }
+            });
+        }
+
         // Handle create new button
         const btnCreateNew = document.getElementById('btnCreateNewDashboard');
         const modal = document.getElementById('createModal');

@@ -41,10 +41,36 @@
                         <div class="user-name">Tailoduc04</div>
                         <div class="user-role">Architect</div>
                     </div>
-                    <a href="#" class="settings-btn"><i class="fa-solid fa-user-gear"></i></a>
+                    <button class="settings-btn" id="userSettingsBtn"><i class="fa-solid fa-user-gear"></i></button>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="profile-dropdown-sidebar" id="profileDropdownSidebar">
+                        <button class="dropdown-btn" onclick="window.location.href='account-management.html'">
+                            <i class="fa-solid fa-address-card"></i>
+                            <span>My Profile</span>
+                        </button>
+                        <button class="dropdown-btn" id="logoutBtnArch">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </aside>
+        
+        <!-- Logout Confirmation Modal -->
+        <div class="logout-modal-overlay" id="logoutModalArch">
+            <div class="logout-modal">
+                <div class="logout-modal-top">
+                    <div class="logout-title">Are you sure?</div>
+                    <p class="logout-text">This will log you out everywhere<br>you are signed in.</p>
+                </div>
+                <div class="logout-modal-bottom">
+                    <button class="btn-cancel" id="cancelLogoutArch">Cancel</button>
+                    <button class="btn-confirm" id="confirmLogoutArch">Confirm</button>
+                </div>
+            </div>
+        </div>
 
         <main class="main-content">
             
@@ -363,6 +389,60 @@
     </div>
 
     <script>
+        // Profile dropdown and logout functionality
+        const userSettingsBtn = document.getElementById('userSettingsBtn');
+        const profileDropdownSidebar = document.getElementById('profileDropdownSidebar');
+        const logoutBtnArch = document.getElementById('logoutBtnArch');
+        const logoutModalArch = document.getElementById('logoutModalArch');
+        const cancelLogoutArch = document.getElementById('cancelLogoutArch');
+        const confirmLogoutArch = document.getElementById('confirmLogoutArch');
+
+        // Toggle profile dropdown
+        if (userSettingsBtn) {
+            userSettingsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdownSidebar.classList.toggle('active');
+            });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.user-profile')) {
+                if (profileDropdownSidebar) profileDropdownSidebar.classList.remove('active');
+            }
+        });
+
+        // Show logout confirmation
+        if (logoutBtnArch) {
+            logoutBtnArch.addEventListener('click', () => {
+                profileDropdownSidebar.classList.remove('active');
+                logoutModalArch.classList.add('active');
+            });
+        }
+
+        // Cancel logout
+        if (cancelLogoutArch) {
+            cancelLogoutArch.addEventListener('click', () => {
+                logoutModalArch.classList.remove('active');
+            });
+        }
+
+        // Confirm logout
+        if (confirmLogoutArch) {
+            confirmLogoutArch.addEventListener('click', () => {
+                window.location.href = 'login.html';
+            });
+        }
+
+        // Close modal when clicking outside
+        if (logoutModalArch) {
+            logoutModalArch.addEventListener('click', (e) => {
+                if (e.target === logoutModalArch) {
+                    logoutModalArch.classList.remove('active');
+                }
+            });
+        }
+
         // Logic cho Start Project Modal
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('startProjectModal');
