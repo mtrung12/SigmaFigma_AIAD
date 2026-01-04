@@ -7,7 +7,12 @@ body.new-project-sheet--lock {
 
 .new-project-sheet-backdrop {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
   background: rgba(0, 0, 0, 0.35);
   opacity: 0;
   transition: opacity 180ms ease;
@@ -23,7 +28,8 @@ body.new-project-sheet--lock {
   left: 50%;
   bottom: 0;
   transform: translateX(-50%) translateY(100%);
-  width: min(440px, 100vw);
+  width: 100%;
+  max-width: 440px;
   background: var(--background-color);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
