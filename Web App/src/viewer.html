@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD Viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="css/viewer.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="editor-header">
+        <a href="javascript:history.back()" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-center">
+            <span class="project-name">project 1</span>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-editor-outline" id="btn-export">Export</button>
+            <button class="btn btn-editor-primary" onclick="window.location.href='normal-dashboard.html'">Save</button>
+        </div>
+    </header>
+
+    <!-- Main Viewer Layout -->
+    <div class="editor-body">
+        
+        <!-- Viewer Canvas -->
+        <main class="editor-canvas viewer-canvas" id="viewerCanvas">
+            <!-- Background Image Container -->
+            <div class="viewer-background" id="viewerBackground">
+                <img src="../imgs/viewer/2dbackground.png" alt="Room View" id="backgroundImage">
+            </div>
+            
+            <!-- View Switcher -->
+            <div class="view-switcher">
+                <button class="view-btn active" onclick="switchViewerMode('2d')" id="btn2D">2D</button>
+                <button class="view-btn" onclick="switchViewerMode('3d')" id="btn3D">3D</button>
+            </div>
+
+            <!-- AI Assistant -->
+            <div class="chat-window" id="sigmaChat">
+                <div class="chat-header">
+                    <div class="ai-info">
+                        <div class="ai-avatar-small">
+                            <img src="../imgs/editor/SigmaLogo.png" alt="Sigma">
+                        </div>
+                        <div class="ai-text">
+                            <h3>Sigma</h3>
+                            <p>your personal design assistant</p>
+                        </div>
+                    </div>
+                    <button class="close-chat" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                
+                <div class="chat-body">
+                    <div class="message ai-msg">
+                        <p>Hello! 🌟 I specialize in home improvement, interior design, and renovation advice.</p>
+                        <p>Ask me anything, and let's transform your home into a space you truly love! 🏡✨</p>
+                        <p>Here are some things I can help you with:</p>
+                        <ol>
+                            <li>Furnishing or decorating any room in a modern, minimalist, classic, or luxury style</li>
+                            <li>Redesigning kids' rooms to be functional, safe, and inspiring</li>
+                            <li>Creating stylish bedroom concepts and full project templates you can follow</li>
+                        </ol>
+                        <p>Just tell me what you need — I'm here to help bring your vision to life! 🎨🛋️✨</p>
+                    </div>
+
+                    <div class="message user-msg">
+                        <p>Hello</p>
+                    </div>
+
+                    <div class="message ai-msg">
+                        <p>Hi there! How can I assist you with your design project today? 😊</p>
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="prompt-input-wrapper">
+                        <textarea placeholder="Delete the chair in the corner"></textarea>
+                        <button class="btn-generate-sparkle">
+                            Generate <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sigma-fab" onclick="toggleChat()">
+                <img src="../imgs/editor/SigmaLogo.png" alt="Sigma AI">
+            </div>
+
+        </main>
+        
+        <!-- Side Panel for My Items -->
+        <div class="side-panel viewer-panel" id="viewerPanel">
+            <div class="panel-header">
+                <h3>My items</h3>
+                <button class="close-panel" onclick="closeViewerPanel()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="panel-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search">
+            </div>
+
+            <div class="panel-content">
+                <div class="grid-2-col">
+                    <div class="item-card no-label">
+                        <img src="../imgs/editor/outdoorFlow/11.png" alt="Grass">
+                    </div>
+                    <div class="item-card no-label">
+                        <img src="../imgs/editor/buildFlow/11.png" alt="Room">
+                    </div>
+                    <div class="item-card no-label">
+                        <img src="../imgs/editor/searchFlow/1.png" alt="Door">
+                    </div>
+                    <div class="item-card no-label">
+                        <img src="../imgs/editor/furnitureFlow/11.png" alt="Armchair">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Toggle Panel Button -->
+        <button class="toggle-panel-btn" id="togglePanelBtn" onclick="toggleViewerPanel()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal-overlay hidden" id="exportModal">
+        <div class="modal-box">
+            
+            <div class="modal-header">
+                <h3>Export Design</h3>
+                <button class="close-modal" id="closeExport"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="export-preview">
+                    <img src="../imgs/viewer/3dbackground.png" alt="Room Render Preview">
+                </div>
+
+                <div class="export-settings">
+                    <h4>File Settings</h4>
+                    
+                    <div class="form-group">
+                        <label>Filename</label>
+                        <input type="text" value="new_design">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Format</label>
+                        <div class="custom-select-wrapper">
+                            <select>
+                                <option value="dwg">dwg file</option>
+                                <option value="dxf">dxf file</option>
+                                <option value="pdf">pdf file</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-modal-cancel" id="cancelExport">Cancel</button>
+                <button class="btn-modal-save" onclick="window.location.href='normal-dashboard.html'">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/viewer.js"></script>
+</body>
+</html>
