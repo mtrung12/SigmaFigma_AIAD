@@ -186,67 +186,138 @@
       </div>
     </section>
 
+    <!-- Bottom sheet: Start new project (Architect) -->
+    <section
+      class="new-project-sheet new-project-sheet-architect"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="newProjectSheetTitleArch"
+      hidden
+    >
+      <header class="new-project-sheet__header">
+        <button class="new-project-sheet__close close-arch" type="button" aria-label="Close">
+          <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+        <h2 id="newProjectSheetTitleArch">Start new project</h2>
+        <span class="new-project-sheet__header-spacer" aria-hidden="true"></span>
+      </header>
+
+      <div class="new-project-sheet__content">
+        <!-- Option 1: Build from scratch -->
+        <div class="new-project-sheet__option" onclick="window.location.href='editor_architect.html'">
+          <span class="new-project-sheet__icon" aria-hidden="true">
+            <span class="material-symbols-outlined">draw</span>
+          </span>
+          <span class="new-project-sheet__text">
+            <span class="new-project-sheet__title">Build from scratch</span>
+            <span class="new-project-sheet__subtitle">
+              Design a custom plan from scratch using your own ideas.
+            </span>
+          </span>
+        </div>
+
+        <!-- Option 2: Start with a template -->
+        <div class="new-project-sheet__option" onclick="window.location.href='choose-template.html'">
+          <span class="new-project-sheet__icon" aria-hidden="true">
+            <span class="material-symbols-outlined">grid_view</span>
+          </span>
+          <span class="new-project-sheet__text">
+            <span class="new-project-sheet__title">Start with a template</span>
+            <span class="new-project-sheet__subtitle">
+              Start from a professionally designed template and make it your own.
+            </span>
+          </span>
+        </div>
+
+        <!-- Option 3: Generate from prompt -->
+        <div class="new-project-sheet__option" onclick="window.location.href='generate_architect.html'">
+          <span class="new-project-sheet__icon" aria-hidden="true">
+            <span class="material-symbols-outlined">auto_awesome</span>
+          </span>
+          <span class="new-project-sheet__text">
+            <span class="new-project-sheet__title">Generate from prompt</span>
+            <span class="new-project-sheet__subtitle">
+              Tell us your idea, and we’ll turn it into a ready-to-use design.
+            </span>
+          </span>
+        </div>
+      </div>
+    </section>
+
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const role = localStorage.getItem('user_role');
         const fab = document.getElementById('btn-add-project');
+        
+        // Elements for Homeuser Sheet
+        const sheetHome = document.querySelector('.new-project-sheet:not(.new-project-sheet-architect)');
+        const closeBtnHome = sheetHome ? sheetHome.querySelector('.new-project-sheet__close') : null;
 
-        // Architect keeps the architect flow.
-        if (role === 'architect') {
-          if (fab) fab.href = 'new_project_architect.html';
-          return;
-        }
+        // Elements for Architect Sheet
+        const sheetArch = document.querySelector('.new-project-sheet-architect');
+        const closeBtnArch = sheetArch ? sheetArch.querySelector('.new-project-sheet__close') : null;
 
-        // Homeuser: open the same bottom-sheet overlay as My Projects.
-        const sheet = document.querySelector('.new-project-sheet');
         const backdrop = document.querySelector('.new-project-sheet-backdrop');
-        const closeBtn = document.querySelector('.new-project-sheet__close');
-        if (!sheet || !backdrop || !closeBtn || !fab) return;
+
+        if (!backdrop || !fab) return;
 
         let lastActiveElement = null;
         let isOpen = false;
+        let activeSheet = null;
 
-        const openSheet = (triggerEl) => {
-          if (isOpen) return;
+        const openSheet = (sheetToOpen) => {
+          if (isOpen || !sheetToOpen) return;
           isOpen = true;
-          lastActiveElement = triggerEl || document.activeElement;
+          activeSheet = sheetToOpen;
+          lastActiveElement = fab || document.activeElement;
 
           backdrop.hidden = false;
-          sheet.hidden = false;
+          activeSheet.hidden = false;
           document.body.classList.add('new-project-sheet--lock');
 
           requestAnimationFrame(() => {
             backdrop.classList.add('is-open');
-            sheet.classList.add('is-open');
-            closeBtn.focus();
+            activeSheet.classList.add('is-open');
+            
+            // Focus close button
+            const closeBtn = activeSheet.querySelector('.new-project-sheet__close');
+            if (closeBtn) closeBtn.focus();
           });
         };
 
         const closeSheet = () => {
-          if (!isOpen) return;
+          if (!isOpen || !activeSheet) return;
           isOpen = false;
+          
           backdrop.classList.remove('is-open');
-          sheet.classList.remove('is-open');
+          activeSheet.classList.remove('is-open');
           document.body.classList.remove('new-project-sheet--lock');
 
+          const currentSheet = activeSheet; // Capture for closure
           const finish = () => {
             backdrop.hidden = true;
-            sheet.hidden = true;
-            sheet.removeEventListener('transitionend', finish);
+            currentSheet.hidden = true;
+            currentSheet.removeEventListener('transitionend', finish);
             if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
               lastActiveElement.focus();
             }
+            activeSheet = null;
           };
 
-          sheet.addEventListener('transitionend', finish);
+          activeSheet.addEventListener('transitionend', finish);
         };
 
         fab.addEventListener('click', (e) => {
           e.preventDefault();
-          openSheet(fab);
+          if (role === 'architect') {
+            openSheet(sheetArch);
+          } else {
+            openSheet(sheetHome);
+          }
         });
 
-        closeBtn.addEventListener('click', closeSheet);
+        if (closeBtnHome) closeBtnHome.addEventListener('click', closeSheet);
+        if (closeBtnArch) closeBtnArch.addEventListener('click', closeSheet);
         backdrop.addEventListener('click', closeSheet);
         document.addEventListener('keydown', (e) => {
           if (e.key === 'Escape') closeSheet();

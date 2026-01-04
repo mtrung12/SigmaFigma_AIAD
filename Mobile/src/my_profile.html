@@ -87,6 +87,21 @@
 
 		<script>
 			(function () {
+				// Update profile UI based on role
+				const role = localStorage.getItem('user_role');
+				if (role === 'architect') {
+					const nameEl = document.querySelector('.profile-name');
+					if (nameEl) {
+						// Append a simple badge or text
+						const badge = document.createElement('span');
+						badge.textContent = ' (Architect)';
+						badge.style.fontSize = '0.85em';
+						badge.style.fontWeight = '400';
+						badge.style.opacity = '0.8';
+						nameEl.appendChild(badge);
+					}
+				}
+
 				const logoutBtn = document.querySelector('.logout-btn');
 				if (!logoutBtn) return;
 
