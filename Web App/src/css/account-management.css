@@ -360,21 +360,134 @@ body {
 
 /* --- RESPONSIVE --- */
 @media (max-width: 1200px) {
-    .am-card { flex-direction: column; }
-    .card-left { padding: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .card-right { padding: 40px; }
-    .am-content { padding: 40px; }
+    .am-card { 
+        flex-direction: column; 
+    }
+    .card-left { 
+        flex: 1;
+        padding: 40px; 
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
+    }
+    .card-right { 
+        padding: 40px; 
+    }
+    .am-content { 
+        padding: 40px 30px; 
+    }
+    .grid-2-col {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .am-sidebar {
+        width: 280px;
+    }
+    .am-content {
+        margin-left: 280px;
+        padding: 40px 30px;
+    }
+    .sidebar-header h1 {
+        font-size: 36px;
+    }
 }
 
 @media (max-width: 768px) {
+    .editor-header {
+        padding: 0 15px;
+        height: 50px;
+    }
+    
+    .header-center {
+        font-size: 16px;
+    }
+    
+    .btn-editor-outline,
+    .btn-editor-primary {
+        padding: 5px 12px;
+        font-size: 13px;
+    }
+    
     .am-sidebar {
         position: relative;
         width: 100%;
         height: auto;
         padding: 20px;
+        top: 50px;
     }
+    
+    .sidebar-header h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
     .am-content {
         margin-left: 0;
-        padding: 20px;
+        margin-top: 0;
+        padding: 20px 15px;
+    }
+    
+    .card-left,
+    .card-right {
+        padding: 30px 20px;
+    }
+    
+    .card-left h2 {
+        font-size: 26px;
+    }
+    
+    .plan-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .editor-header .back-btn {
+        font-size: 18px;
+        padding: 8px;
+    }
+    
+    .header-center {
+        font-size: 14px;
+        gap: 6px;
+    }
+    
+    .header-right {
+        gap: 5px;
+    }
+    
+    .btn-editor-outline {
+        display: none;
+    }
+    
+    .sidebar-header h1 {
+        font-size: 24px;
+    }
+    
+    .nav-item {
+        font-size: 16px;
+    }
+    
+    .card-left h2 {
+        font-size: 22px;
+    }
+    
+    .section-desc {
+        font-size: 14px;
+    }
+    
+    .input-box {
+        min-height: 55px;
+        padding: 6px 12px;
+    }
+    
+    .input-box input {
+        font-size: 16px;
+    }
+    
+    .social-connect-btn {
+        padding: 12px;
+        font-size: 14px;
     }
 }

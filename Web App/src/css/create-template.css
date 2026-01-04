@@ -196,3 +196,116 @@
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .template-form {
+        max-width: 800px;
+        padding: 35px;
+    }
+}
+
+@media (max-width: 992px) {
+    .template-form {
+        max-width: 700px;
+        padding: 30px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .template-form {
+        width: 95%;
+        padding: 25px 20px;
+        margin: 20px auto;
+    }
+    
+    .form-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 15px;
+    }
+    
+    .upload-zone {
+        padding: 30px 15px;
+    }
+    
+    .upload-icon {
+        font-size: 36px;
+        margin-bottom: 12px;
+    }
+    
+    .upload-text {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .template-form {
+        width: 100%;
+        padding: 20px 15px;
+        margin: 15px auto;
+        border-radius: 12px;
+    }
+    
+    .form-title {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .form-group label {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .upload-zone {
+        padding: 25px 10px;
+    }
+    
+    .upload-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    
+    .upload-text {
+        font-size: 13px;
+    }
+    
+    .upload-hint {
+        font-size: 11px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-cancel,
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+    }
+}

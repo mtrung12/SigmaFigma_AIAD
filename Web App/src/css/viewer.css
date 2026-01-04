@@ -119,3 +119,80 @@
 .viewer-canvas.mode-2d .viewer-background img {
     transform: scale(1);
 }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .viewer-controls {
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .viewer-controls {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 20px;
+    }
+    
+    .control-group {
+        gap: 8px;
+    }
+    
+    .control-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .viewer-controls {
+        padding: 10px 15px;
+    }
+    
+    .control-group {
+        gap: 6px;
+    }
+    
+    .control-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .view-title {
+        font-size: 14px;
+    }
+    
+    .viewer-canvas {
+        height: calc(100vh - 60px);
+    }
+}
+
+@media (max-width: 480px) {
+    .viewer-controls {
+        padding: 8px 10px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .control-group {
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .control-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 13px;
+    }
+    
+    .view-title {
+        font-size: 13px;
+        text-align: center;
+    }
+    
+    .viewer-canvas {
+        height: calc(100vh - 100px);
+    }
+}

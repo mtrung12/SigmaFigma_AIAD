@@ -1000,3 +1000,117 @@ body {
 .btn-modal-save:disabled:hover {
     background: #ccc;
 }
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 250px;
+    }
+    
+    .canvas-container {
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .canvas-container {
+        margin-left: 220px;
+    }
+    
+    .tool-item span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .editor-header {
+        padding: 0 10px;
+        height: 50px;
+    }
+    
+    .header-center {
+        font-size: 14px;
+        gap: 6px;
+    }
+    
+    .btn-editor-outline,
+    .btn-editor-primary {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+    
+    .sidebar {
+        width: 60px;
+    }
+    
+    .canvas-container {
+        margin-left: 60px;
+        margin-top: 50px;
+    }
+    
+    .tool-item {
+        flex-direction: column;
+        padding: 10px 5px;
+        gap: 4px;
+    }
+    
+    .tool-item i {
+        font-size: 18px;
+    }
+    
+    .tool-item span {
+        font-size: 9px;
+    }
+    
+    .properties-panel {
+        width: 100%;
+        right: 0;
+        max-height: 40vh;
+        bottom: 0;
+        top: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .editor-header {
+        padding: 0 8px;
+        height: 45px;
+    }
+    
+    .header-center {
+        font-size: 12px;
+    }
+    
+    .btn-editor-outline {
+        display: none;
+    }
+    
+    .btn-editor-primary {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+    
+    .sidebar {
+        width: 50px;
+    }
+    
+    .canvas-container {
+        margin-left: 50px;
+        margin-top: 45px;
+    }
+    
+    .tool-item {
+        padding: 8px 4px;
+    }
+    
+    .tool-item i {
+        font-size: 16px;
+    }
+    
+    .tool-item span {
+        display: none;
+    }
+}

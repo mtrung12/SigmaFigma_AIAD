@@ -472,4 +472,121 @@
     .idea-card {
         min-width: 220px;
     }
+}}
+
+@media (max-width: 1200px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    
+    .hero-banner {
+        height: 280px;
+    }
+    
+    .prompt-box {
+        width: 70%;
+        padding: 20px 25px;
+    }
+}
+
+@media (max-width: 992px) {
+    .prompt-box {
+        width: 80%;
+    }
+    
+    .prompt-box textarea {
+        font-size: 16px;
+        height: 50px;
+    }
+    
+    .idea-card {
+        min-width: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .user-profile i {
+        font-size: 28px;
+    }
+    
+    .hero-banner {
+        height: 200px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+    }
+    
+    .prompt-box {
+        width: 95%;
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .prompt-box textarea {
+        font-size: 14px;
+        height: 40px;
+    }
+    
+    .btn-generate {
+        padding: 7px 16px;
+        font-size: 13px;
+    }
+    
+    .content-section {
+        margin-bottom: 30px;
+    }
+    
+    .section-header {
+        margin-bottom: 15px;
+    }
+    
+    .section-header h2 {
+        font-size: 18px;
+    }
+    
+    .see-all {
+        font-size: 14px;
+    }
+    
+    .card-carousel {
+        gap: 16px;
+    }
+    
+    .idea-card {
+        min-width: 180px;
+    }
+    
+    .card-img {
+        height: 150px;
+        border-radius: 12px;
+    }
+    
+    .card-title {
+        font-size: 13px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .modal-header h3 {
+        font-size: 18px;
+    }
+    
+    .option-btn {
+        padding: 14px 18px;
+        font-size: 14px;
+        gap: 12px;
+    }
+    
+    .option-btn i {
+        font-size: 20px;
+    }
 }

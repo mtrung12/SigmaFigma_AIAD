@@ -376,3 +376,63 @@
 .btn-generate-ai:hover {
     background-color: #5D4037;
 }
+/* Responsive Design for Project Modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-width: 95%;
+        padding: 25px;
+    }
+    
+    .modal-header h3 {
+        font-size: 20px;
+    }
+    
+    .close-modal {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 100%;
+        padding: 20px 15px;
+        border-radius: 12px;
+    }
+    
+    .modal-header {
+        margin-bottom: 20px;
+    }
+    
+    .modal-header h3 {
+        font-size: 18px;
+    }
+    
+    .close-modal {
+        font-size: 20px;
+    }
+    
+    .modal-body {
+        padding: 0;
+    }
+    
+    .form-group label {
+        font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .modal-actions button {
+        width: 100%;
+    }
+}

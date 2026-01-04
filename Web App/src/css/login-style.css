@@ -581,3 +581,159 @@ body {
     height: 1px;
     background-color: #666;
 }
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 3%;
+    }
+    
+    .hero-text h2 {
+        font-size: 60px;
+    }
+    
+    .hero-text h1 {
+        font-size: 85px;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        padding: 30px;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-text h2 {
+        font-size: 50px;
+    }
+    
+    .hero-text h1 {
+        font-size: 70px;
+    }
+    
+    .login-card,
+    .forgot-card {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        align-items: flex-start;
+    }
+    
+    .container {
+        padding: 20px;
+        gap: 30px;
+    }
+    
+    .hero-text {
+        min-width: auto;
+    }
+    
+    .hero-text h2 {
+        font-size: 40px;
+        margin-bottom: -5px;
+    }
+    
+    .hero-text h1 {
+        font-size: 55px;
+    }
+    
+    .login-card,
+    .forgot-card {
+        padding: 35px 30px;
+        width: 100%;
+    }
+    
+    .card-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+    
+    .forgot-card .card-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        gap: 20px;
+    }
+    
+    .hero-text h2 {
+        font-size: 30px;
+        margin-bottom: 0;
+    }
+    
+    .hero-text h1 {
+        font-size: 40px;
+    }
+    
+    .login-card,
+    .forgot-card {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+    
+    .card-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .forgot-card .card-title {
+        font-size: 22px;
+    }
+    
+    .form-group {
+        margin-bottom: 18px;
+    }
+    
+    .form-group input {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    .btn-signin {
+        padding: 13px;
+        font-size: 16px;
+    }
+    
+    .social-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .divider {
+        margin: 15px 0;
+        font-size: 13px;
+    }
+    
+    .register-prompt {
+        font-size: 14px;
+    }
+    
+    .instruction-text {
+        font-size: 14px;
+    }
+    
+    .btn-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .btn-cancel,
+    .btn-search {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+    }
+}

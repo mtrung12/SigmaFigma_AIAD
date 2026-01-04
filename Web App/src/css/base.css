@@ -57,6 +57,19 @@
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
+    
+    /* Responsive Breakpoints */
+    --breakpoint-xs: 480px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+    
+    /* Responsive Spacing */
+    --container-padding-mobile: 15px;
+    --container-padding-tablet: 30px;
+    --container-padding-desktop: 40px;
 }
 
 /* Global Reset */
@@ -72,6 +85,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-medium);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* Common Utility Classes */
@@ -118,6 +132,26 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Responsive Container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--container-padding-desktop);
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 var(--container-padding-tablet);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--container-padding-mobile);
+    }
 }
 
 /* Scrollbar Styling (Optional) */

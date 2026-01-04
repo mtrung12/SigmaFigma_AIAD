@@ -691,3 +691,191 @@ main {
         max-width: 100%;
     }
 }
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
+    header {
+        padding: 20px 30px;
+    }
+    
+    .hero-section {
+        min-height: 500px;
+    }
+    
+    .content-left {
+        padding-left: 3%;
+    }
+}
+
+@media (max-width: 992px) {
+    header {
+        padding: 15px 25px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .nav-links a {
+        font-size: 16px;
+    }
+    
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    
+    .content-left,
+    .content-right {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .text-wrapper {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-card {
+        width: 100%;
+        max-width: 450px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 12px 20px;
+        height: 70px;
+    }
+    
+    .header-left {
+        gap: 20px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .header-right {
+        gap: 10px;
+    }
+    
+    .btn {
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+    
+    main {
+        padding-top: 70px;
+    }
+    
+    .hero-section {
+        padding: 30px 15px;
+        margin-bottom: 30px;
+    }
+    
+    .content-left {
+        padding: 15px;
+    }
+    
+    .text-wrapper h1 {
+        font-size: 2rem;
+    }
+    
+    .text-wrapper h2 {
+        font-size: 1.5rem;
+    }
+    
+    .btn-lg {
+        padding: 12px 30px;
+        font-size: 1.2rem;
+    }
+    
+    section {
+        padding: 40px 20px;
+    }
+    
+    h2.section-title {
+        font-size: 2rem;
+    }
+    
+    .pricing-card {
+        max-width: 100%;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 15px;
+        height: 60px;
+    }
+    
+    .logo {
+        font-size: 18px;
+    }
+    
+    .btn {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+    
+    main {
+        padding-top: 60px;
+    }
+    
+    .hero-section {
+        padding: 20px 10px;
+        margin-bottom: 20px;
+    }
+    
+    .text-wrapper h1 {
+        font-size: 1.5rem;
+    }
+    
+    .text-wrapper h2 {
+        font-size: 1.2rem;
+    }
+    
+    .btn-lg {
+        padding: 10px 24px;
+        font-size: 1rem;
+    }
+    
+    section {
+        padding: 30px 15px;
+    }
+    
+    h2.section-title {
+        font-size: 1.5rem;
+    }
+    
+    .pricing-card {
+        padding: 25px 20px;
+    }
+    
+    .price-box .amount {
+        font-size: 2.5rem;
+    }
+    
+    .price-box .period {
+        font-size: 1.2rem;
+    }
+    
+    .btn-plan {
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+    
+    .card-features ul li {
+        font-size: 0.85rem;
+        gap: 10px;
+    }
+}

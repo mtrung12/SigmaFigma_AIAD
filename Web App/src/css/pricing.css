@@ -1,0 +1,85 @@
+
+/* Responsive Design for Pricing Page */
+@media (max-width: 1200px) {
+    .pricing-container {
+        gap: 20px;
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .pricing-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .pricing-card {
+        width: 100%;
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-container {
+        padding: 30px 20px;
+    }
+    
+    .pricing-card {
+        max-width: 100%;
+        padding: 30px 25px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .price-box .amount {
+        font-size: 2.5rem;
+    }
+    
+    .price-box .period {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-container {
+        padding: 20px 15px;
+    }
+    
+    .pricing-card {
+        padding: 25px 20px;
+        border-radius: 16px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .price-box .amount {
+        font-size: 2rem;
+    }
+    
+    .price-box .period {
+        font-size: 1.1rem;
+    }
+    
+    .plan-desc {
+        font-size: 0.9rem;
+    }
+    
+    .btn-plan {
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+    
+    .card-features ul li {
+        font-size: 0.85rem;
+        gap: 10px;
+    }
+    
+    .features-title {
+        font-size: 1rem;
+    }
+}
