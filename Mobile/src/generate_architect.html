@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Screen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="css/generate_architect.css">
+</head>
+<body>
+
+    <div class="generate-container">
+        
+        <!-- Background Grid -->
+        <div class="grid-background"></div>
+
+        <!-- Sidebar Icons (Right) -->
+        <aside class="floating-sidebar">
+            
+            <div class="tool-group white-bg">
+                <div class="tool-badge-2d">3D</div>
+                <button class="tool-btn"><span class="material-symbols-outlined">ios_share</span></button>
+                <button class="tool-btn"><span class="material-symbols-outlined">layers</span></button>
+                <button class="tool-btn"><span class="material-symbols-outlined">more_horiz</span></button>
+            </div>
+
+            <div class="tool-group green-bg">
+                <button class="tool-btn white-icon"><span class="material-symbols-outlined">save</span></button>
+            </div>
+
+            <div class="tool-group white-bg">
+                <button class="tool-btn"><span class="material-symbols-outlined">auto_fix_high</span></button>
+            </div>
+
+        </aside>
+
+        <!-- Close Button (Outside) -->
+        <div class="close-btn-container" onclick="window.history.back()">
+            <div class="close-btn-bg">
+                <span class="material-symbols-outlined">close</span>
+            </div>
+        </div>
+
+        <!-- Main Generate Modal -->
+        <div class="generate-screen-box">
+
+            <!-- Scrollable Content -->
+            <div class="scroll-content">
+                
+                <!-- Header Title -->
+                <div style="width: 100%; text-align: center; margin-top: 20px; margin-bottom: 10px;">
+                    <span style="font-family: 'Inter'; font-weight: 700; font-size: 20px;">Generate Screen</span>
+                </div>
+
+                <!-- Section 1: Room Shape -->
+                <div class="section-card" style="height: 102px;">
+                    <div class="section-title">Room shape</div>
+                    <div class="shape-inputs-row">
+                        <div class="shape-input-group">
+                            <span class="input-label">W:</span>
+                            <input type="text" class="shape-input-field">
+                        </div>
+                        <div class="shape-input-group">
+                            <span class="input-label">L:</span>
+                            <input type="text" class="shape-input-field">
+                        </div>
+                        <div class="shape-input-group">
+                            <span class="input-label">H:</span>
+                            <input type="text" class="shape-input-field">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Room Layout -->
+                <div class="section-card" style="height: 367px;">
+                    <div class="section-title">Room layout</div>
+                    <div class="layout-grid">
+                        <div class="layout-item"><img src="https://placehold.co/200x100?text=L-Shape" alt="L-Shape"></div>
+                        <div class="layout-item"><img src="https://placehold.co/200x100?text=Rect" alt="Rect"></div>
+                        <div class="layout-item"><img src="https://placehold.co/200x100?text=Square" alt="Square"></div>
+                        <div class="layout-item"><img src="https://placehold.co/200x100?text=Custom" alt="Custom"></div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Blueprint -->
+                <div class="section-card" style="height: 314px;">
+                    <div class="section-title">Blueprint</div>
+                    <div class="upload-container">
+                        <span class="upload-text">Upload the blueprint</span>
+                    </div>
+                </div>
+
+                <!-- Section 4: References -->
+                <div class="section-card" style="height: 314px;">
+                    <div class="section-title">References</div>
+                    <div class="upload-container">
+                        <span class="upload-text">Upload picture of a room</span>
+                    </div>
+                </div>
+
+                <!-- Section 5: Ideas -->
+                <div class="section-card" style="height: 286px;">
+                    <div class="section-title">Ideas</div>
+                    <div class="ideas-container">
+                        <textarea class="ideas-textarea" placeholder="Describe your idea..."></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Generate Button (Fixed at bottom) -->
+            <div class="generate-btn-container">
+                <span class="generate-btn-text">Generate</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
