@@ -33,6 +33,46 @@ body {
   border-radius: 16px;
   border: 2px solid #1f3f37;
   padding: 20px 0 10px 0;
+  
+  /* Flex layout for scrolling */
+  display: flex;
+  flex-direction: column;
+  height: 95%; /* Take up most of the frame height */
+  max-height: 900px;
+}
+
+/* Scrollable Content */
+.scrollable-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0; /* Important for flex scrolling */
+  margin-bottom: 10px;
+  padding-right: 5px; /* Avoid content touching scrollbar */
+}
+
+/* Custom Scrollbar */
+.scrollable-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb {
+  background: #8fa7a0;
+  border-radius: 10px;
+}
+
+.scrollable-content::-webkit-scrollbar-thumb:hover {
+  background: #4f9a8b;
+}
+
+/* Fixed Bottom */
+.fixed-bottom {
+  flex-shrink: 0;
+  width: 100%;
 }
 
 /* Title */
@@ -42,6 +82,7 @@ body {
   font-size: 22px;
   font-weight: 700;
   color: #1f3f37;
+  flex-shrink: 0;
 }
 
 .register-card h2::after {
