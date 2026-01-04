@@ -510,12 +510,28 @@
             });
         });
 
-        // Xử lý nút Use template (Giả lập)
+        // Xử lý nút Use template
         document.querySelectorAll('.btn-use-template').forEach(btn => {
             btn.addEventListener('click', () => {
-                // Logic thực tế sẽ điều hướng sang trang Editor
-                alert('Loading template into Editor...');
-                window.location.href = 'architect-dashboard.html'; // Hoặc trang Editor nếu có
+                // Check sessionStorage for user type, fallback to referrer
+                const userType = sessionStorage.getItem('userType');
+                const referrer = document.referrer;
+                
+                let destination = 'editor.html'; // default for architects
+                
+                // Check sessionStorage first (more reliable)
+                if (userType === 'normal') {
+                    destination = 'viewer.html';
+                } else if (userType === 'architect') {
+                    destination = 'editor.html';
+                }
+                // Fallback to referrer check if sessionStorage not set
+                else if (referrer.includes('normal-dashboard.html') || referrer.includes('normal-my-projects.html')) {
+                    destination = 'viewer.html';
+                }
+                
+                console.log('User Type:', userType, 'Referrer:', referrer, 'Destination:', destination);
+                window.location.href = destination;
             });
         });
     </script>
