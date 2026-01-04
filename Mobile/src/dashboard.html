@@ -213,7 +213,7 @@
         <div class="notification-item">
           <div class="notification-header">
             <span class="red-dot"></span>
-            <span>From alexander36</span>
+            <button type="button" class="notification-from-link" data-open-editor="true">From alexander36</button>
           </div>
           <div class="notification-body">
             <span class="material-symbols-outlined">person</span>
@@ -474,6 +474,16 @@
           if (notifClose) notifClose.addEventListener('click', closeNotif);
           notifBackdrop.addEventListener('click', closeNotif);
         }
+
+        // --- Notification: role-aware editor navigation ---
+        document.querySelectorAll('[data-open-editor="true"]').forEach((el) => {
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const role = localStorage.getItem('user_role');
+            const editorPage = role === 'architect' ? 'editor_architect.html' : 'editor_normaluser.html';
+            window.location.href = editorPage;
+          });
+        });
 
         // --- Premium Overlay Logic ---
         const premiumBtn = document.getElementById('btn-premium');

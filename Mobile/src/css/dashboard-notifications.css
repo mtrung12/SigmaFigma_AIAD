@@ -97,6 +97,23 @@
   font-size: 0.9rem;
 }
 
+.notification-from-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.notification-from-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .red-dot {
   width: 8px;
   height: 8px;
