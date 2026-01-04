@@ -85,13 +85,91 @@
         .btn-create-final:hover {
             background-color: #0A4A3F;
         }
+
+        /* Selection styles */
+        .pricing-card {
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            border: 3px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.selected {
+            border-color: #1B7F6B;
+            box-shadow: 0 8px 24px rgba(27, 127, 107, 0.2);
+        }
+
+        .selection-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #1B7F6B;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .pricing-card.selected .selection-badge {
+            display: flex;
+        }
+
+        .btn-plan.select {
+            background-color: transparent;
+            border: 2px solid #1B7F6B;
+            color: #1B7F6B;
+        }
+
+        .btn-plan.select:hover {
+            background-color: #1B7F6B;
+            color: white;
+        }
+
+        .pricing-card.selected .btn-plan.select {
+            background-color: #1B7F6B;
+            color: white;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .page-title p {
+            font-size: 16px;
+            color: #666;
+        }
     </style>
 </head>
 <body>
 
+    <div class="page-title">
+        <h1>Choose Your Plan</h1>
+        <p>Select a plan to continue with your registration</p>
+    </div>
+
     <div class="pricing-selection-wrapper">
         
-        <div class="pricing-card">
+        <div class="pricing-card" data-plan="premium">
+            <div class="selection-badge">
+                <i class="fa-solid fa-check"></i>
+            </div>
             <div class="card-top">
                 <h2 class="plan-name">Premium</h2>
                 <div class="price-box">
@@ -101,7 +179,7 @@
                 </div>
                 <p class="plan-desc">Pay 59.99 annually or 19.99 per month</p>
                 
-                <button class="btn-plan primary">Buy</button>
+                <button class="btn-plan select" onclick="event.stopPropagation()">Select Plan</button>
             </div>
 
             <div class="card-features">
@@ -114,7 +192,10 @@
             </div>
         </div>
 
-        <div class="pricing-card">
+        <div class="pricing-card" data-plan="professional">
+            <div class="selection-badge">
+                <i class="fa-solid fa-check"></i>
+            </div>
             <div class="card-top">
                 <h2 class="plan-name">Professional</h2>
                 <div class="price-box">
@@ -124,7 +205,7 @@
                 </div>
                 <p class="plan-desc">Pay 399.99 annually or 49.99 per month</p>
                 
-                <button class="btn-plan primary">Buy</button>
+                <button class="btn-plan select" onclick="event.stopPropagation()">Select Plan</button>
             </div>
 
             <div class="card-features">
@@ -142,8 +223,40 @@
 
     <div class="step-navigation">
         <button class="btn-prev" onclick="history.back()">CANCEL</button>
-        <button class="btn-create-final" onclick="window.location.href='architect-dashboard.html'">COMPLETE</button>
+        <button class="btn-create-final" id="completeBtn" onclick="proceedToBilling()">COMPLETE</button>
     </div>
+
+    <script>
+        let selectedPlan = null;
+
+        // Handle card selection
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove selected class from all cards
+                document.querySelectorAll('.pricing-card').forEach(c => c.classList.remove('selected'));
+                
+                // Add selected class to clicked card
+                this.classList.add('selected');
+                
+                // Store selected plan
+                selectedPlan = this.getAttribute('data-plan');
+            });
+        });
+
+        function proceedToBilling() {
+            if (!selectedPlan) {
+                alert('Please select a plan to continue');
+                return;
+            }
+            
+            sessionStorage.setItem('userType', 'architect');
+            sessionStorage.setItem('selectedPlan', selectedPlan);
+            window.location.href = 'architect-dashboard.html';
+        }
+
+        // Select first plan by default
+        document.querySelector('.pricing-card[data-plan="premium"]').click();
+    </script>
 
 </body>
 </html>

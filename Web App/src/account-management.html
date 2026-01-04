@@ -247,7 +247,7 @@
                                     <label>CURRENT PLAN</label>
                                     <div class="plan-value">FREE</div>
                                 </div>
-                                <button type="button" class="btn-upgrade">UPGRADE</button>
+                                <button type="button" class="btn-upgrade" id="upgradeBtn" onclick="window.location.href='register-architect-pricing.html'">UPGRADE</button>
                             </div>
                             
                             <div class="form-actions">
@@ -298,6 +298,24 @@
             const logoutModal = document.getElementById('logoutModal');
             const cancelLogout = document.getElementById('cancelLogout');
             const confirmLogout = document.getElementById('confirmLogout');
+
+            // Check user type and hide upgrade button for architects
+            const userType = sessionStorage.getItem('userType');
+            const upgradeBtn = document.getElementById('upgradeBtn');
+            const planValue = document.querySelector('.plan-value');
+            
+            if (userType === 'architect') {
+                // Hide upgrade button for architects (already on Pro plan)
+                if (upgradeBtn) {
+                    upgradeBtn.style.display = 'none';
+                }
+                // Update plan display to PRO
+                if (planValue) {
+                    planValue.textContent = 'PRO';
+                    planValue.style.color = '#10b981'; // green color
+                    planValue.style.fontWeight = '600';
+                }
+            }
 
             if (logoutBtn) {
                 logoutBtn.addEventListener('click', () => {

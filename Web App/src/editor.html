@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIAD Editor</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/editor.css">
 </head>
 <body>
-    <!-- Header -->
+
     <header class="editor-header">
         <a href="javascript:history.back()" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="header-center">
@@ -18,14 +19,14 @@
             <i class="fa-solid fa-pen edit-icon"></i>
         </div>
         <div class="header-right">
+            <button class="btn btn-editor-outline" id="btn-import">Import</button>
             <button class="btn btn-editor-outline" id="btn-export">Export</button>
             <button class="btn btn-editor-primary" onclick="window.location.href='architect-dashboard.html'">Save</button>
         </div>
     </header>
 
-    <!-- Main Editor Layout -->
     <div class="editor-body">
-        <!-- Sidebar Tools -->
+        
         <aside class="editor-sidebar">
             <div class="tool-item active"><i class="fa-solid fa-magnifying-glass"></i></div>
             <div class="tool-item"><i class="fa-solid fa-house"></i></div>
@@ -34,8 +35,8 @@
             <div class="tool-item user-tool"><i class="fa-solid fa-user-group"></i></div>
         </aside>
 
-        <!-- Side Panel -->
         <div class="side-panel" id="sidePanel">
+    
             <div class="panel-header">
                 <h3 id="panelTitle">Build</h3>
                 <button class="close-panel" onclick="closePanel()"><i class="fa-solid fa-xmark"></i></button>
@@ -46,7 +47,6 @@
                 <input type="text" placeholder="Search">
             </div>
 
-            <!-- Search Panel Content -->
             <div class="panel-content" id="panel-search">
         
                 <div id="search-suggestions">
@@ -84,7 +84,6 @@
                 </div>
             </div>
 
-            <!-- Build Panel Content -->
             <div class="panel-content hidden" id="panel-build">
         
                 <div id="build-categories">
@@ -138,7 +137,6 @@
 
             </div>
 
-            <!-- Furnish Panel Content -->
             <div class="panel-content hidden" id="panel-furnish">
 
                 <div id="furnish-categories">
@@ -210,8 +208,7 @@
                 </div>
 
             </div>
-!-- Outdoor Panel Content -->
-            <
+
             <div class="panel-content hidden" id="panel-outdoor">
         
                 <div id="outdoor-categories">
@@ -277,35 +274,35 @@
 
             </div>
             
-            <!-- My Items Panel Content -->
             <div class="panel-content hidden" id="panel-user">
                 <h4 style="margin-bottom: 15px;">My items</h4>
                 <div class="grid-2-col">
                     <div class="item-card no-label item-selectable" id="btn-my-grass">
-                        <img src="../imgs/editor/outdoorFlow/11.png" alt="Grass">
+                        <img src="../imgs/editor/outdoorFlow/11.png" alt="Grass" onerror="this.src='https://via.placeholder.com/150/5D8C48/FFFFFF?text=Grass'">
                     </div>
+                    
                     <div class="item-card no-label item-selectable" id="btn-my-room">
-                        <img src="../imgs/editor/buildFlow/11.png" alt="Room">
+                        <img src="../imgs/editor/buildFlow/11.png" alt="Room" onerror="this.src='https://via.placeholder.com/150/E6CFA0/555555?text=Room'">
                     </div>
+                    
                     <div class="item-card no-label item-selectable" id="btn-my-door">
-                        <img src="../imgs/editor/searchFlow/1.png" alt="Door">
+                        <img src="../imgs/editor/searchFlow/1.png" alt="Door" onerror="this.src='https://via.placeholder.com/150/E0E0E0/333333?text=Door'">
                     </div>
+                    
                     <div class="item-card no-label item-selectable" id="btn-my-armchair">
-                        <img src="../imgs/editor/furnitureFlow/11.png" alt="Armchair">
+                        <img src="../imgs/editor/furnitureFlow/11.png" alt="Armchair" onerror="this.src='https://via.placeholder.com/150/333333/FFFFFF?text=Chair'">
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <!-- Canvas -->
         <main class="editor-canvas" id="mainCanvas">
             <div class="grid-floor"></div>
 
             <!-- Canvas objects using new class system with CSS variables for easy positioning -->
             <div id="placed-object-2d" class="canvas-object wood-filter hidden" style="--obj-size: 80px; --obj-x: 57.2%;">
-                <img srcObjects -->
-            <div id="placed-object-2d" class="canvas-object wood-filter hidden" style="--obj-size: 80px; --obj-x: 57.2%;">
-                <img src="../imgs/editor/searchFlow/door-object.png" alt="Door">
+                <img src="../imgs/editor/searchFlow/door-object.png" alt="2D Door">
             </div>
 
             <div id="placed-room" class="canvas-room hidden" style="--obj-size: 250px;">
@@ -313,24 +310,25 @@
             </div>
 
             <div id="placed-armchair" class="canvas-object z-high hidden" style="--obj-size: 100px; --obj-y: 40%;">
-                <img src="../imgs/editor/furnitureFlow/21.png" alt="Armchair">
+                <img src="../imgs/editor/furnitureFlow/21.png" alt="Armchair Top View">
             </div>
 
             <div id="placed-grass" class="canvas-object z-low hidden" style="--obj-size: 350px;">
-                <img src="../imgs/editor/outdoorFlow/21.png" alt="Grass">
+                <img src="../imgs/editor/outdoorFlow/21.png" alt="Grass Top View">
             </div>
             
+            <!-- 3D Room View -->
             <div id="view-3d-room" class="canvas-3d-room hidden">
-                <img src="../imgs/editor/3droom.png" alt="3D Room">
+                <img src="../imgs/editor/3droom.png" alt="3D Room View">
             </div>
             
-            <!-- View Switcher -->
             <div class="view-switcher">
                 <button class="view-btn active" onclick="switchView('2d')" id="btn2D">2D</button>
                 <button class="view-btn" onclick="switchView('3d')" id="btn3D">3D</button>
             </div>
 
-            <!-- AI Assistant -->                
+            <div class="sigma-ai-container">
+                
                 <div class="chat-window" id="sigmaChat">
                     <div class="chat-header">
                         <div class="ai-info">
@@ -377,7 +375,7 @@
                     </div>
                 </div>
 
-                <button class="clear-canvas-btn" onclick="clearAllCanvasObjects()" title="Clear all">
+                <button class="clear-canvas-btn" onclick="clearAllCanvasObjects()" title="Clear all objects">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
 
@@ -386,9 +384,43 @@
                 </div>
             </div>
         </main>
+
     </div>
 
-    <!-- Export Modal -->
+    <div class="modal-overlay hidden" id="importModal">
+        <div class="modal-box">
+            
+            <div class="modal-header">
+                <h3>Import Objects</h3>
+                <button class="close-modal" id="closeImport"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="import-upload-area">
+                    <div class="upload-dropzone" id="uploadDropzone">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Drag and drop files here</p>
+                        <p class="upload-hint">or</p>
+                        <button class="btn btn-editor-outline" id="btnBrowseFiles">Browse Files</button>
+                        <input type="file" id="fileInput" accept=".obj,.fbx,.dwg,.dxf,.3ds,.stl" multiple hidden>
+                        <p class="upload-formats">Supported formats: OBJ, FBX, DWG, DXF, 3DS, STL</p>
+                    </div>
+                </div>
+
+                <div class="import-files-list hidden" id="importFilesList">
+                    <h4>Selected Files</h4>
+                    <div id="filesContainer"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-modal-cancel" id="cancelImport">Cancel</button>
+                <button class="btn-modal-save" id="btnUpload" disabled>Upload</button>
+            </div>
+
+        </div>
+    </div>
+
     <div class="modal-overlay hidden" id="exportModal">
         <div class="modal-box">
             
@@ -425,8 +457,9 @@
 
             <div class="modal-footer">
                 <button class="btn-modal-cancel" id="cancelExport">Cancel</button>
-                <button class="btn-modal-save">Save</button>
+                <button class="btn-modal-save" onclick="window.location.href='architect-dashboard.html'">Save</button>
             </div>
+
         </div>
     </div>
 
