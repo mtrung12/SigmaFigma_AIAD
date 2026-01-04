@@ -84,5 +84,24 @@
 				</div>
 			</nav>
 		</footer>
+
+		<script>
+			(function () {
+				const logoutBtn = document.querySelector('.logout-btn');
+				if (!logoutBtn) return;
+
+				logoutBtn.addEventListener('click', () => {
+					// Clear lightweight "session" state used across the static pages.
+					try {
+						localStorage.removeItem('user_role');
+					} catch (_) {
+						// ignore
+					}
+
+					// Replace history so Back doesn't return to authenticated pages.
+					window.location.replace('choose_role.html');
+				});
+			})();
+		</script>
 	</body>
 </html>

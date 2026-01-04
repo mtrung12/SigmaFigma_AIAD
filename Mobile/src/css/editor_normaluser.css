@@ -1,0 +1,6 @@
+/* Normal user editor overrides.
+   Reuses editor_architect.css and removes the need to reserve space for the bottom component sheet. */
+
+.undo-redo-container {
+  bottom: 24px;
+}

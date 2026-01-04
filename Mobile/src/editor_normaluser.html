@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="css/editor_architect.css">
+    <link rel="stylesheet" href="css/editor_normaluser.css">
+</head>
+<body>
+
+    <div class="editor-container">
+        
+        <div id="view-2d" class="grid-background">
+            <!-- Empty 2D View -->
+        </div>
+
+        <div id="view-3d" class="grid-background" style="display: none; width: 100%; height: 100%; position: absolute; top:0; left:0; z-index:0;">
+            <!-- Empty 3D View -->
+        </div>
+
+
+        <button class="btn-close-editor">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+
+        <aside class="floating-sidebar">
+            
+            <div class="tool-group white-bg">
+                
+                <div id="view-mode-badge" class="tool-badge-2d" onclick="toggleViewMode()" style="cursor: pointer;">3D</div>
+                
+                <button class="tool-btn" onclick="openExportModal()"><span class="material-symbols-outlined">ios_share</span></button>
+                <button class="tool-btn"><span class="material-symbols-outlined">layers</span></button>
+                <button class="tool-btn"><span class="material-symbols-outlined">more_horiz</span></button>
+            </div>
+
+            <div class="tool-group green-bg">
+                <button class="tool-btn white-icon" onclick="openSaveModal()"><span class="material-symbols-outlined">save</span></button>
+            </div>
+
+            <div class="tool-group white-bg" style="position: relative;">
+                <button class="tool-btn" onclick="toggleAIWizard()"><span class="material-symbols-outlined">auto_fix_high</span></button>
+                
+                <!-- AI WIZARD MODAL -->
+                <div id="ai-wizard-modal" class="ai-wizard-card" style="display: none;">
+                    <div class="ai-wizard-header">
+                        <span class="ai-wizard-title">AI Design Wizard</span>
+                        <button class="ai-close-btn" onclick="toggleAIWizard()">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <div class="ai-chat-area">
+                        <div class="ai-message">
+                            Hello! Im your AI design assistant. Describe your dream room, and I’ll generate some ideas for you.
+                        </div>
+                        <div class="user-message">
+                            A modern, minimalist living room with natural light.
+                        </div>
+                    </div>
+                    <div class="ai-input-area">
+                        <div class="ai-input-wrapper">
+                            <input type="text" placeholder="Type your message...">
+                        </div>
+                        <button class="ai-send-btn">
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <div class="undo-redo-container">
+            <button class="undo-btn"><span class="material-symbols-outlined">undo</span></button>
+            <button class="redo-btn"><span class="material-symbols-outlined">redo</span></button>
+        </div>
+
+        <!-- EXPORT MODAL -->
+        <div id="export-modal" class="modal-overlay">
+            <div class="export-modal">
+                <div class="modal-header">
+                    <span class="modal-title">Export Design</span>
+                    <button class="close-btn" onclick="closeExportModal()">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                
+                <div class="modal-content">
+                    <div class="preview-image">
+                        <img src="img/room_3D.png" alt="Preview"> 
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Filename</label>
+                        <div class="input-wrapper">
+                            <input type="text" value="new_design">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Format</label>
+                        <div class="format-selector">
+                            <div class="format-option active" onclick="selectFormat(this)">dwg file</div>
+                            <div class="format-option" onclick="selectFormat(this)">dxf file</div>
+                        </div>
+                    </div>
+                    
+                    <button class="export-action-btn" onclick="closeExportModal()">Export</button>
+                    <button class="cancel-action-btn" onclick="closeExportModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAVE MODAL -->
+        <div id="save-modal" class="modal-overlay">
+            <div class="save-modal-box">
+                <div class="save-modal-title">Name your design</div>
+                <input type="text" class="save-modal-input" placeholder="New Design 1">
+                <div class="save-modal-actions">
+                    <button class="save-btn-primary" onclick="closeSaveModal()">Save</button>
+                    <button class="save-btn-secondary" onclick="closeSaveModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+        function toggleViewMode() {
+            const badge = document.getElementById('view-mode-badge');
+            const view2d = document.getElementById('view-2d');
+            const view3d = document.getElementById('view-3d');
+
+            if (badge.innerText === '3D') {
+                // --- CHUYỂN SANG 3D ---
+                badge.innerText = '2D';
+                
+                view2d.style.display = 'none';
+                view3d.style.display = 'block';
+            } else {
+                // --- QUAY VỀ 2D ---
+                badge.innerText = '3D';
+                
+                view2d.style.display = 'block';
+                view3d.style.display = 'none';
+            }
+        }
+
+        // --- EXPORT MODAL LOGIC ---
+        function openExportModal() {
+            document.getElementById('export-modal').classList.add('active');
+        }
+
+        function closeExportModal() {
+            document.getElementById('export-modal').classList.remove('active');
+        }
+
+        function selectFormat(element) {
+            document.querySelectorAll('.format-option').forEach(opt => opt.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // --- SAVE MODAL LOGIC ---
+        function openSaveModal() {
+            document.getElementById('save-modal').classList.add('active');
+        }
+
+        function closeSaveModal() {
+            document.getElementById('save-modal').classList.remove('active');
+        }
+
+        // --- AI WIZARD LOGIC ---
+        function toggleAIWizard() {
+            const modal = document.getElementById('ai-wizard-modal');
+            if (modal.style.display === 'none' || modal.style.display === '') {
+                modal.style.display = 'flex';
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+</script>
+
+<script>
+    // Check if opened from Generate screen
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('generated') === 'true') {
+            const view2d = document.getElementById('view-2d');
+            const view3d = document.getElementById('view-3d');
+            
+            // Inject images
+            if(view2d) view2d.innerHTML = '<img src="img/room_2D.png" alt="2D Room" style="width: 100%; height: 100%; object-fit: contain;">';
+            if(view3d) view3d.innerHTML = '<img src="img/room_3D.png" alt="3D Room" style="width: 100%; height: 100%; object-fit: contain;">';
+        }
+    });
+</script>
+
+</body>
+</html>

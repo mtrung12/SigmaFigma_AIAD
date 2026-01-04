@@ -302,6 +302,11 @@
             e.preventDefault();
             tile.classList.toggle("is-selected");
             updateSelectionUI();
+          } else {
+            e.preventDefault();
+            const role = localStorage.getItem("user_role");
+            const editorHref = role === "architect" ? "editor_architect.html" : "editor_normaluser.html";
+            window.location.href = editorHref;
           }
         });
 
