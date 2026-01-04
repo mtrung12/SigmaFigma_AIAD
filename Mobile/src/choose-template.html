@@ -118,8 +118,21 @@
 
         if (!grid || tabs.length === 0) return;
 
-        let activeCategory = "bedroom";
+        // Check URL param for initial tab
+        const urlParams = new URLSearchParams(window.location.search);
+        const tabParam = urlParams.get('tab');
+        
+        let activeCategory = (tabParam && data[tabParam]) ? tabParam : "bedroom";
         let searchValue = "";
+
+        // Set initial active tab state
+        tabs.forEach(t => {
+            if (t.getAttribute('data-category') === activeCategory) {
+                t.classList.add('is-active');
+            } else {
+                t.classList.remove('is-active');
+            }
+        });
 
         const render = () => {
           const items = (data[activeCategory] || []).filter((t) =>
@@ -133,13 +146,28 @@
                   <img src="${t.src}" alt="${t.title}" loading="lazy" />
                   <div class="template-card__meta">
                     <p class="template-card__title">${t.title}</p>
-                    <button class="use-template" type="button">Use template</button>
+                    <button class="use-template" type="button" data-src="${t.src}">Use template</button>
                   </div>
                 </article>
               `
             )
             .join("");
         };
+
+        // Event delegation for "Use template" buttons
+        grid.addEventListener('click', (e) => {
+            if (e.target.classList.contains('use-template')) {
+                // Always use room_2D and room_3D regardless of the template image
+                const src = 'img/room_2D.png';
+                const src3d = 'img/room_3D.png';
+                
+                const role = localStorage.getItem('user_role');
+                const targetPage = role === 'architect' ? 'editor_architect.html' : 'editor_normaluser.html';
+                
+                // Redirect to editor with image mode
+                window.location.href = `${targetPage}?mode=image&src=${encodeURIComponent(src)}&src3d=${encodeURIComponent(src3d)}`;
+            }
+        });
 
         tabs.forEach((btn) => {
           btn.addEventListener("click", () => {

@@ -45,7 +45,7 @@
             </span>
           </a>
 
-          <a class="project-tile" href="#" aria-label="Living room ver1" data-project-tile>
+          <a class="project-tile" href="#" aria-label="Living room ver1" data-project-tile data-mode="image" data-src="img/room_2D.png" data-src3d="img/room_3D.png">
             <img
               src="../../Web App/imgs/dashboard-normal/living-room-scandi.jpg"
               alt="Living room ver1"
@@ -58,7 +58,7 @@
             <span class="select-indicator" aria-hidden="true"></span>
           </a>
 
-          <a class="project-tile" href="#" aria-label="Living room ver2" data-project-tile>
+          <a class="project-tile" href="#" aria-label="Living room ver2" data-project-tile data-mode="image" data-src="img/room_2D.png" data-src3d="img/room_3D.png">
             <img
               src="../../Web App/imgs/dashboard-normal/living-room-modern.jpg"
               alt="Living room ver2"
@@ -71,7 +71,15 @@
             <span class="select-indicator" aria-hidden="true"></span>
           </a>
 
-          <div class="project-tile placeholder" aria-label="Empty slot"></div>
+          <a class="project-tile" href="#" aria-label="Draft Test" data-project-tile data-mode="empty">
+            <div style="width: 100%; height: 92px; background-color: #e0e0e0;"></div>
+            <div class="tile-info">
+              <p class="tile-title">Draft Test</p>
+              <p class="tile-meta">Status: Draft</p>
+              <p class="tile-meta">Last access: 10:00 Today</p>
+            </div>
+            <span class="select-indicator" aria-hidden="true"></span>
+          </a>
         </section>
       </main>
     </div>
@@ -140,7 +148,7 @@
           </span>
         </a>
 
-        <button class="new-project-sheet__option" type="button">
+        <div class="new-project-sheet__option" onclick="window.location.href='generate_architect.html'">
           <span class="new-project-sheet__icon" aria-hidden="true">
             <span class="material-symbols-outlined">auto_awesome</span>
           </span>
@@ -150,7 +158,7 @@
               Tell us your idea, and we'll turn it into a ready-to-use design.
             </span>
           </span>
-        </button>
+        </div>
       </div>
     </section>
 
@@ -369,8 +377,22 @@
             updateSelectionUI();
           } else {
             e.preventDefault();
-            const role = localStorage.getItem("user_role");
-            const editorHref = role === "architect" ? "editor_architect.html" : "editor_normaluser.html";
+            const currentRole = localStorage.getItem("user_role");
+            let editorHref = currentRole === "architect" ? "editor_architect.html" : "editor_normaluser.html";
+            
+            // Append query params based on data attributes
+            const mode = tile.getAttribute("data-mode");
+            if (mode === "image") {
+              const src = tile.getAttribute("data-src");
+              const src3d = tile.getAttribute("data-src3d");
+              editorHref += `?mode=image&src=${encodeURIComponent(src)}`;
+              if (src3d) {
+                editorHref += `&src3d=${encodeURIComponent(src3d)}`;
+              }
+            } else if (mode === "empty") {
+              editorHref += `?mode=empty`;
+            }
+
             window.location.href = editorHref;
           }
         });

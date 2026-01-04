@@ -86,6 +86,12 @@ body.selection-mode .select-indicator {
   display: block;
 }
 
+body.selection-mode .new-project {
+  opacity: 0.4;
+  pointer-events: none;
+  filter: grayscale(1);
+}
+
 body.selection-mode .project-tile.is-selected .select-indicator {
   background: #87e3a4;
 }

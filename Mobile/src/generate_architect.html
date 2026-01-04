@@ -110,12 +110,20 @@
             </div>
 
             <!-- Generate Button (Fixed at bottom) -->
-            <div class="generate-btn-container" onclick="window.location.href='editor_architect.html?generated=true'">
+            <div class="generate-btn-container" onclick="handleGenerate()">
                 <span class="generate-btn-text">Generate</span>
             </div>
         </div>
 
     </div>
+
+    <script>
+        function handleGenerate() {
+            const role = localStorage.getItem('user_role');
+            const target = role === 'architect' ? 'editor_architect.html' : 'editor_normaluser.html';
+            window.location.href = target + '?generated=true';
+        }
+    </script>
 
 </body>
 </html>

@@ -64,21 +64,21 @@
         <section class="jump-back-in">
           <h2>Jump back in</h2>
           <div class="recent-projects">
-            <div class="project-card">
+            <div class="project-card" onclick="openProject('image', 'img/room_2D.png', 'img/room_3D.png')">
               <img
                 src="../../Web App/imgs/dashboard-normal/living-room-scandi.jpg"
                 alt="Living room ver1"
               />
               <p>Living room ver1</p>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="openProject('image', 'img/room_2D.png', 'img/room_3D.png')">
               <img
                 src="../../Web App/imgs/dashboard-normal/living-room-modern.jpg"
                 alt="Living room ver2"
               />
               <p>Living room ver2</p>
             </div>
-            <div class="project-card draft">
+            <div class="project-card draft" onclick="openProject('empty')">
               <div class="draft-box"></div>
               <p>Draft Test</p>
             </div>
@@ -88,28 +88,28 @@
         <section class="trending-ideas">
           <h2>Trending Ideas</h2>
           <div class="ideas-grid">
-            <div class="idea-card">
+            <div class="idea-card" onclick="window.location.href='choose-template.html?tab=livingroom'">
               <img
                 src="../../Web App/imgs/dashboard-normal/living-room-japandi.jpg"
                 alt="Modern Living Room"
               />
               <p>Modern Living Room</p>
             </div>
-            <div class="idea-card">
+            <div class="idea-card" onclick="window.location.href='choose-template.html?tab=bedroom'">
               <img
                 src="../../Web App/imgs/dashboard-normal/bright-boho-office.jpg"
                 alt="Cozy Bedroom"
               />
               <p>Cozy Bedroom</p>
             </div>
-            <div class="idea-card">
+            <div class="idea-card" onclick="window.location.href='choose-template.html?tab=kitchen'">
               <img
                 src="../../Web App/imgs/dashboard-normal/kitchen-scandi.jpg"
                 alt="Japandi room"
               />
               <p>Japandi Room</p>
             </div>
-            <div class="idea-card">
+            <div class="idea-card" onclick="window.location.href='choose-template.html?tab=office'">
               <img
                 src="../../Web App/imgs/dashboard-normal/office-minimalism.jpg"
                 alt="Minimalism Room"
@@ -262,7 +262,7 @@
           </span>
         </a>
 
-        <button class="new-project-sheet__option" type="button">
+        <div class="new-project-sheet__option" onclick="window.location.href='generate_architect.html'">
           <span class="new-project-sheet__icon" aria-hidden="true">
             <span class="material-symbols-outlined">auto_awesome</span>
           </span>
@@ -272,7 +272,7 @@
               Tell us your idea, and we'll turn it into a ready-to-use design.
             </span>
           </span>
-        </button>
+        </div>
       </div>
     </section>
 
@@ -335,6 +335,24 @@
     </section>
 
     <script>
+      // Global function for project navigation
+      window.openProject = (type, imageSrc, imageSrc3D) => {
+        const role = localStorage.getItem('user_role');
+        const editorPage = role === 'architect' ? 'editor_architect.html' : 'editor_normaluser.html';
+        
+        let url = editorPage;
+        if (type === 'image' && imageSrc) {
+          url += `?mode=image&src=${encodeURIComponent(imageSrc)}`;
+          if (imageSrc3D) {
+            url += `&src3d=${encodeURIComponent(imageSrc3D)}`;
+          }
+        } else {
+          url += `?mode=empty`;
+        }
+        
+        window.location.href = url;
+      };
+
       document.addEventListener('DOMContentLoaded', () => {
         const role = localStorage.getItem('user_role');
         const fab = document.getElementById('btn-add-project');
