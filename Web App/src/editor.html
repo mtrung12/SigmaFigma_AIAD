@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="css/viewer.css">
 </head>
 <body>
 
@@ -366,6 +367,18 @@
                     </div>
 
                     <div class="chat-footer">
+                        <div class="selected-items-info">
+                            <i class="fa-solid fa-angle-right"></i>
+                            <span>selected:</span>
+                            <div class="selected-item-box">
+                                <span>wooden chair</span>
+                                <button class="remove-item-btn"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                            <div class="selected-item-box">
+                                <span>sofa</span>
+                                <button class="remove-item-btn"><i class="fa-solid fa-xmark"></i></button>
+                            </div>
+                        </div>
                         <div class="prompt-input-wrapper">
                             <textarea placeholder="Delete the chair in the corner"></textarea>
                             <button class="btn-generate-sparkle">
