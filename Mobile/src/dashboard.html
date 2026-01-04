@@ -25,7 +25,9 @@
           </div>
         </div>
         <div class="actions">
-          <span class="material-symbols-outlined">diamond</span>
+          <a href="premium.html" class="premium-link" aria-label="Open premium">
+            <span class="material-symbols-outlined">diamond</span>
+          </a>
           <a href="notifications.html" class="notification-link">
             <span class="material-symbols-outlined">notifications</span>
           </a>
@@ -119,7 +121,7 @@
     
     <footer>
       <nav class="bottom-nav">
-        <a href="#" class="fab" id="btn-add-project">
+        <a href="my-projects.html?openNewProject=1" class="fab" id="btn-add-project" aria-label="Create project">
           <span class="material-symbols-outlined">add</span>
         </a>
         <div class="nav-section left">
@@ -140,17 +142,10 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const role = localStorage.getItem('user_role');
-            const btnAdd = document.getElementById('btn-add-project');
-            
-            if (role === 'architect') {
-                btnAdd.href = 'new_project_architect.html';
-            } else {
-                // Mặc định cho Homeuser
-                btnAdd.href = 'create-project.html'; 
-            }
-        });
+      document.addEventListener('DOMContentLoaded', () => {
+        const btnAdd = document.getElementById('btn-add-project');
+        if (btnAdd) btnAdd.href = 'my-projects.html?openNewProject=1';
+      });
     </script>
   </body>
 </html>

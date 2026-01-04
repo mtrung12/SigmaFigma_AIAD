@@ -226,6 +226,17 @@
           });
         }
 
+        // Allow other pages' FAB to open this same bottom sheet.
+        const params = new URLSearchParams(window.location.search);
+        const shouldAutoOpen = params.get("openNewProject") === "1" || window.location.hash === "#new-project";
+        if (shouldAutoOpen) {
+          requestAnimationFrame(() => openSheet(fab || openers[0]));
+          // Prevent reopening on refresh/back.
+          if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, "", window.location.pathname);
+          }
+        }
+
         closeBtn.addEventListener("click", closeSheet);
         backdrop.addEventListener("click", closeSheet);
 
