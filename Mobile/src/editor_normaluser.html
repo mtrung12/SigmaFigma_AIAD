@@ -22,7 +22,7 @@
         </div>
 
 
-        <button class="btn-close-editor">
+        <button class="btn-close-editor" type="button" aria-label="Close editor">
             <span class="material-symbols-outlined">close</span>
         </button>
 
@@ -195,6 +195,17 @@
             if(view2d) view2d.innerHTML = '<img src="img/room_2D.png" alt="2D Room" style="width: 100%; height: 100%; object-fit: contain;">';
             if(view3d) view3d.innerHTML = '<img src="img/room_3D.png" alt="3D Room" style="width: 100%; height: 100%; object-fit: contain;">';
         }
+    });
+</script>
+
+<script>
+    // Close editor -> back to My Projects
+    window.addEventListener('DOMContentLoaded', () => {
+        const closeBtn = document.querySelector('.btn-close-editor');
+        if (!closeBtn) return;
+        closeBtn.addEventListener('click', () => {
+            window.location.href = 'my-projects.html';
+        });
     });
 </script>
 
