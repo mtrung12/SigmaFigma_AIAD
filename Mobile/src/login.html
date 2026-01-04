@@ -30,7 +30,7 @@
                             <input type="password" id="password" name="password">
                         </div>
 
-                        <button type="button" onclick="window.location.href='dashboard.html'" class="btn-primary">Login</button>
+                        <button type="button" onclick="handleLogin()" class="btn-primary">Login</button>
 
                         <div class="divider">
                             <span>OR</span>
@@ -58,6 +58,21 @@
 
         </main>
     </div>
+
+<script>
+    function handleLogin() {
+        const username = document.getElementById('username').value.toLowerCase();
+        
+        // Giả lập logic đăng nhập: Nếu tên chứa "arch" -> Architect, ngược lại -> Homeuser
+        if (username.includes('arch')) {
+            localStorage.setItem('user_role', 'architect');
+        } else {
+            localStorage.setItem('user_role', 'homeuser');
+        }
+        
+        window.location.href = 'dashboard.html';
+    }
+</script>
 
 </body>
 </html>
