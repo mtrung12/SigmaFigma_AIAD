@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose role - Dream Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/choose_role.css">
+</head>
+<body>
+<div class="container">
+    <div class="role-frame">
+        <div class="role-card">
+            <h2 style="font-size: 26px;">Join AIAD</h2>
+
+            <div class="role-actions">
+            <button class="role-btn architect" onclick="selectRole('architect')">
+                <img src="img/architect_icon.png" alt="architect icon">
+                <span style="font-size: 20px;">Register as an Architect</span>
+            </button>
+
+            <button class="role-btn homeuser" onclick="selectRole('homeuser')">
+                <img src="img/user_icon.png" alt="architect icon">
+                <span style="font-size: 20px;">Register as a Homeuser</span>
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function selectRole(role) {
+        // Lưu vai trò vào bộ nhớ trình duyệt
+        localStorage.setItem('user_role', role);
+        
+        // Chuyển hướng
+        if (role === 'architect') {
+            window.location.href = 'register_architect.html';
+        } else {
+            window.location.href = 'register_user.html';
+        }
+    }
+</script>
+</body>
+</html>

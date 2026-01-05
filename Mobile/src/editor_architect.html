@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIAD Editor - Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="css/editor_architect.css">
+</head>
+<body>
+
+    <div class="editor-container">
+        
+        <div id="view-2d" class="grid-background">
+            <!-- Empty 2D View -->
+        </div>
+
+        <div id="view-3d" class="grid-background" style="display: none; width: 100%; height: 100%; position: absolute; top:0; left:0; z-index:0;">
+            <!-- Empty 3D View -->
+        </div>
+
+
+        <button class="btn-close-editor" type="button" aria-label="Close editor">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+
+        <aside class="floating-sidebar">
+            
+            <div class="tool-group white-bg">
+                
+                <div id="view-mode-badge" class="tool-badge-2d" onclick="toggleViewMode()" style="cursor: pointer;">3D</div>
+                
+                <button class="tool-btn" onclick="openExportModal()"><span class="material-symbols-outlined">ios_share</span></button>
+                <button class="tool-btn"><span class="material-symbols-outlined">layers</span></button>
+                <button class="tool-btn"><span class="material-symbols-outlined">more_horiz</span></button>
+            </div>
+
+            <div class="tool-group green-bg">
+                <button class="tool-btn white-icon" onclick="openSaveModal()"><span class="material-symbols-outlined">save</span></button>
+            </div>
+
+            <div class="tool-group white-bg" style="position: relative;">
+                <button class="tool-btn" onclick="toggleAIWizard()"><span class="material-symbols-outlined">auto_fix_high</span></button>
+                
+                <!-- AI WIZARD MODAL -->
+                <div id="ai-wizard-modal" class="ai-wizard-card" style="display: none;">
+                    <div class="ai-wizard-header">
+                        <span class="ai-wizard-title">AI Design Wizard</span>
+                        <button class="ai-close-btn" onclick="toggleAIWizard()">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                    <div class="ai-chat-area">
+                        <div class="ai-message">
+                            Hello! Im your AI design assistant. Describe your dream room, and I’ll generate some ideas for you.
+                        </div>
+                        <div class="user-message">
+                            A modern, minimalist living room with natural light.
+                        </div>
+                    </div>
+                    <div class="ai-input-area">
+                        <div class="ai-input-wrapper">
+                            <input type="text" placeholder="Type your message...">
+                        </div>
+                        <button class="ai-send-btn">
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <div class="undo-redo-container">
+            <button class="undo-btn"><span class="material-symbols-outlined">undo</span></button>
+            <button class="redo-btn"><span class="material-symbols-outlined">redo</span></button>
+        </div>
+
+        <nav id="bottom-sheet" class="editor-nav">
+    
+    <div class="sheet-handle-container" id="drag-zone">
+        <div class="sheet-handle"></div>
+    </div>
+
+    <div class="nav-row">
+        <div class="nav-item active" onclick="selectNavItem(this)" data-target="tab-rooms">
+            <span class="material-symbols-outlined">meeting_room</span>
+            <span>Rooms</span>
+        </div>
+        <div class="nav-item" onclick="selectNavItem(this)" data-target="tab-construction">
+            <span class="material-symbols-outlined">door_front</span>
+            <span>Construction</span>
+        </div>
+        <div class="nav-item" onclick="selectNavItem(this)" data-target="tab-interior">
+            <span class="material-symbols-outlined">chair</span>
+            <span>Interior</span>
+        </div>
+        <div class="nav-item" onclick="selectNavItem(this)" data-target="tab-exterior">
+            <span class="material-symbols-outlined">forest</span>
+            <span>Exterior</span>
+        </div>
+        <div class="nav-item" onclick="selectNavItem(this)" data-target="tab-search">
+            <span class="material-symbols-outlined">search</span>
+            <span>Search</span>
+        </div>
+    </div>
+
+    <div class="fixed-search-area">
+        <div class="search-bar" onclick="activateSearchTab()">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" placeholder="Search" class="search-input">
+        </div>
+    </div>
+
+    <div class="sheet-content">
+        <div class="content-scroll-area">
+
+        <!-- TAB: ROOMS -->
+        <div id="tab-rooms" class="tab-content active">
+            <div class="room-grid">
+                <div class="room-item">
+                    <img src="https://placehold.co/100x100/EEE/31343C?text=L" alt="L-Shape">
+                    <span class="room-label">L-Shape</span>
+                </div>
+                <div class="room-item">
+                    <img src="https://placehold.co/100x100/EEE/31343C?text=Rect" alt="Rectangle">
+                    <span class="room-label">Rectangle</span>
+                </div>
+                <div class="room-item">
+                    <img src="https://placehold.co/100x100/EEE/31343C?text=Bay" alt="Bay Window">
+                    <span class="room-label">Bay Window</span>
+                </div>
+                <div class="room-item">
+                    <img src="https://placehold.co/100x100/EEE/31343C?text=U" alt="U-Shape">
+                    <span class="room-label">U-Shape</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: CONSTRUCTION -->
+        <div id="tab-construction" class="tab-content">
+            <h3 class="section-title">Construction</h3>
+            <div class="list-menu">
+                <div class="list-item" onclick="openSubPage('sub-windows')">
+                    <span class="material-symbols-outlined item-icon">window</span>
+                    <span class="item-text">Windows</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">stairs</span>
+                    <span class="item-text">Stairs</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">cottage</span>
+                    <span class="item-text">Roofs</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">garage</span>
+                    <span class="item-text">Gates</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">church</span>
+                    <span class="item-text">Archs</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">door_front</span>
+                    <span class="item-text">Doors</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">fence</span>
+                    <span class="item-text">Fences and gates</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">deck</span>
+                    <span class="item-text">Terraces</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+            </div>
+
+            <!-- SUB-PAGE: WINDOWS -->
+            <div id="sub-windows" class="sub-page">
+                <div class="sub-header">
+                    <button class="back-btn" onclick="closeSubPage('sub-windows')">
+                        <span class="material-symbols-outlined">arrow_back_ios</span>
+                    </button>
+                    <span class="sub-title">Windows</span>
+                </div>
+
+                <!-- PAGE 1 -->
+                <div id="windows-page-1" class="item-grid">
+                    <!-- Item 1: Casement -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Casement" alt="Casement">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Casement</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 2: Sliding -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Sliding" alt="Sliding">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Sliding</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 3: Double Hung -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Double" alt="Double Hung">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Double Hung</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 4: Bay -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Bay" alt="Bay">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Bay</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 5: Picture -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Picture" alt="Picture">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Picture</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 6: Awning -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Awning" alt="Awning">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Awning</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 2 -->
+                <div id="windows-page-2" class="item-grid" style="display: none;">
+                    <!-- Item 1: Hopper -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Hopper" alt="Hopper">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Hopper</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 2: Arch -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Arch" alt="Arch">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Arch</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 3: Round -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Round" alt="Round">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Round</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 4: Louvered -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Louvered" alt="Louvered">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Louvered</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                    <!-- Item 5: Triangle -->
+                    <div class="grid-card">
+                        <div class="card-img-box">
+                            <img src="https://placehold.co/100x100/EEE/31343C?text=Triangle" alt="Triangle">
+                        </div>
+                        <div class="card-footer">
+                            <span class="card-name">Triangle</span>
+                            <button class="add-btn">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <span id="btn-prev" class="material-symbols-outlined page-nav-btn disabled" onclick="prevPage()">arrow_back_ios_new</span>
+                    <span class="page-num active" onclick="switchWindowsPage(1)">1</span>
+                    <span class="page-num" onclick="switchWindowsPage(2)">2</span>
+                    <span id="btn-next" class="material-symbols-outlined page-nav-btn" onclick="nextPage()">arrow_forward_ios</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: INTERIOR -->
+        <div id="tab-interior" class="tab-content">
+            
+            <!-- Furniture -->
+            <h3 class="section-title">Furniture</h3>
+            <div class="list-menu">
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">bed</span>
+                    <span class="item-text">Beds</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">shelves</span>
+                    <span class="item-text">Storage</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">table_restaurant</span>
+                    <span class="item-text">Tables, Chairs</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">countertops</span>
+                    <span class="item-text">Kitchen</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">bathtub</span>
+                    <span class="item-text">Bathroom</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+            </div>
+
+            <!-- Electrical Appliances -->
+            <h3 class="section-title" style="margin-top: 20px;">Electrical Appliances</h3>
+            <div class="list-menu">
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">lightbulb</span>
+                    <span class="item-text">Lighting</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">local_laundry_service</span>
+                    <span class="item-text">Household Appliances</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">desktop_windows</span>
+                    <span class="item-text">Video and TV</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">kitchen</span>
+                    <span class="item-text">Kitchen Appliances</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">settings_alert</span>
+                    <span class="item-text">Equipment</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+            </div>
+
+            <!-- Misc -->
+            <h3 class="section-title" style="margin-top: 20px;">Misc</h3>
+            <div class="list-menu">
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">image</span>
+                    <span class="item-text">Decor</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">potted_plant</span>
+                    <span class="item-text">Plants</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">sports_score</span>
+                    <span class="item-text">Sport</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">camping</span>
+                    <span class="item-text">Holidays</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">pets</span>
+                    <span class="item-text">Pets</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: EXTERIOR -->
+        <div id="tab-exterior" class="tab-content">
+            <h3 class="section-title">Exterior</h3>
+            <div class="list-menu">
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">texture</span>
+                    <span class="item-text">Paths and lawns</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">potted_plant</span>
+                    <span class="item-text">Trees and plants</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">garage</span>
+                    <span class="item-text">Garage</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">pool</span>
+                    <span class="item-text">Pool</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+                <div class="list-item">
+                    <span class="material-symbols-outlined item-icon">light_mode</span>
+                    <span class="item-text">Lighting</span>
+                    <span class="material-symbols-outlined arrow-icon">arrow_forward_ios</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: SEARCH -->
+        <div id="tab-search" class="tab-content">
+            
+            <!-- Recent -->
+            <h3 class="section-title">Recent</h3>
+            <div class="search-tags-container">
+                <div class="search-tag">Couch</div>
+                <div class="search-tag">Wood door</div>
+            </div>
+
+            <!-- Suggestion -->
+            <h3 class="section-title" style="margin-top: 25px;">Suggestion</h3>
+            <div class="search-tags-container">
+                <div class="search-tag">Wood door</div>
+                <div class="search-tag">Window</div>
+                <div class="search-tag">Corner textfile sofa</div>
+                <div class="search-tag">Flower Plant</div>
+                <div class="search-tag">Office Chair</div>
+            </div>
+        </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- EXPORT MODAL -->
+    <div id="export-modal" class="modal-overlay">
+        <div class="export-modal">
+            <div class="modal-header">
+                <span class="modal-title">Export Design</span>
+                <button class="close-btn" onclick="closeExportModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <div class="modal-content">
+                <div class="preview-image">
+                    <img src="img/room_3D.png" alt="Preview"> 
+                </div>
+                
+                <div class="input-group">
+                    <label>Filename</label>
+                    <div class="input-wrapper">
+                        <input type="text" value="new_design">
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Format</label>
+                    <div class="format-selector">
+                        <div class="format-option active" onclick="selectFormat(this)">dwg file</div>
+                        <div class="format-option" onclick="selectFormat(this)">dxf file</div>
+                    </div>
+                </div>
+                
+                <button class="export-action-btn" onclick="closeExportModal()">Export</button>
+                <button class="cancel-action-btn" onclick="closeExportModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAVE MODAL -->
+    <div id="save-modal" class="modal-overlay">
+        <div class="save-modal-box">
+            <div class="save-modal-title">Name your design</div>
+            <input type="text" class="save-modal-input" placeholder="New Design 1">
+            <div class="save-modal-actions">
+                <button class="save-btn-primary" onclick="closeSaveModal()">Save</button>
+                <button class="save-btn-secondary" onclick="closeSaveModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+<script>
+        function toggleViewMode() {
+            const badge = document.getElementById('view-mode-badge');
+            const view2d = document.getElementById('view-2d');
+            const view3d = document.getElementById('view-3d');
+
+            if (badge.innerText === '3D') {
+                // --- CHUYỂN SANG 3D ---
+                badge.innerText = '2D';
+                
+                view2d.style.display = 'none';
+                view3d.style.display = 'block';
+            } else {
+                // --- QUAY VỀ 2D ---
+                badge.innerText = '3D';
+                
+                view2d.style.display = 'block';
+                view3d.style.display = 'none';
+            }
+        }
+    </script>
+
+    <script>
+    const sheet = document.getElementById('bottom-sheet');
+    
+    let startY = 0;       
+    let startHeight = 0;
+    let isDragging = false;
+    let wasDragged = false; // Biến cờ để phân biệt click và drag
+    
+    // --- HỖ TRỢ CẢ ĐIỆN THOẠI (TOUCH) VÀ CHUỘT (MOUSE) ---
+
+    // 1. BẮT ĐẦU CHẠM
+    const startDrag = (e) => {
+        // Nếu chạm vào phần nội dung bên trong (sheet-content) hoặc thanh search thì không kéo sheet
+        if (e.target.closest('.sheet-content') || e.target.closest('.fixed-search-area')) return;
+
+        // Reset cờ drag
+        wasDragged = false;
+
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+        
+        startY = y;
+        startHeight = sheet.offsetHeight; // Lưu chiều cao hiện tại
+        isDragging = true;
+        
+        sheet.style.transition = 'none'; // Tắt animation để kéo mượt theo tay
+    };
+
+    // Gán sự kiện vào chính sheet (nhưng đã lọc target ở trên)
+    sheet.addEventListener('mousedown', startDrag);
+    sheet.addEventListener('touchstart', startDrag);
+
+    // 2. ĐANG KÉO
+    const onDrag = (e) => {
+        if (!isDragging) return;
+        
+        // Ngăn chặn hành vi mặc định (như cuộn trang) nếu cần
+        // e.preventDefault(); 
+
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+        const diff = startY - y; // Kéo lên là dương
+
+        // Nếu di chuyển quá 5px thì coi là đang drag (để chặn click)
+        if (Math.abs(diff) > 5) {
+            wasDragged = true;
+        }
+        
+        let newHeight = startHeight + diff;
+
+        // Giới hạn chiều cao
+        const minHeight = 90; // Chiều cao khi đóng
+        const maxHeight = window.innerHeight * 0.85; // Chiều cao tối đa (85%)
+
+        if (newHeight < minHeight) newHeight = minHeight;
+        if (newHeight > maxHeight) newHeight = maxHeight;
+
+        // Cập nhật chiều cao ngay lập tức
+        sheet.style.height = `${newHeight}px`;
+    };
+
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('touchmove', onDrag, { passive: false });
+
+    // 3. THẢ TAY RA
+    const endDrag = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        // Bật lại animation để snap về vị trí cuối
+        sheet.style.transition = 'height 0.3s cubic-bezier(0.25, 1, 0.5, 1)'; 
+
+        // Logic Snap: Nếu kéo quá 1/3 màn hình hoặc đang ở trạng thái cao -> Mở hẳn
+        const currentHeight = sheet.offsetHeight;
+        const thresholdHeight = window.innerHeight * 0.3; 
+
+        if (currentHeight > thresholdHeight) {
+            sheet.classList.add('expanded');
+            sheet.style.height = ''; // Xóa height inline để CSS class 'expanded' đè lên (85%)
+        } else {
+            sheet.classList.remove('expanded');
+            sheet.style.height = ''; // Xóa height inline để về mặc định (90px)
+        }
+    };
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    // --- HÀM CLICK THỦ CÔNG (DỰ PHÒNG) ---
+    function openSheet() {
+        if (!sheet.classList.contains('expanded')) {
+            sheet.classList.add('expanded');
+        }
+    }
+
+    // --- HÀM CHỌN NAV ITEM ---
+    function selectNavItem(element) {
+        // Nếu vừa kéo xong thì bỏ qua sự kiện click này
+        if (wasDragged) return;
+
+        // 1. Xóa active ở tất cả item cũ
+        const items = document.querySelectorAll('.nav-item');
+        items.forEach(item => item.classList.remove('active'));
+
+        // 2. Thêm active cho item được click
+        element.classList.add('active');
+
+        // 3. CHUYỂN ĐỔI NỘI DUNG TAB
+        const targetId = element.getAttribute('data-target');
+        const contents = document.querySelectorAll('.tab-content');
+        
+        contents.forEach(content => {
+            if (content.id === targetId) {
+                content.classList.add('active');
+            } else {
+                content.classList.remove('active');
+            }
+        });
+
+        // 4. KHÔNG TỰ ĐỘNG MỞ SHEET NỮA (Theo yêu cầu)
+    }
+
+    // --- HÀM CHUYỂN SANG TAB SEARCH KHI CLICK VÀO THANH SEARCH ---
+    function activateSearchTab() {
+        const searchNavItem = document.querySelector('.nav-item[data-target="tab-search"]');
+        if (searchNavItem) {
+            selectNavItem(searchNavItem);
+        }
+        // Focus vào ô input để người dùng nhập luôn
+        document.querySelector('.search-input').focus();
+    }
+
+    // --- HÀM MỞ/ĐÓNG SUB-PAGE (CHI TIẾT) ---
+    function openSubPage(id) {
+        const subPage = document.getElementById(id);
+        if (subPage) {
+            subPage.classList.add('active');
+        }
+    }
+
+    function closeSubPage(id) {
+        const subPage = document.getElementById(id);
+        if (subPage) {
+            subPage.classList.remove('active');
+        }
+    }
+
+    // --- HÀM CHUYỂN TRANG WINDOWS ---
+    let currentWindowsPage = 1;
+
+    function switchWindowsPage(pageNum) {
+        if (pageNum < 1 || pageNum > 2) return; // Giới hạn 2 trang
+
+        currentWindowsPage = pageNum;
+
+        // 1. Ẩn/Hiện các trang
+        const page1 = document.getElementById('windows-page-1');
+        const page2 = document.getElementById('windows-page-2');
+        
+        // Reset display
+        if (page1) page1.style.display = 'none';
+        if (page2) page2.style.display = 'none';
+
+        if (pageNum === 1 && page1) page1.style.display = 'grid';
+        if (pageNum === 2 && page2) page2.style.display = 'grid';
+
+        // 2. Cập nhật trạng thái active của số trang
+        const pageNums = document.querySelectorAll('#sub-windows .page-num');
+        pageNums.forEach((num, index) => {
+            if (index + 1 === pageNum) {
+                num.classList.add('active');
+            } else {
+                num.classList.remove('active');
+            }
+        });
+
+        // 3. Cập nhật trạng thái nút Prev/Next (Mờ đi nếu không nhấn được)
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+
+        if (btnPrev) {
+            if (pageNum === 1) btnPrev.classList.add('disabled');
+            else btnPrev.classList.remove('disabled');
+        }
+
+        if (btnNext) {
+            if (pageNum === 2) btnNext.classList.add('disabled');
+            else btnNext.classList.remove('disabled');
+        }
+    }
+
+    function prevPage() {
+        switchWindowsPage(currentWindowsPage - 1);
+    }
+
+    function nextPage() {
+        switchWindowsPage(currentWindowsPage + 1);
+    }
+
+    // --- EXPORT MODAL LOGIC ---
+    function openExportModal() {
+        document.getElementById('export-modal').classList.add('active');
+    }
+
+    function closeExportModal() {
+        document.getElementById('export-modal').classList.remove('active');
+    }
+
+    function selectFormat(element) {
+        document.querySelectorAll('.format-option').forEach(opt => opt.classList.remove('active'));
+        element.classList.add('active');
+    }
+
+    // --- SAVE MODAL LOGIC ---
+    function openSaveModal() {
+        document.getElementById('save-modal').classList.add('active');
+    }
+
+    function closeSaveModal() {
+        document.getElementById('save-modal').classList.remove('active');
+    }
+
+    // --- AI WIZARD LOGIC ---
+    function toggleAIWizard() {
+        const modal = document.getElementById('ai-wizard-modal');
+        if (modal.style.display === 'none' || modal.style.display === '') {
+            modal.style.display = 'flex';
+        } else {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+<script>
+    // Check if opened from Generate screen or Dashboard
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const view2d = document.getElementById('view-2d');
+        const view3d = document.getElementById('view-3d');
+
+        if (urlParams.get('generated') === 'true') {
+            // Inject images
+            if(view2d) view2d.innerHTML = '<img src="img/room_2D.png" alt="2D Room" style="width: 100%; height: 100%; object-fit: contain;">';
+            if(view3d) view3d.innerHTML = '<img src="img/room_3D.png" alt="3D Room" style="width: 100%; height: 100%; object-fit: contain;">';
+        } else if (urlParams.get('mode') === 'image') {
+            const imgSrc = urlParams.get('src');
+            const imgSrc3D = urlParams.get('src3d');
+            if (imgSrc && view2d) {
+                 view2d.innerHTML = `<img src="${imgSrc}" alt="Project Image" style="width: 100%; height: 100%; object-fit: contain;">`;
+            }
+            if (imgSrc3D && view3d) {
+                 view3d.innerHTML = `<img src="${imgSrc3D}" alt="3D Project Image" style="width: 100%; height: 100%; object-fit: contain;">`;
+            }
+        } else if (urlParams.get('mode') === 'empty') {
+            // Ensure empty
+            if(view2d) view2d.innerHTML = '';
+            if(view3d) view3d.innerHTML = '';
+        }
+    });
+</script>
+
+<script>
+    // Close editor -> back to My Projects
+    window.addEventListener('DOMContentLoaded', () => {
+        const closeBtn = document.querySelector('.btn-close-editor');
+        if (!closeBtn) return;
+        closeBtn.addEventListener('click', () => {
+            window.location.href = 'my-projects.html';
+        });
+    });
+</script>
+
+</body>
+</html>

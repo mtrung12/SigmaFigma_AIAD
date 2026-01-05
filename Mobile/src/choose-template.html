@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose a template</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/choose-template.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div class="container choose-template-page">
+      <header class="choose-template-header">
+        <a class="back-link" href="my-projects.html" aria-label="Back">
+          <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
+          Back
+        </a>
+        <h1>Choose a template</h1>
+        <span class="header-spacer" aria-hidden="true"></span>
+      </header>
+
+      <nav class="template-tabs" aria-label="Template categories">
+        <button class="tab is-active" type="button" data-category="bedroom">Bedroom</button>
+        <button class="tab" type="button" data-category="livingroom">Living room</button>
+        <button class="tab" type="button" data-category="kitchen">Kitchen</button>
+        <button class="tab" type="button" data-category="office">Office</button>
+        <button class="tab" type="button" data-category="bathroom">Bathroom</button>
+      </nav>
+
+      <div class="template-search" role="search">
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        <input
+          id="templateSearch"
+          type="search"
+          placeholder="Search"
+          autocomplete="off"
+          aria-label="Search templates"
+        />
+      </div>
+
+      <main>
+        <section class="template-grid" aria-label="Templates" id="templateGrid"></section>
+      </main>
+    </div>
+
+    <script>
+      (function () {
+        const data = {
+          bedroom: [
+            { title: "Japanese 1", src: "../../Web App/imgs/templates/bedroom/japan1.png" },
+            { title: "Modern 1", src: "../../Web App/imgs/templates/bedroom/modern1.jpg" },
+            { title: "Minimalism 1", src: "../../Web App/imgs/templates/bedroom/mini1.jpg" },
+            { title: "Scandinavian 1", src: "../../Web App/imgs/templates/bedroom/scandinavian1.jpg" },
+            { title: "Classic 1", src: "../../Web App/imgs/templates/bedroom/classic1.jpg" },
+            { title: "Japanese 2", src: "../../Web App/imgs/templates/bedroom/japan2.png" },
+            { title: "Modern 2", src: "../../Web App/imgs/templates/bedroom/modern2.jpg" },
+            { title: "Minimalism 2", src: "../../Web App/imgs/templates/bedroom/mini2.jpg" },
+            { title: "Classic 2", src: "../../Web App/imgs/templates/bedroom/classic2.jpg" },
+            { title: "Scandinavian 2", src: "../../Web App/imgs/templates/bedroom/scandinavian2.jpg" },
+          ],
+          livingroom: [
+            { title: "Minimalism 1", src: "../../Web App/imgs/templates/livingroom/mini1.jpg" },
+            { title: "Minimalism 2", src: "../../Web App/imgs/templates/livingroom/mini2.jpg" },
+            { title: "Japandi 1", src: "../../Web App/imgs/templates/livingroom/japandi1.jpg" },
+            { title: "Mid-century 1", src: "../../Web App/imgs/templates/livingroom/midcentury1.jpg" },
+            { title: "Modern 1", src: "../../Web App/imgs/templates/livingroom/modern1.jpg" },
+            { title: "Modern 2", src: "../../Web App/imgs/templates/livingroom/modern2.jpg" },
+            { title: "Japanese 1", src: "../../Web App/imgs/templates/livingroom/japanese1.jpg" },
+            { title: "Scandinavian 1", src: "../../Web App/imgs/templates/livingroom/scandi.jpg" },
+            { title: "Scandinavian 2", src: "../../Web App/imgs/templates/livingroom/scandi2.jpg" },
+            { title: "Scandinavian 3", src: "../../Web App/imgs/templates/livingroom/scandi3.jpg" },
+          ],
+          kitchen: [
+            { title: "Modern 1", src: "../../Web App/imgs/templates/kitchen/modern1.jpg" },
+            { title: "Modern 2", src: "../../Web App/imgs/templates/kitchen/modern2.jpg" },
+            { title: "Modern 3", src: "../../Web App/imgs/templates/kitchen/modern3.jpg" },
+            { title: "Classic 1", src: "../../Web App/imgs/templates/kitchen/classic1.jpg" },
+            { title: "Classic 2", src: "../../Web App/imgs/templates/kitchen/classic2.jpg" },
+            { title: "Japandi 1", src: "../../Web App/imgs/templates/kitchen/japandi1.jpg" },
+            { title: "Minimalism 1", src: "../../Web App/imgs/templates/kitchen/mini1.jpg" },
+            { title: "Minimalism 2", src: "../../Web App/imgs/templates/kitchen/mini2.jpg" },
+            { title: "Scandinavian 1", src: "../../Web App/imgs/templates/kitchen/scandi1.jpg" },
+            { title: "Scandinavian 2", src: "../../Web App/imgs/templates/kitchen/scandi2.jpg" },
+          ],
+          office: [
+            { title: "Minimalism 1", src: "../../Web App/imgs/templates/office/modern1.jpg" },
+            { title: "Modern 1", src: "../../Web App/imgs/templates/office/modern2.jpg" },
+            { title: "Modern 2", src: "../../Web App/imgs/templates/office/modern3.jpg" },
+            { title: "Bright Boho 1", src: "../../Web App/imgs/templates/office/brightboho.jpg" },
+            { title: "Bright Boho 2", src: "../../Web App/imgs/templates/office/brightboho2.jpeg" },
+            { title: "Minimalism 2", src: "../../Web App/imgs/templates/office/mini2.jpeg" },
+            { title: "Minimalism 3", src: "../../Web App/imgs/templates/office/minimalism3.jpg" },
+            { title: "Minimalism 4", src: "../../Web App/imgs/templates/office/minimalism4.jpeg" },
+            { title: "Scandinavian 1", src: "../../Web App/imgs/templates/office/scandi.jpeg" },
+            { title: "Scandinavian 2", src: "../../Web App/imgs/templates/office/scandi2.jpeg" },
+          ],
+          bathroom: [
+            { title: "Japandi 1", src: "../../Web App/imgs/templates/bathroom/japandi1.jpg" },
+            { title: "Modern 1", src: "../../Web App/imgs/templates/bathroom/modern1.jpg" },
+            { title: "Modern 2", src: "../../Web App/imgs/templates/bathroom/modern2.jpg" },
+            { title: "Minimalism 1", src: "../../Web App/imgs/templates/bathroom/mini1.jpg" },
+            { title: "Minimalism 2", src: "../../Web App/imgs/templates/bathroom/mini2.jpg" },
+            { title: "Japandi 2", src: "../../Web App/imgs/templates/bathroom/japandi2.jpeg" },
+            { title: "Japandi 3", src: "../../Web App/imgs/templates/bathroom/japandi3.jpg" },
+          ],
+        };
+
+        const tabs = Array.from(document.querySelectorAll(".tab"));
+        const grid = document.getElementById("templateGrid");
+        const search = document.getElementById("templateSearch");
+
+        if (!grid || tabs.length === 0) return;
+
+        // Check URL param for initial tab
+        const urlParams = new URLSearchParams(window.location.search);
+        const tabParam = urlParams.get('tab');
+        
+        let activeCategory = (tabParam && data[tabParam]) ? tabParam : "bedroom";
+        let searchValue = "";
+
+        // Set initial active tab state
+        tabs.forEach(t => {
+            if (t.getAttribute('data-category') === activeCategory) {
+                t.classList.add('is-active');
+            } else {
+                t.classList.remove('is-active');
+            }
+        });
+
+        const render = () => {
+          const items = (data[activeCategory] || []).filter((t) =>
+            t.title.toLowerCase().includes(searchValue)
+          );
+
+          grid.innerHTML = items
+            .map(
+              (t) => `
+                <article class="template-card">
+                  <img src="${t.src}" alt="${t.title}" loading="lazy" />
+                  <div class="template-card__meta">
+                    <p class="template-card__title">${t.title}</p>
+                    <button class="use-template" type="button" data-src="${t.src}">Use template</button>
+                  </div>
+                </article>
+              `
+            )
+            .join("");
+        };
+
+        // Event delegation for "Use template" buttons
+        grid.addEventListener('click', (e) => {
+            if (e.target.classList.contains('use-template')) {
+                // Always use room_2D and room_3D regardless of the template image
+                const src = 'img/room_2D.png';
+                const src3d = 'img/room_3D.png';
+                
+                const role = localStorage.getItem('user_role');
+                const targetPage = role === 'architect' ? 'editor_architect.html' : 'editor_normaluser.html';
+                
+                // Redirect to editor with image mode
+                window.location.href = `${targetPage}?mode=image&src=${encodeURIComponent(src)}&src3d=${encodeURIComponent(src3d)}`;
+            }
+        });
+
+        tabs.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            activeCategory = btn.getAttribute("data-category") || "bedroom";
+            tabs.forEach((b) => b.classList.toggle("is-active", b === btn));
+            render();
+          });
+        });
+
+        search.addEventListener("input", () => {
+          searchValue = (search.value || "").trim().toLowerCase();
+          render();
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>

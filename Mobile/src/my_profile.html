@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My Profiles</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="css/dashboard.css" />
+		<link rel="stylesheet" href="css/my_profile.css" />
+		<link rel="stylesheet" href="css/dashboard-premium.css" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+		/>
+	</head>
+	<body>
+		<div class="container profile-page">
+			<main>
+				<section class="profile-section">
+					<div class="section-header">
+						<h2>Profile</h2>
+						<a class="icon-btn" href="edit_profile.html" aria-label="Edit profile">
+							<span class="material-symbols-outlined">edit</span>
+						</a>
+					</div>
+
+					<div class="profile-card" role="region" aria-label="Profile card">
+						<div class="avatar" aria-hidden="true">
+							<span class="material-symbols-outlined">person</span>
+						</div>
+						<p class="profile-name">Quynh Trinh</p>
+						<p class="profile-email">trinh.quinh12@gmail.com</p>
+						<a class="primary-pill" href="#" data-open-premium>Explore Premium</a>
+					</div>
+				</section>
+
+				<section class="list-section">
+					<h2>Purchases</h2>
+					<a class="list-item" href="#" data-open-premium>
+						<span class="material-symbols-outlined">diamond</span>
+						<span class="label">Premium</span>
+					</a>
+					<a class="list-item" href="#">
+						<span class="material-symbols-outlined">sell</span>
+						<span class="label">Giftcode</span>
+					</a>
+				</section>
+
+				<section class="list-section">
+					<h2>Help</h2>
+					<a class="list-item" href="#">
+						<span class="material-symbols-outlined">mail</span>
+						<span class="label">Report</span>
+					</a>
+					<a class="list-item" href="#">
+						<span class="material-symbols-outlined">info</span>
+						<span class="label">About</span>
+					</a>
+				</section>
+
+				<div class="logout-wrap">
+					<button class="logout-btn" type="button">Log out</button>
+				</div>
+			</main>
+		</div>
+
+		<footer>
+			<nav class="bottom-nav" aria-label="Bottom navigation">
+				<div class="nav-section left">
+					<a href="dashboard.html" class="nav-item">
+						<span class="material-symbols-outlined">home</span>
+						<p>Dashboard</p>
+					</a>
+					<a href="my-projects.html" class="nav-item">
+						<span class="material-symbols-outlined">construction</span>
+						<p>My Projects</p>
+					</a>
+					<a href="my_profile.html" class="nav-item active">
+						<span class="material-symbols-outlined">person</span>
+						<p>Profile</p>
+					</a>
+				</div>
+			</nav>
+		</footer>
+
+    <!-- Premium Overlay -->
+    <div class="premium-overlay-backdrop" id="premiumBackdrop" hidden></div>
+    <div class="premium-overlay" id="premiumOverlay" role="dialog" aria-modal="true" aria-labelledby="premiumTitle" hidden>
+      <header class="premium-overlay__header">
+        <h2 id="premiumTitle">Upgrade Plan</h2>
+        <button class="premium-overlay__close" type="button" aria-label="Close premium">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </header>
+      <div class="premium-overlay__content">
+        <section class="plan-card" aria-label="Premium plan">
+          <h2 class="plan-title">Premium</h2>
+          <p class="plan-price"><span class="currency">$</span> 4.99 <span class="per">/ month</span></p>
+          <p class="plan-sub">Pay 59.99 annually or 19.99 per month</p>
+          <a class="buy-btn" href="#" role="button">Buy</a>
+
+          <ul class="plan-features" aria-label="Premium features">
+            <li>
+              <span class="material-symbols-outlined check" aria-hidden="true">check</span>
+              <span>Access to AI Designer and Smart Wizard tools to automate project creation</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined check" aria-hidden="true">check</span>
+              <span>Access to the list of 8K+ premium furniture items</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined check" aria-hidden="true">check</span>
+              <span>Automatic plan recognition to create a 3D from your file or image</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="plan-card" aria-label="Professional plan">
+          <h2 class="plan-title">Professional</h2>
+          <p class="plan-price"><span class="currency">$</span> 33.33 <span class="per">/ month</span></p>
+          <p class="plan-sub">Pay 399.99 annually or 49.99 per month</p>
+          <a class="buy-btn" href="#" role="button">Buy</a>
+
+          <ul class="plan-features" aria-label="Professional features">
+            <li>
+              <span class="material-symbols-outlined check" aria-hidden="true">check</span>
+              <span>Unlimited 4K renders of realistic and professional quality</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined check" aria-hidden="true">check</span>
+              <span>Upload your 3D models in formats .obj, .fbx, .blend, .stl...</span>
+            </li>
+            <li>
+              <span class="material-symbols-outlined check" aria-hidden="true">check</span>
+              <span>Moodboards to visually organize ideas</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+		<script>
+			(function () {
+				// Update profile UI based on role
+				const role = localStorage.getItem('user_role');
+				if (role === 'architect') {
+					const nameEl = document.querySelector('.profile-name');
+					if (nameEl) {
+						// Append a simple badge or text
+						const badge = document.createElement('span');
+						badge.textContent = ' (Architect)';
+						badge.style.fontSize = '0.85em';
+						badge.style.fontWeight = '400';
+						badge.style.opacity = '0.8';
+						nameEl.appendChild(badge);
+					}
+				}
+
+				const logoutBtn = document.querySelector('.logout-btn');
+				if (logoutBtn) {
+					logoutBtn.addEventListener('click', () => {
+						// Clear lightweight "session" state used across the static pages.
+						try {
+							localStorage.removeItem('user_role');
+						} catch (_) {
+							// ignore
+						}
+
+						// Replace history so Back doesn't return to authenticated pages.
+						window.location.replace('login.html');
+					});
+				}
+
+        // --- Premium Overlay Logic ---
+        const premiumOverlay = document.getElementById('premiumOverlay');
+        const premiumBackdrop = document.getElementById('premiumBackdrop');
+        const premiumClose = premiumOverlay ? premiumOverlay.querySelector('.premium-overlay__close') : null;
+        const premiumOpeners = document.querySelectorAll('[data-open-premium]');
+
+        if (premiumOverlay && premiumBackdrop) {
+          let isPremiumOpen = false;
+
+          const openPremium = () => {
+            if (isPremiumOpen) return;
+            isPremiumOpen = true;
+            premiumBackdrop.hidden = false;
+            premiumOverlay.hidden = false;
+            
+            requestAnimationFrame(() => {
+              premiumBackdrop.classList.add('is-open');
+              premiumOverlay.classList.add('is-open');
+            });
+          };
+
+          const closePremium = () => {
+            if (!isPremiumOpen) return;
+            isPremiumOpen = false;
+            premiumBackdrop.classList.remove('is-open');
+            premiumOverlay.classList.remove('is-open');
+
+            const finish = () => {
+              premiumBackdrop.hidden = true;
+              premiumOverlay.hidden = true;
+              premiumOverlay.removeEventListener('transitionend', finish);
+            };
+            premiumOverlay.addEventListener('transitionend', finish);
+          };
+
+          premiumOpeners.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              openPremium();
+            });
+          });
+
+          if (premiumClose) premiumClose.addEventListener('click', closePremium);
+          premiumBackdrop.addEventListener('click', closePremium);
+        }
+			})();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,289 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.generate-container {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    height: 100vh;
+    background: #FFFFFF;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Background Grid (Same as Editor) */
+.grid-background {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: 40px 40px;
+    background-image:
+        linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+        linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    z-index: 0;
+}
+
+/* Main Modal Box */
+.generate-screen-box {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
+    position: absolute;
+    width: 96%;
+    height: 85%; /* Increased height slightly */
+    left: 2%;
+    bottom: 10px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    z-index: 10;
+}
+
+/* Close Button */
+.close-btn-container {
+    position: absolute;
+    top: 20px; left: 20px; /* Exact match with editor */
+    width: 50px; height: 50px;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.close-btn-bg {
+    width: 100%; height: 100%;
+    background: #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Match editor shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scrollable Content Area */
+.scroll-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px 5px;
+    gap: 30px;
+    width: 100%;
+    flex-grow: 1; /* Take remaining space */
+    height: auto; /* Allow flex to control height */
+    overflow-y: auto;
+    background: #FFFFFF;
+    border-radius: 15px;
+    margin-bottom: 10px; /* Space for button */
+}
+
+/* --- SECTIONS --- */
+.section-card {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    flex-shrink: 0;
+}
+
+.section-title {
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+/* Room Shape Inputs */
+.shape-inputs-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 35px;
+    width: 100%;
+}
+
+.shape-input-group {
+    box-sizing: border-box;
+    flex: 1;
+    height: 41px;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.input-label {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 20px;
+    color: #000000;
+    margin-right: 5px;
+}
+
+.shape-input-field {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    font-family: 'Inter';
+}
+
+/* Room Layout Grid */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.layout-item {
+    width: 100%;
+    height: 100px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.layout-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Upload Box */
+.upload-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+    height: 200px;
+    background: #E3E3E3;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.upload-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: rgba(64, 46, 42, 0.67);
+}
+
+/* Ideas Textarea */
+.ideas-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 150px;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.ideas-textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-family: 'Inter';
+    font-size: 16px;
+    resize: none;
+}
+
+/* Generate Button */
+.generate-btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 90%; /* Reduced width */
+    height: 48px;
+    background: #167D6C;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0; 
+    flex-shrink: 0; 
+}
+
+.generate-btn-text {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+/* Sidebar Icons (Right side) - Matching Editor */
+.floating-sidebar {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 5; /* Lower than modal (10) */
+}
+
+.tool-group {
+    width: 45px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    gap: 15px;
+}
+
+.white-bg { background: white; }
+.green-bg { background: #167D6C; }
+
+.tool-badge-2d {
+    background: #167D6C;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.tool-btn {
+    background: none; border: none;
+    cursor: pointer; padding: 0;
+    display: flex; align-items: center; justify-content: center;
+}
+.tool-btn span { font-size: 24px; color: #000000; }
+.tool-btn.white-icon span { color: white; }

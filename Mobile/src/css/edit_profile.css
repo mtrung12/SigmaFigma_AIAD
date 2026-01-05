@@ -1,0 +1,110 @@
+/* Edit Profile page styling.
+   Colors must come from dashboard.css variables. */
+
+.edit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.edit-header h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.done-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.done-btn .material-symbols-outlined {
+  font-size: 22px;
+}
+
+.edit-avatar {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.edit-avatar .avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 88, 75, 0.12);
+}
+
+.edit-avatar .avatar .material-symbols-outlined {
+  font-size: 48px;
+  color: var(--primary-color);
+}
+
+.edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.field-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.field-input {
+  width: 100%;
+  max-width: 240px;
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  border: 1px solid var(--card-border-color);
+  border-radius: 8px;
+  padding: 0.35rem 0.5rem;
+}
+
+.field-label {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.field-value {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.change-btn {
+  border: none;
+  background: transparent;
+  color: var(--primary-color);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 0;
+}

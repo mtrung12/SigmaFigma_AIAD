@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/edit_profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </head>
+  <body>
+    <div class="container edit-profile-page">
+      <header class="edit-header">
+        <h1>Profile</h1>
+        <a class="done-btn" href="my_profile.html" aria-label="Done">
+          <span class="material-symbols-outlined">check</span>
+        </a>
+      </header>
+
+      <main>
+        <div class="edit-avatar" aria-hidden="true">
+          <div class="avatar">
+            <span class="material-symbols-outlined">person</span>
+          </div>
+        </div>
+
+        <section class="edit-fields" aria-label="Editable profile fields">
+          <div class="field-row">
+            <div class="field-left">
+              <p class="field-label">Name:</p>
+              <p class="field-value" data-field-value="name">Quynh Trinh</p>
+              <input class="field-input" data-field-input="name" type="text" value="Quynh Trinh" aria-label="Name" />
+            </div>
+            <button class="change-btn" type="button" data-action="toggle" data-field="name">Change</button>
+          </div>
+
+          <div class="field-row">
+            <div class="field-left">
+              <p class="field-label">Email:</p>
+              <p class="field-value" data-field-value="email">**********67@gmail.com</p>
+              <input class="field-input" data-field-input="email" type="email" value="quynhtrinh67@gmail.com" aria-label="Email" />
+            </div>
+            <button class="change-btn" type="button" data-action="toggle" data-field="email">Change</button>
+          </div>
+
+          <div class="field-row">
+            <div class="field-left">
+              <p class="field-label">Password:</p>
+              <p class="field-value" data-field-value="password">************</p>
+              <input class="field-input" data-field-input="password" type="password" value="" placeholder="New password" aria-label="Password" />
+            </div>
+            <button class="change-btn" type="button" data-action="toggle" data-field="password">Change</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <nav class="bottom-nav" aria-label="Bottom navigation">
+        <div class="nav-section left">
+          <a href="dashboard.html" class="nav-item">
+            <span class="material-symbols-outlined">home</span>
+            <p>Dashboard</p>
+          </a>
+          <a href="my-projects.html" class="nav-item">
+            <span class="material-symbols-outlined">construction</span>
+            <p>My Projects</p>
+          </a>
+          <a href="my_profile.html" class="nav-item active">
+            <span class="material-symbols-outlined">person</span>
+            <p>Profile</p>
+          </a>
+        </div>
+      </nav>
+    </footer>
+
+    <script>
+      function maskEmail(email) {
+        const parts = String(email || "").split("@");
+        if (parts.length !== 2) return "";
+        const local = parts[0];
+        const domain = parts[1];
+        const last2 = local.slice(-2);
+        const starsCount = Math.max(local.length - 2, 1);
+        return `${"*".repeat(starsCount)}${last2}@${domain}`;
+      }
+
+      function maskPassword(pwd) {
+        const len = Math.max(String(pwd || "").length, 12);
+        return "*".repeat(len);
+      }
+
+      function setEditing(field, isEditing) {
+        const valueEl = document.querySelector(`[data-field-value="${field}"]`);
+        const inputEl = document.querySelector(`[data-field-input="${field}"]`);
+        const buttonEl = document.querySelector(`[data-field="${field}"]`);
+        if (!valueEl || !inputEl || !buttonEl) return;
+
+        if (isEditing) {
+          valueEl.style.display = "none";
+          inputEl.style.display = "inline-block";
+          inputEl.focus();
+          inputEl.selectionStart = inputEl.value.length;
+          inputEl.selectionEnd = inputEl.value.length;
+          buttonEl.textContent = "Save";
+          buttonEl.setAttribute("data-editing", "true");
+        } else {
+          valueEl.style.display = "inline-block";
+          inputEl.style.display = "none";
+          buttonEl.textContent = "Change";
+          buttonEl.removeAttribute("data-editing");
+        }
+      }
+
+      function saveField(field) {
+        const valueEl = document.querySelector(`[data-field-value="${field}"]`);
+        const inputEl = document.querySelector(`[data-field-input="${field}"]`);
+        if (!valueEl || !inputEl) return;
+
+        const newValue = (inputEl.value || "").trim();
+
+        if (field === "email") {
+          const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newValue);
+          if (!ok) {
+            alert("Please enter a valid email.");
+            inputEl.focus();
+            return;
+          }
+          valueEl.textContent = maskEmail(newValue);
+        } else if (field === "password") {
+          if (!newValue) {
+            alert("Please enter a new password.");
+            inputEl.focus();
+            return;
+          }
+          valueEl.textContent = maskPassword(newValue);
+          inputEl.value = "";
+        } else {
+          if (!newValue) {
+            alert("This field cannot be empty.");
+            inputEl.focus();
+            return;
+          }
+          valueEl.textContent = newValue;
+        }
+
+        setEditing(field, false);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Initialize: hide inputs and ensure masked email is correct.
+        document.querySelectorAll(".field-input").forEach((el) => {
+          el.style.display = "none";
+        });
+
+        const emailInput = document.querySelector('[data-field-input="email"]');
+        const emailValue = document.querySelector('[data-field-value="email"]');
+        if (emailInput && emailValue) {
+          emailValue.textContent = maskEmail(emailInput.value);
+        }
+
+        document.querySelectorAll('[data-action="toggle"]').forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const field = btn.getAttribute("data-field");
+            const editing = btn.getAttribute("data-editing") === "true";
+            if (!field) return;
+            if (editing) saveField(field);
+            else setEditing(field, true);
+          });
+        });
+
+        document.querySelectorAll(".field-input").forEach((input) => {
+          input.addEventListener("keydown", (e) => {
+            if (e.key !== "Enter") return;
+            const field = input.getAttribute("data-field-input");
+            if (!field) return;
+            saveField(field);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
