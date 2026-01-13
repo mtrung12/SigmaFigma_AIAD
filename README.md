@@ -41,5 +41,6 @@ To navigate between the different scenarios, please follow these steps:
     - Normal User Web Flow
     - Architect Mobile Flow
     - Normal User Mobile Flow
+  
 You may switch between these flows at any time to review the different platform adaptations and user privileges.
 
